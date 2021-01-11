@@ -1,0 +1,22 @@
+.edit-timer-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-timer-list-item label {
+  width: 20%;
+}
+
+.workout-units {
+  width: 20%;
+}
+
+.fa-icon:hover {
+  cursor: pointer
+}
+
+.number-input {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+}
