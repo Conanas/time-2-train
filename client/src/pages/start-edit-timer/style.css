@@ -14,3 +14,7 @@
 .workout-units {
   width: 20%;
 }
+
+.far:hover {
+  cursor: pointer
+}
