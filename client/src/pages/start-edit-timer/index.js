@@ -22,75 +22,73 @@ export default function StartEditTimer() {
         {/* Continuous */}
         <li className="edit-timer-list-item">
           <label className="flow-text">Continuous</label>
-          {if (state.continuous === true) {
-            return (
-              <i className="fas fa-toggle-on flow-text"></i>
-            )
-          } else {
-            return (
-              <i className="fas fa-toggle-off flow-text"></i>
-            )
-          }}
+          {
+            state.continuous === true ?
+              <i className="fa-icon fas fa-toggle-on flow-text" onClick={() => dispatch({ type: SET_CONTINUOUS, payload: false })}></i> :
+              <i className="fa-icon fas fa-toggle-off flow-text" onClick={() => dispatch({ type: SET_CONTINUOUS, payload: true })}></i>
+          }
         </li>
 
         {/* Prepare */}
         <li className="edit-timer-list-item">
           <label className="flow-text">Prepare</label>
-          <i className="far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_PREPARE, payload: -1 })}></i>
+          <i className="fa-icon far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_PREPARE, payload: -1 })}></i>
           <div className="workout-units flow-text">
-            <span>{state.prepare}</span>
+            <input>{state.prepare}</input>
           </div>
-          <i className="far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_PREPARE, payload: +1 })}></i>
+          <i className="fa-icon far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_PREPARE, payload: +1 })}></i>
         </li>
 
         {/* Reps */}
         <li className="edit-timer-list-item">
           <label className="flow-text">Reps</label>
-          <i className="far fa-minus-square flow-text"></i>
+          <i className="fa-icon far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_REPS, payload: -1 })}></i>
           <div className="workout-units flow-text">
-            <span>0</span>
+            <input>{state.reps}</input>
           </div>
-          <i className="far fa-plus-square flow-text"></i>
+          <i className="fa-icon far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_REPS, payload: +1 })}></i>
         </li>
 
         {/* Work */}
-        <li className="edit-timer-list-item">
-          <label className="flow-text">Work</label>
-          <i className="far fa-minus-square flow-text"></i>
-          <div className="workout-units flow-text">
-            <span>0</span>
-          </div>
-          <i className="far fa-plus-square flow-text"></i>
-        </li>
+        {state.continuous === true ?
+          <li className="edit-timer-list-item">
+            <label className="flow-text">Work</label>
+            <i className="fa-icon far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_WORK, payload: -1 })}></i>
+            <div className="workout-units flow-text">
+              <input>{state.work}</input>
+            </div>
+            <i className="fa-icon far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_WORK, payload: +1 })}></i>
+          </li> :
+          null}
 
         {/* Rest */}
         <li className="edit-timer-list-item">
           <label className="flow-text">Rest</label>
-          <i className="far fa-minus-square flow-text"></i>
+          <i className="fa-icon far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_REST, payload: -1 })}></i>
           <div className="workout-units flow-text">
-            <span>0</span>
+            <input>{state.rest}</input>
           </div>
-          <i className="far fa-plus-square flow-text"></i>
+          <i className="fa-icon far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_REST, payload: +1 })}></i>
         </li>
 
         {/* Sets */}
         <li className="edit-timer-list-item">
           <label className="flow-text">Sets</label>
-          <i className="far fa-minus-square flow-text"></i>
+          <i className="fa-icon far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_SETS, payload: -1 })}></i>
           <div className="workout-units flow-text">
-            <span>0</span>
+            <input>{state.sets}</input>
           </div>
-          <i className="far fa-plus-square flow-text"></i>
+          <i className="fa-icon far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_SETS, payload: +1 })}></i>
         </li>
 
         {/* Break */}
         <li className="edit-timer-list-item">
           <label className="flow-text">Break</label>
-          <i className="far fa-minus-square flow-text"></i>
+          <i className="fa-icon far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_BREAK, payload: -1 })}></i>
           <div className="workout-units flow-text">
-            <span>0</span>
+            <input>{state.break}</input>
           </div>
-          <i className="far fa-plus-square flow-text"></i>
+          <i className="fa-icon far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_BREAK, payload: +1 })}></i>
         </li>
 
       </ul>
