@@ -19,7 +19,7 @@ export default function StartEditTimer() {
 
   return (
     <>
-      <div>
+      <div className="row">
         <h1 className="flow-text">Start/Edit Workout</h1>
         <ul className="edit-timer-list">
           <ListItems />
