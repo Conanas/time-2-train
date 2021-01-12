@@ -9,11 +9,9 @@ export default function StartEditTimer() {
   const [state, dispatch] = useWorkoutContext();
 
   useEffect(() => {
-    API.getWorkout("5ffd230c7de42e32f4c7dd53")
+    API.getWorkout("5ffd461159d75244a057d2f7")
       .then(res => {
-        console.log(res.data);
         dispatch({ type: SET_ACTIONS.workout, payload: res.data });
-        console.log(state);
       })
       .catch(error => console.log(error))
   }, [])
