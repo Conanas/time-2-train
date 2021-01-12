@@ -26,7 +26,7 @@ export default function ListItems() {
         <>
           <i className="fa-icon far fa-minus-square flow-text" disabled={disable === true ? true : false} onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] - 1 })) : null}></i>
           <div className="workout-units flow-text">
-            <input className="number-input" type="number" value={disable === false ? state[key] : 0} disabled={disable === true ? true : false} onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))} />
+            <input className="number-input" type="number" value={state[key]} disabled={disable === true ? true : false} onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))} />
           </div>
           <i className="fa-icon far fa-plus-square flow-text" disabled={disable === true ? true : false} onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] + 1 })) : null}></i>
         </>
