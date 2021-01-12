@@ -1,3 +1,4 @@
+export const TITLE = "Title"
 export const CONTINUOUS = "Continuous";
 export const PREPARE = "Prepare";
 export const REPS = "Reps";
