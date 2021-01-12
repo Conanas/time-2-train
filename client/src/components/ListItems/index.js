@@ -8,7 +8,7 @@ export default function ListItems() {
   const [state, dispatch] = useWorkoutContext();
 
   function renderListItems(state) {
-    const listItems = Object.keys(state).map(key => {
+    const listItems = Object.keys(state).map((key, index) => {
 
       // The input elements JSX for each item in the state object
       let inputs = (
@@ -38,7 +38,7 @@ export default function ListItems() {
 
       // Return each item with the title of each object in the state and with the inputs variable
       return (
-        <li className="edit-timer-list-item">
+        <li className="edit-timer-list-item" key={index}>
           <label className="flow-text">{TITLES[key]}</label>
           {inputs}
         </li>
