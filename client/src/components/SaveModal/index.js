@@ -13,13 +13,13 @@ export default function SaveModal() {
   }
 
   return (
-    <div id="save-modal" class="modal">
-      <div class="modal-content">
+    <div id="save-modal" className="modal">
+      <div className="modal-content">
         <h4>Enter Save Name</h4>
         <input type="text" onChange={((e) => dispatch({ type: SET_ACTIONS.title, payload: e.target.value }))} />
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onClick={(() => saveWorkout())}>Save</a>
+      <div className="modal-footer">
+        <a href="#!" className="modal-close waves-effect waves-green btn-flat" onClick={(() => saveWorkout())}>Save</a>
       </div>
     </div>
   )
