@@ -33,6 +33,13 @@ const reducer = (state, action) => {
         title: action.payload
       }
     case SET_ACTIONS.continuous:
+      if (action.payload === false) {
+        return {
+          ...state,
+          continuous: action.payload,
+          work: 0
+        }
+      }
       return {
         ...state,
         continuous: action.payload
