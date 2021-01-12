@@ -1,5 +1,7 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
+  SET_WORKOUT,
+  SET_TITLE,
   SET_CONTINUOUS,
   SET_PREPARE,
   SET_REPS,
@@ -9,6 +11,7 @@ import {
   SET_BREAK
 } from './actions';
 import {
+  TITLE,
   CONTINUOUS,
   PREPARE,
   REPS,
@@ -21,6 +24,11 @@ import {
 const WorkoutContext = createContext();
 
 const DEFAULT_STATE = {
+  title: {
+    action: SET_TITLE,
+    title: TITLE,
+    value: "Title"
+  },
   continuous: {
     action: SET_CONTINUOUS,
     title: CONTINUOUS,
@@ -60,6 +68,49 @@ const DEFAULT_STATE = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case SET_WORKOUT:
+      return {
+        title: {
+          ...state.title,
+          value: action.payload.title
+        },
+        continuous: {
+          ...state.title,
+          value: action.payload.continuous
+        },
+        prepare: {
+          ...state.title,
+          value: action.payload.prepare
+        },
+        reps: {
+          ...state.title,
+          value: action.payload.reps
+        },
+        work: {
+          ...state.title,
+          value: action.payload.work
+        },
+        rest: {
+          ...state.title,
+          value: action.payload.rest
+        },
+        sets: {
+          ...state.title,
+          value: action.payload.sets
+        },
+        break: {
+          ...state.title,
+          value: action.payload.break
+        }
+      }
+    case SET_TITLE:
+      return {
+        ...state,
+        title: {
+          ...state.title,
+          value: action.payload
+        }
+      }
     case SET_CONTINUOUS:
       return {
         ...state,
