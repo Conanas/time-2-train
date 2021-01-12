@@ -1,0 +1,42 @@
+footer {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background-color: black;
+  color: white;
+  margin-top: auto;
+}
+
+.footer-row {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 0;
+}
+
+.links-div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.contact-div {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0 !important;
+}
+
+footer .links-div-anchor {
+  margin-right: 16px;
+  color: white;
+}
+
+.social-icon {
+  color: white;
+}
+
+/* .social-icon:hover {
+  color: var(--primary-light);
+} */
+
+.font-awesome {
+  font-size: 2em;
+}
