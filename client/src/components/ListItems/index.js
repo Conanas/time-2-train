@@ -32,7 +32,7 @@ export default function ListItems() {
       }
 
       // When we reach the Work object in the state and continuous is set to false then do not render the work element
-      else if (TITLES[key] === TITLES.work && state.continuous === false || TITLES[key] === TITLES.title) {
+      else if ((TITLES[key] === TITLES.work && state.continuous === false) || TITLES[key] === TITLES.title) {
         return <></>
       }
 
