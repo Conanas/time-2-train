@@ -1,6 +1,7 @@
 import React from 'react';
 import { useWorkoutContext } from "../../utils/GlobalState";
 import {
+  TITLE,
   CONTINUOUS,
   WORK
 } from '../../utils/list-titles';
@@ -34,7 +35,7 @@ export default function ListItems() {
       }
 
       // When we reach the Work object in the state and continuous is set to false then do not render the work element
-      else if (state[key].title === WORK && state.continuous.value === false) {
+      else if (state[key].title === WORK && state.continuous.value === false || state[key].title === TITLE) {
         return <></>
       }
 
