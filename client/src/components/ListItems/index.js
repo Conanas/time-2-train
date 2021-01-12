@@ -10,14 +10,25 @@ export default function ListItems() {
   function renderListItems(state) {
     const listItems = Object.keys(state).map((key, index) => {
 
+      let disable = false;
+
+      // When we reach the Work object in the state and continuous is set to false then do not render the work element
+      if ((TITLES[key] === TITLES.work && state.continuous === false)) {
+        disable = true
+      }
+
+      if (TITLES[key] === TITLES.title) {
+        return <></>
+      }
+
       // The input elements JSX for each item in the state object
       let inputs = (
         <>
-          <i className="fa-icon far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_ACTIONS[key], payload: state[key] - 1 })}></i>
+          <i className="fa-icon far fa-minus-square flow-text" disabled={disable === true ? true : false} onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] - 1 })) : null}></i>
           <div className="workout-units flow-text">
-            <input className="number-input" type="number" value={state[key]} onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))} />
+            <input className="number-input" type="number" value={disable === false ? state[key] : 0} disabled={disable === true ? true : false} onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))} />
           </div>
-          <i className="fa-icon far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_ACTIONS[key], payload: state[key] + 1 })}></i>
+          <i className="fa-icon far fa-plus-square flow-text" disabled={disable === true ? true : false} onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] + 1 })) : null}></i>
         </>
       )
 
@@ -29,11 +40,6 @@ export default function ListItems() {
       }
       if (TITLES[key] === TITLES.continuous && state.continuous === false) {
         inputs = <i className="fa-icon fas fa-toggle-off flow-text" onClick={() => dispatch({ type: SET_ACTIONS.continuous, payload: true })}></i>
-      }
-
-      // When we reach the Work object in the state and continuous is set to false then do not render the work element
-      else if ((TITLES[key] === TITLES.work && state.continuous === false) || TITLES[key] === TITLES.title) {
-        return <></>
       }
 
       // Return each item with the title of each object in the state and with the inputs variable

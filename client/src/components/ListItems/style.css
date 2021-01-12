@@ -13,7 +13,12 @@
 }
 
 .fa-icon:hover {
-  cursor: pointer
+  cursor: pointer;
+}
+
+.fa-icon:disabled {
+  background-color: grey;
+  color:grey;
 }
 
 .number-input {
