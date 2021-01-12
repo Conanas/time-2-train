@@ -16,6 +16,7 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding-right: 0 !important;
 }
 
 .contact-div {
@@ -29,7 +30,7 @@ footer {
 }
 
 footer .links-div-anchor {
-  margin-right: 16px;
+  margin-left: 16px;
   color: white;
 }
 
