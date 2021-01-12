@@ -11,9 +11,10 @@ mongoose.connect(
 const workoutSeed = [
   {
     title: "Test 1",
-    continuous: false,
+    continuous: true,
     prepare: 15,
     reps: 4,
+    work: 0,
     rest: 30,
     sets: 0,
     break: 60
