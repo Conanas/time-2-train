@@ -2,21 +2,21 @@ import React, { useEffect } from 'react';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/GlobalState";
 import ListItems from '../../components/ListItems/';
-import { SET_WORKOUT } from '../../utils/actions';
+import { SET_ACTIONS } from '../../utils/actions';
 import './style.css';
 
 export default function StartEditTimer() {
   const [state, dispatch] = useWorkoutContext();
 
-  // useEffect(() => {
-  //   API.getWorkout("5ffd230c7de42e32f4c7dd53")
-  //     .then(res => {
-  //       console.log(res.data);
-  //       dispatch({ type: SET_WORKOUT, payload: res.data });
-  //       console.log(state);
-  //     })
-  //     .catch(error => console.log(error))
-  // }, [])
+  useEffect(() => {
+    API.getWorkout("5ffd230c7de42e32f4c7dd53")
+      .then(res => {
+        console.log(res.data);
+        dispatch({ type: SET_ACTIONS.workout, payload: res.data });
+        console.log(state);
+      })
+      .catch(error => console.log(error))
+  }, [])
 
   return (
     <>
