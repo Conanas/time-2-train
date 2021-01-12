@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import API from '../../utils/API';
+import { useWorkoutContext } from "../../utils/GlobalState";
 import ListItems from '../../components/ListItems/';
 import './style.css';
 
 export default function StartEditTimer() {
+  const [state, dispatch] = useWorkoutContext();
+
+  useEffect(() => {
+    API.getWorkouts()
+      .then(res =>
+        console.log(res.data)
+      )
+      .catch(error => console.log(error))
+  }, [])
+
   return (
     <>
       <h1 className="flow-text">Start/Edit Workout</h1>
