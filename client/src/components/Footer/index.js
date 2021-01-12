@@ -15,9 +15,8 @@ export default function Footer() {
             </a>
           </div>
           <div className="contact-div col s6">
-            <label>Phone: 0406 253 030</label>
-            <label>Email: tmhaigh@gmail.com</label>
-            <label>Location: Melbourne, Victoria, Australia</label>
+            <label>tmhaigh@gmail.com</label>
+            <label>Melbourne, Victoria, Australia</label>
           </div>
         </div>
       </div>
