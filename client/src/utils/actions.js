@@ -5,3 +5,6 @@ export const SET_WORK = "SET_WORK";
 export const SET_REST = "SET_REST";
 export const SET_SETS = "SET_SETS";
 export const SET_BREAK = "SET_BREAK";
+
+export const SET_WORKOUT = "SET_WORKOUT";
+export const SET_TITLE = "SET_TITLE";
