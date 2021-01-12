@@ -10,12 +10,14 @@ export default function Navbar() {
           <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="left hide-on-med-and-down">
             <li><a className="nav-item" href="/">Start/Edit Timer</a></li>
+            <li><a className="nav-item" href="/load">Load Workout</a></li>
           </ul>
         </div>
       </nav>
 
       <ul className="sidenav" id="mobile-demo">
         <li><a href="/">Start/Edit Timer</a></li>
+        <li><a href="/load">Load Workout</a></li>
       </ul>
     </>
   )

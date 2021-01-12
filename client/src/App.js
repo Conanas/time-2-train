@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import StartEditTimer from './pages/Start-Edit-Timer/';
+import LoadPage from './pages/LoadPage/';
 import Navbar from './components/Navbar/';
 import SaveModal from './components/SaveModal/';
 import Footer from './components/Footer/';
@@ -17,8 +18,8 @@ export default function App() {
         <WorkoutProvider>
           <Router>
             <Switch>
-              <Route path exact="/" component={StartEditTimer}>
-              </Route>
+              <Route exact path="/" component={StartEditTimer} />
+              <Route exact path="/load" component={LoadPage} />
             </Switch>
           </Router>
           <SaveModal />
