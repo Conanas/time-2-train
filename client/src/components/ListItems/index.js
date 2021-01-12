@@ -13,11 +13,11 @@ export default function ListItems() {
       // The input elements JSX for each item in the state object
       let inputs = (
         <>
-          <i className="fa-icon far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_ACTIONS[key], payload: -1 })}></i>
+          <i className="fa-icon far fa-minus-square flow-text" onClick={() => dispatch({ type: SET_ACTIONS[key], payload: state[key] - 1 })}></i>
           <div className="workout-units flow-text">
-            <input className="number-input" type="number" value={state[key]} />
+            <input className="number-input" type="number" value={state[key]} onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))} />
           </div>
-          <i className="fa-icon far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_ACTIONS[key], payload: 1 })}></i>
+          <i className="fa-icon far fa-plus-square flow-text" onClick={() => dispatch({ type: SET_ACTIONS[key], payload: state[key] + 1 })}></i>
         </>
       )
 

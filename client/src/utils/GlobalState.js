@@ -40,32 +40,32 @@ const reducer = (state, action) => {
     case SET_ACTIONS.prepare:
       return {
         ...state,
-        prepare: state.prepare + action.payload
+        prepare: action.payload
       }
     case SET_ACTIONS.reps:
       return {
         ...state,
-        reps: state.reps + action.payload
+        reps: action.payload
       }
     case SET_ACTIONS.work:
       return {
         ...state,
-        work: state.work + action.payload
+        work: action.payload
       }
     case SET_ACTIONS.rest:
       return {
         ...state,
-        rest: state.rest + action.payload
+        rest: action.payload
       }
     case SET_ACTIONS.sets:
       return {
         ...state,
-        sets: state.sets + action.payload
+        sets: action.payload
       }
     case SET_ACTIONS.break:
       return {
         ...state,
-        break: state.break + action.payload
+        break: action.payload
       }
     default:
       return state;
