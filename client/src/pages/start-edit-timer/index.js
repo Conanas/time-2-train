@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/GlobalState";
 import ListItems from '../../components/ListItems/';
+import StartSaveLoadButtons from '../../components/StartSaveLoadButtons/';
 import { SET_ACTIONS } from '../../utils/actions';
 import './style.css';
 
@@ -24,11 +25,7 @@ export default function StartEditTimer() {
           <ListItems />
         </ul>
       </div>
-      <div className="button-div">
-        <input className="form-button" type="button" value="Start"></input>
-        <input className="form-button" type="button" value="Save"></input>
-        <input className="form-button" type="button" value="Load"></input>
-      </div>
+      <StartSaveLoadButtons />
     </>
   )
 }
