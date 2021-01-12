@@ -16,13 +16,11 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 0 !important;
 }
 
 .contact-div {
   display: flex;
   flex-direction: column;
-  padding-left: 0 !important;
 }
 
 .contact-div label {
