@@ -6,11 +6,11 @@ import StartSaveLoadButtons from '../../components/StartSaveLoadButtons/';
 import { SET_ACTIONS } from '../../utils/actions';
 import './style.css';
 
-export default function StartEditTimer() {
-  const [, dispatch] = useWorkoutContext();
+export default function StartEditTimer(props) {
+  const [state, dispatch] = useWorkoutContext();
 
   useEffect(() => {
-    API.getWorkout("5ffd461159d75244a057d2f7")
+    API.getWorkout(props.match.params.id)
       .then(res => {
         dispatch({ type: SET_ACTIONS.workout, payload: res.data });
       })
