@@ -7,6 +7,14 @@
     padding: 1em 2em;
 }
 
+.form-button {
+    background-color: var(--primary);
+    color: var(--on-primary);
+    border: none;
+    border-radius: 8px;
+}
+
 .form-button:hover {
     cursor: pointer;
+    background-color: var(--primary-dark);
 }
