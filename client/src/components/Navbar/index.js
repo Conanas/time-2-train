@@ -6,7 +6,7 @@ export default function Navbar() {
     <>
       <nav>
         <div className="nav-wrapper container">
-          <a href="#!" className="brand-logo right">Workout Time</a>
+          <a href="#!" className="brand-logo right">Climb Time</a>
           <button data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></button>
           <ul className="left hide-on-med-and-down">
             <li><a className="nav-item" href="/">Start/Edit Timer</a></li>
