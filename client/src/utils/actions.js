@@ -7,5 +7,6 @@ export const SET_ACTIONS = {
   sets: "SET_SETS",
   break: "SET_BREAK",
   workout: "SET_WORKOUT",
-  title: "SET_TITLE"
+  title: "SET_TITLE",
+  import: "IMPORT_WORKOUTS"
 }
