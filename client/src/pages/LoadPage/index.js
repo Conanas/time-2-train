@@ -23,14 +23,18 @@ export default function LoadPage() {
       <h3>Load Workout</h3>
       {loadState.map((workout, index) => {
         return (
-          <label key={index}>
-            <input type="radio" name="workouts" id={workout.id} />
-            <span>{workout.title}</span>
-            <i className="fas fa-times"></i>
+          <label className="load-label flow-text" key={index}>
+            <div>
+              <input type="radio" name="workouts" id={workout.id} />
+              <span>{workout.title}</span>
+            </div>
+            <div>
+              <i className="fas fa-times"></i>
+            </div>
           </label>
         )
       })}
-      <button>Load</button>
+      <button className="load-button">Load</button>
     </>
   )
 }
