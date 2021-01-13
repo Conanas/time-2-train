@@ -3,6 +3,7 @@ import { useWorkoutContext } from '../../utils/GlobalState';
 import { useLoadContext } from '../../utils/LoadContext';
 import { SET_ACTIONS } from '../../utils/actions';
 import API from '../../utils/API';
+import LoadModal from '../../components/LoadModal/';
 import './style.css';
 
 export default function LoadPage() {
@@ -35,8 +36,9 @@ export default function LoadPage() {
         )
       })}
       <div className="button-div">
-        <button className="load-button">Load</button>
+        <button className="load-button modal-trigger" data-target="load-modal">Load</button>
       </div>
+      <LoadModal />
     </>
   )
 }
