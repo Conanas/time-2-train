@@ -20,15 +20,14 @@ export default function LoadPage() {
 
   return (
     <>
-      {console.log(loadState)}
       <h4>Load Workout</h4>
       <div className="load-list">
         {loadState.map((workout, index) => {
           return (
             <label className="load-label flow-text" key={index}>
               <div>
-                <input type="radio" name="workouts" id={workout.id} />
-                <span>{workout.title}</span>
+                <input className="load-radio" type="radio" name="workouts" id={workout._id} onChange={(() => workoutDispatch({ type: SET_ACTIONS.workout, payload: workout }))} />
+                <span><label className="flow-text">{workout.title}</label></span>
               </div>
               <div>
                 <i className="fas fa-times"></i>
@@ -38,7 +37,7 @@ export default function LoadPage() {
         })}
       </div>
       <div className="button-div">
-        <button className="load-button modal-trigger" data-target="load-modal">Load</button>
+        <a href={`/workout/${workoutState.id}`}><button className="show-button">Show</button></a>
       </div>
       <LoadModal />
     </>
