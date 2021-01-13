@@ -12,11 +12,12 @@ export default function ListItems() {
 
       let disable = false;
 
-      // When we reach the Work object in the state and continuous is set to false then do not render the work element
+      // When we reach the Work object in the state and continuous is set to false then disable the work elements
       if ((TITLES[key] === TITLES.work && state.continuous === false)) {
         disable = true
       }
 
+      // When we reach the title element then do not render anything
       if (TITLES[key] === TITLES.title) {
         return <></>
       }
@@ -24,11 +25,15 @@ export default function ListItems() {
       // The input elements JSX for each item in the state object
       let inputs = (
         <>
-          <i className="fa-icon far fa-minus-square flow-text" disabled={disable === true ? true : false} onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] - 1 })) : null}></i>
+          <button className="plus-minus-buttons" disabled={disable === true ? true : false}>
+            <i className="fa-icon far fa-minus-square flow-text" onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] - 1 })) : null}></i>
+          </button>
           <div className="workout-units flow-text">
             <input className="number-input" type="number" value={state[key]} disabled={disable === true ? true : false} onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))} />
           </div>
-          <i className="fa-icon far fa-plus-square flow-text" disabled={disable === true ? true : false} onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] + 1 })) : null}></i>
+          <button className="plus-minus-buttons" disabled={disable === true ? true : false}>
+            <i className="fa-icon far fa-plus-square flow-text" onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] + 1 })) : null}></i>
+          </button>
         </>
       )
 
