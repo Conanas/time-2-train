@@ -20,14 +20,17 @@ export default function LoadPage() {
   return (
     <>
       {console.log(loadState)}
-      <h1 className="flow-text">Load Workout</h1>
-      <ul>
-        {loadState.map((workout, index) => {
-          return (
-            <li key={index}>{workout.title}</li>
-          )
-        })}
-      </ul>
+      <h3>Load Workout</h3>
+      {loadState.map((workout, index) => {
+        return (
+          <label key={index}>
+            <input type="radio" name="workouts" id={workout.id} />
+            <span>{workout.title}</span>
+            <i className="fas fa-times"></i>
+          </label>
+        )
+      })}
+      <button>Load</button>
     </>
   )
 }
