@@ -22,19 +22,21 @@ export default function LoadPage() {
     <>
       {console.log(loadState)}
       <h4>Load Workout</h4>
-      {loadState.map((workout, index) => {
-        return (
-          <label className="load-label flow-text" key={index}>
-            <div>
-              <input type="radio" name="workouts" id={workout.id} />
-              <span>{workout.title}</span>
-            </div>
-            <div>
-              <i className="fas fa-times"></i>
-            </div>
-          </label>
-        )
-      })}
+      <div className="load-list">
+        {loadState.map((workout, index) => {
+          return (
+            <label className="load-label flow-text" key={index}>
+              <div>
+                <input type="radio" name="workouts" id={workout.id} />
+                <span>{workout.title}</span>
+              </div>
+              <div>
+                <i className="fas fa-times"></i>
+              </div>
+            </label>
+          )
+        })}
+      </div>
       <div className="button-div">
         <button className="load-button modal-trigger" data-target="load-modal">Load</button>
       </div>
