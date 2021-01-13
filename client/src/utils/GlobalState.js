@@ -4,6 +4,7 @@ import { SET_ACTIONS } from './actions';
 const WorkoutContext = createContext();
 
 const DEFAULT_STATE = {
+  id: 0,
   title: "Test Title",
   continuous: false,
   prepare: 15,
@@ -18,6 +19,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case SET_ACTIONS.workout:
       return {
+        id: action.payload._id,
         title: action.payload.title,
         continuous: action.payload.continuous,
         prepare: action.payload.prepare,
@@ -26,6 +28,11 @@ const reducer = (state, action) => {
         rest: action.payload.rest,
         sets: action.payload.sets,
         break: action.payload.break
+      }
+    case SET_ACTIONS.id:
+      return {
+        ...state,
+        id: action.payload
       }
     case SET_ACTIONS.title:
       return {
