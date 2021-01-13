@@ -1,6 +1,10 @@
 :root {
   --primary: #ee6e73;
+  --primary-light: #ff9fa2;
+  --primary-dark: #b73d48;
   --on-primary: white;
+  --on-primary-light: white;
+  --on-primary-dark: white;
 }
 
 .wrapper {
