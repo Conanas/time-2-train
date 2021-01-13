@@ -7,7 +7,7 @@ import { SET_ACTIONS } from '../../utils/actions';
 import './style.css';
 
 export default function StartEditTimer() {
-  const [state, dispatch] = useWorkoutContext();
+  const [, dispatch] = useWorkoutContext();
 
   useEffect(() => {
     API.getWorkout("5ffd461159d75244a057d2f7")
