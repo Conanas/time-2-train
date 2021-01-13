@@ -1,4 +1,5 @@
 export const TITLES = {
+  id: "ID",
   continuous: "Continuous",
   prepare: "Prepare",
   reps: "Reps",
