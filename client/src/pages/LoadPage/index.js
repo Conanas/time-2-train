@@ -20,7 +20,7 @@ export default function LoadPage() {
   return (
     <>
       {console.log(loadState)}
-      <h3>Load Workout</h3>
+      <h4>Load Workout</h4>
       {loadState.map((workout, index) => {
         return (
           <label className="load-label flow-text" key={index}>
@@ -34,7 +34,9 @@ export default function LoadPage() {
           </label>
         )
       })}
-      <button className="load-button">Load</button>
+      <div className="button-div">
+        <button className="load-button">Load</button>
+      </div>
     </>
   )
 }
