@@ -19,7 +19,7 @@ export default function SaveModal() {
         <input type="text" onChange={((e) => dispatch({ type: SET_ACTIONS.title, payload: e.target.value }))} />
       </div>
       <div className="modal-footer">
-        <a href="#!" className="modal-close waves-effect waves-green btn-flat" onClick={(() => saveWorkout())}>Save</a>
+        <button className="modal-close waves-effect waves-green btn-flat" onClick={(() => saveWorkout())}>Save</button>
       </div>
     </div>
   )
