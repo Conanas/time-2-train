@@ -16,9 +16,18 @@
   cursor: pointer;
 }
 
-.fa-icon:disabled {
-  background-color: grey;
-  color:grey;
+.plus-minus-buttons {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.plus-minus-buttons:active {
+  color: red;
+}
+
+.plus-minus-buttons:focus {
+  background-color: transparent;
 }
 
 .number-input {
