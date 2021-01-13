@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/';
 import SaveModal from './components/SaveModal/';
 import Footer from './components/Footer/';
 import { WorkoutProvider } from './utils/GlobalState';
+import { LoadProvider } from './utils/LoadContext';
 import "./App.css";
 
 export default function App() {
@@ -15,15 +16,17 @@ export default function App() {
         <Navbar />
       </header>
       <main className="container">
-        <WorkoutProvider>
-          <Router>
-            <Switch>
-              <Route exact path="/" component={StartEditTimer} />
-              <Route exact path="/load" component={LoadPage} />
-            </Switch>
-          </Router>
-          <SaveModal />
-        </WorkoutProvider>
+        <LoadProvider>
+          <WorkoutProvider>
+            <Router>
+              <Switch>
+                <Route exact path="/" component={StartEditTimer} />
+                <Route exact path="/load" component={LoadPage} />
+              </Switch>
+            </Router>
+            <SaveModal />
+          </WorkoutProvider>
+        </LoadProvider>
       </main>
       <Footer />
     </div>
