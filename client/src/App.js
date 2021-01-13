@@ -21,6 +21,7 @@ export default function App() {
             <Router>
               <Switch>
                 <Route exact path="/" component={StartEditTimer} />
+                <Route exact path="/workout/:id" component={StartEditTimer} />
                 <Route exact path="/load" component={LoadPage} />
               </Switch>
             </Router>
