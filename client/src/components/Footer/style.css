@@ -1,8 +1,8 @@
 footer {
   padding-top: 2em;
   padding-bottom: 2em;
-  background-color: #ee6e73;
-  color: white;
+  background-color: var(--primary);
+  color: var(--on-primary);
   margin-top: auto;
 }
 
@@ -24,16 +24,16 @@ footer {
 }
 
 .contact-div label {
-  color: white;
+  color: var(--on-primary);
 }
 
 footer .links-div-anchor {
   margin-left: 16px;
-  color: white;
+  color: var(--on-primary);
 }
 
 .social-icon {
-  color: white;
+  color: var(--on-primary);
 }
 
 /* .social-icon:hover {

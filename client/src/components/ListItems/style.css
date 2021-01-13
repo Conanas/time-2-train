@@ -23,7 +23,7 @@
 }
 
 .plus-minus-buttons:active {
-  color: red;
+  color: var(--primary);;
 }
 
 .plus-minus-buttons:focus {
