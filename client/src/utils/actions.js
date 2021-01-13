@@ -1,4 +1,5 @@
 export const SET_ACTIONS = {
+  id: "SET_ID",
   continuous: "SET_CONTINUOUS",
   prepare: "SET_PREPARE",
   reps: "SET_REPS",
