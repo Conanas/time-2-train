@@ -36,7 +36,7 @@ export default function StartEditTimer(props) {
       }
 
       // Don't render an item for the workout ID
-      if (key === "id") {
+      if (key === "_id") {
         return null;
       }
 
