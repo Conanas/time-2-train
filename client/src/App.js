@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/';
 import Footer from './components/Footer/';
 import { WorkoutProvider } from './utils/WorkoutContext';
 import { LoadProvider } from './utils/LoadContext';
+import { EditProvider } from './utils/EditContext';
 import "./App.css";
 
 export default function App() {
@@ -17,13 +18,15 @@ export default function App() {
       <main className="container">
         <LoadProvider>
           <WorkoutProvider>
-            <Router>
-              <Switch>
-                <Route exact path="/" component={StartEditTimer} />
-                <Route exact path="/workout/:id" component={StartEditTimer} />
-                <Route exact path="/load" component={LoadPage} />
-              </Switch>
-            </Router>
+            <EditProvider>
+              <Router>
+                <Switch>
+                  <Route exact path="/" component={StartEditTimer} />
+                  <Route exact path="/workout/:id" component={StartEditTimer} />
+                  <Route exact path="/load" component={LoadPage} />
+                </Switch>
+              </Router>
+            </EditProvider>
           </WorkoutProvider>
         </LoadProvider>
       </main>
