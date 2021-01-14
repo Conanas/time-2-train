@@ -8,7 +8,7 @@ import './style.css';
 
 export default function LoadPage() {
   const [loadState, loadDispatch] = useLoadContext();
-  const [workoutState, workoutDispatch] = useWorkoutContext();
+  const [, workoutDispatch] = useWorkoutContext();
 
   useEffect(() => {
     API.getWorkouts()
@@ -38,7 +38,6 @@ export default function LoadPage() {
       </div>
       <div className="button-div">
         <button className="show-button modal-trigger" data-target="load-modal">Show</button>
-        {/* <a href={`/workout/${workoutState.id}`}></a> */}
       </div>
       <LoadModal />
     </>
