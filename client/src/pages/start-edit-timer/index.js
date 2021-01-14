@@ -24,7 +24,7 @@ export default function StartEditTimer(props) {
 
   // Function to render the different workout attributes to be edited
   function renderListItems(state) {
-    const listItems = Object.keys(state).map((key, index) => {
+    return Object.keys(state).map((key, index) => {
 
       let disable = false;
 
@@ -33,8 +33,9 @@ export default function StartEditTimer(props) {
         disable = true
       }
 
+      // Don't render an item for the workout ID
       if (key === "id") {
-        return <></>
+        return null;
       }
 
       // The input elements JSX for each item in the state object
@@ -75,7 +76,6 @@ export default function StartEditTimer(props) {
         </li>
       )
     })
-    return listItems;
   }
 
   return (
