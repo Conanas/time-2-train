@@ -3,7 +3,7 @@ import { useWorkoutContext } from '../../utils/GlobalState';
 import './style.css';
 
 export default function LoadModal() {
-  const [workoutState, workoutDispatch] = useWorkoutContext();
+  const [workoutState] = useWorkoutContext();
 
   return (
     <div id="load-modal" className="modal">
@@ -24,7 +24,7 @@ export default function LoadModal() {
         </ul>
       </div>
       <div className="modal-footer">
-        <a href={`/workout/${workoutState.id}`}><button className="modal-close waves-effect waves-green btn-flat">Load</button></a>
+        <a href={`/workout/${workoutState.id}`}><button className="modal-close waves-effect waves-green btn-flat" onClick={localStorage.setItem("workoutId", workoutState.id)}>Load</button></a>
       </div>
     </div>
   )
