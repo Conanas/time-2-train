@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import SaveModal from '../../components/SaveModal/';
+import SaveMessageModal from '../../components/SaveMessageModal';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
@@ -17,6 +18,7 @@ export default function StartEditTimer(props) {
     } else {
       workoutId = props.match.params.id;
     }
+    console.log(workoutId)
     API.getWorkout(workoutId)
       .then(res => {
         dispatch({ type: SET_ACTIONS.workout, payload: res.data });
@@ -31,7 +33,7 @@ export default function StartEditTimer(props) {
       let disable = false;
 
       // When we reach the Work object in the state and continuous is set to false then disable the work elements
-      if ((key === "work" && state.continuous === false) || editState === EDIT) {
+      if ((key === "work" && state.continuous === false) || editState === START) {
         disable = true
       }
 
@@ -43,14 +45,33 @@ export default function StartEditTimer(props) {
       // The input elements JSX for each item in the state object
       let inputs = (
         <>
-          <button className="plus-minus-buttons" disabled={disable === true ? true : false}>
-            <i className="fa-icon far fa-minus-square flow-text" onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] - 1 })) : null}></i>
+          <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
+            <i
+              className="fa-icon far fa-minus-square flow-text"
+              onClick={
+                disable === false ?
+                  () => dispatch({ type: SET_ACTIONS[key], payload: state[key] - 1 })
+                  : null
+              }>
+            </i>
           </button>
           <div className="workout-units">
-            <input className="number-input flow-text" type="number" value={state[key]} disabled={disable === true ? true : false} onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))} />
+            <input
+              className="number-input flow-text"
+              type="number"
+              value={state[key]}
+              disabled={disable === true ? true : false}
+              onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))}
+            />
           </div>
-          <button className="plus-minus-buttons" disabled={disable === true ? true : false}>
-            <i className="fa-icon far fa-plus-square flow-text" onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] + 1 })) : null}></i>
+          <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
+            <i className="fa-icon far fa-plus-square flow-text"
+              onClick={
+                disable === false ?
+                  () => dispatch({ type: SET_ACTIONS[key], payload: state[key] + 1 })
+                  : null
+              }>
+            </i>
           </button>
         </>
       )
@@ -64,10 +85,27 @@ export default function StartEditTimer(props) {
       // If continuous then render 'on' toggle switch
       // Else render the 'off' toggle switch
       if (key === "continuous" && state.continuous === true) {
-        inputs = <i className="fa-icon fas fa-toggle-on flow-text" onClick={() => dispatch({ type: SET_ACTIONS.continuous, payload: false })}></i>
+        inputs =
+          <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
+            <i
+              className="fa-icon fas fa-toggle-on flow-text"
+              onClick={disable === false ?
+                () => dispatch({ type: SET_ACTIONS.continuous, payload: false })
+                : null}>
+            </i>
+          </button>
       }
       if (key === "continuous" && state.continuous === false) {
-        inputs = <i className="fa-icon fas fa-toggle-off flow-text" onClick={() => dispatch({ type: SET_ACTIONS.continuous, payload: true })}></i>
+        inputs =
+          <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
+            <i
+              className="fa-icon fas fa-toggle-off flow-text"
+              onClick={
+                disable === false ?
+                  () => dispatch({ type: SET_ACTIONS.continuous, payload: true })
+                  : null}>
+            </i>
+          </button >
       }
 
       // Return each item with the title of each object in the state and with the inputs variable
@@ -82,6 +120,7 @@ export default function StartEditTimer(props) {
 
   return (
     <>
+      {console.log(editState)}
       <div className="row">
         <h4>Start/Edit Workout</h4>
         <ul className="edit-timer-list">
@@ -89,11 +128,24 @@ export default function StartEditTimer(props) {
         </ul>
       </div>
       <div className="button-div">
-        <input className="form-button" type="button" value="Start"></input>
-        <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}><i className="fas fa-edit"></i></button>
-        {/* <input className="form-button modal-trigger" type="button" value="Save" data-target="save-modal"></input> */}
+        {editState === START ?
+          <>
+            <button className="form-button">Start</button>
+            <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}>
+              <i className="fas fa-edit"></i>
+            </button>
+          </>
+          :
+          <button
+            className="form-button modal-trigger"
+            type="button"
+            data-target="save-message-modal"
+            onClick={() => dispatchEditState({ type: START })}>
+            <i className="far fa-save"></i>
+          </button>}
       </div>
       <SaveModal />
+      <SaveMessageModal />
     </>
   )
 }
