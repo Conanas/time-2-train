@@ -1,6 +1,5 @@
 import React from 'react';
 import { useWorkoutContext } from "../../utils/GlobalState";
-import { TITLES } from '../../utils/list-titles';
 import { SET_ACTIONS } from '../../utils/actions';
 import './style.css';
 
@@ -13,11 +12,11 @@ export default function ListItems() {
       let disable = false;
 
       // When we reach the Work object in the state and continuous is set to false then disable the work elements
-      if ((TITLES[key] === TITLES.work && state.continuous === false)) {
+      if ((key === "work" && state.continuous === false)) {
         disable = true
       }
 
-      if (TITLES[key] === TITLES.id) {
+      if (key === "id") {
         return <></>
       }
 
@@ -37,24 +36,24 @@ export default function ListItems() {
       )
 
       // When we reach the title element then do not render anything
-      if (TITLES[key] === TITLES.title) {
+      if (key === "title") {
         inputs = <label className="flow-text">{state[key]}</label>
       }
 
       // When we reach the continuous object in the state then render the continuous toggle button
       // If continuous then render 'on' toggle switch
       // Else render the 'off' toggle switch
-      if (TITLES[key] === TITLES.continuous && state.continuous === true) {
+      if (key === "continuous" && state.continuous === true) {
         inputs = <i className="fa-icon fas fa-toggle-on flow-text" onClick={() => dispatch({ type: SET_ACTIONS.continuous, payload: false })}></i>
       }
-      if (TITLES[key] === TITLES.continuous && state.continuous === false) {
+      if (key === "continuous" && state.continuous === false) {
         inputs = <i className="fa-icon fas fa-toggle-off flow-text" onClick={() => dispatch({ type: SET_ACTIONS.continuous, payload: true })}></i>
       }
 
       // Return each item with the title of each object in the state and with the inputs variable
       return (
         <li className="edit-timer-list-item" key={index}>
-          <label className="flow-text">{TITLES[key]}</label>
+          <label className="flow-text">{key.charAt(0).toUpperCase() + key.slice(1)}</label>
           {inputs}
         </li>
       )
