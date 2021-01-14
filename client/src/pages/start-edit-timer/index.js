@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import SaveModal from '../../components/SaveModal/';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
-import { SET_ACTIONS } from '../../utils/actions';
+import { useEditContext } from '../../utils/EditContext';
+import { SET_ACTIONS, EDIT, CREATE, START } from '../../utils/actions';
 import './style.css';
 
 export default function StartEditTimer(props) {
+  const [editState, dispatchEditState] = useEditContext();
   const [state, dispatch] = useWorkoutContext();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export default function StartEditTimer(props) {
       let disable = false;
 
       // When we reach the Work object in the state and continuous is set to false then disable the work elements
-      if ((key === "work" && state.continuous === false)) {
+      if ((key === "work" && state.continuous === false) || editState === EDIT) {
         disable = true
       }
 
@@ -44,8 +46,8 @@ export default function StartEditTimer(props) {
           <button className="plus-minus-buttons" disabled={disable === true ? true : false}>
             <i className="fa-icon far fa-minus-square flow-text" onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] - 1 })) : null}></i>
           </button>
-          <div className="workout-units flow-text">
-            <input className="number-input" type="number" value={state[key]} disabled={disable === true ? true : false} onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))} />
+          <div className="workout-units">
+            <input className="number-input flow-text" type="number" value={state[key]} disabled={disable === true ? true : false} onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))} />
           </div>
           <button className="plus-minus-buttons" disabled={disable === true ? true : false}>
             <i className="fa-icon far fa-plus-square flow-text" onClick={disable === false ? (() => dispatch({ type: SET_ACTIONS[key], payload: state[key] + 1 })) : null}></i>
@@ -88,7 +90,8 @@ export default function StartEditTimer(props) {
       </div>
       <div className="button-div">
         <input className="form-button" type="button" value="Start"></input>
-        <input className="form-button modal-trigger" type="button" value="Save" data-target="save-modal"></input>
+        <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}><i className="fas fa-edit"></i></button>
+        {/* <input className="form-button modal-trigger" type="button" value="Save" data-target="save-modal"></input> */}
       </div>
       <SaveModal />
     </>
