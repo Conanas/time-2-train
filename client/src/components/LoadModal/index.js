@@ -1,14 +1,14 @@
 import React from 'react';
-import { useLoadContext } from '../../utils/LoadContext';
+import { useWorkoutContext } from '../../utils/GlobalState';
 import './style.css';
 
 export default function LoadModal() {
-  const [loadState, loadDispatch] = useLoadContext();
+  const [workoutState, workoutDispatch] = useWorkoutContext();
 
   return (
     <div id="load-modal" className="modal">
       <div className="modal-content">
-        <h4>Workout Details</h4>
+        <h4>{workoutState.title}</h4>
         <label>Workout Details</label>
       </div>
       <div className="modal-footer">
