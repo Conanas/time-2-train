@@ -41,9 +41,13 @@
   color: var(--on-background) !important;
 }
 
+.continuous-icon-div {
+  width: 45%;
+}
+
 .button-div {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .form-button {
