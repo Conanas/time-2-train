@@ -37,7 +37,8 @@ export default function LoadPage() {
         })}
       </div>
       <div className="button-div">
-        <a href={`/workout/${workoutState.id}`}><button className="show-button">Show</button></a>
+        <button className="show-button modal-trigger" data-target="load-modal">Show</button>
+        {/* <a href={`/workout/${workoutState.id}`}></a> */}
       </div>
       <LoadModal />
     </>
