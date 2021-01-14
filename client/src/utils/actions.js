@@ -11,3 +11,7 @@ export const SET_ACTIONS = {
   title: "SET_TITLE",
   import: "IMPORT_WORKOUTS"
 }
+
+export const EDIT = "EDIT";
+export const CREATE = "CREATE";
+export const START = "START";
