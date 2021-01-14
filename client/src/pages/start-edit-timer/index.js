@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import SaveModal from '../../components/SaveModal/';
 import SaveMessageModal from '../../components/SaveMessageModal';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
@@ -57,11 +56,11 @@ export default function StartEditTimer(props) {
           </button>
           <div className="workout-units">
             <input
-              className="number-input flow-text"
+              className="form-input flow-text"
               type="number"
               value={state[key]}
               disabled={disable === true ? true : false}
-              onChange={((e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value }))}
+              onChange={(e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value })}
             />
           </div>
           <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
@@ -78,7 +77,13 @@ export default function StartEditTimer(props) {
 
       // When we reach the title element then do not render anything
       if (key === "title") {
-        inputs = <span className="flow-text">{state[key]}</span>
+        inputs =
+          <input
+            className="form-input flow-text"
+            disabled={disable === true ? true : false}
+            onChange={(e) => dispatch({ type: SET_ACTIONS[key], payload: e.target.value })}
+            value={state[key]}
+          />
       }
 
       // When we reach the continuous object in the state then render the continuous toggle button
@@ -130,7 +135,9 @@ export default function StartEditTimer(props) {
       <div className="button-div">
         {editState === START ?
           <>
-            <button className="form-button">Start</button>
+            <button className="form-button">
+              <i class="fas fa-play"></i>
+            </button>
             <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}>
               <i className="fas fa-edit"></i>
             </button>
@@ -144,7 +151,6 @@ export default function StartEditTimer(props) {
             <i className="far fa-save"></i>
           </button>}
       </div>
-      <SaveModal />
       <SaveMessageModal />
     </>
   )
