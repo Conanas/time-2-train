@@ -1,0 +1,59 @@
+.edit-timer-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-timer-list-item label {
+  width: 50%;
+}
+
+.workout-units {
+  width: 20%;
+}
+
+.fa-icon:hover {
+  cursor: pointer;
+}
+
+.plus-minus-buttons {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.plus-minus-buttons:active {
+  color: var(--primary);;
+}
+
+.plus-minus-buttons:focus {
+  background-color: transparent;
+}
+
+.number-input {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+  text-align: center;
+}
+
+
+.button-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-div input {
+    padding: 1em 2em;
+}
+
+.form-button {
+    background-color: var(--primary);
+    color: var(--on-primary);
+    border: none;
+    border-radius: 8px;
+}
+
+.form-button:hover {
+    cursor: pointer;
+    background-color: var(--primary-dark);
+}
