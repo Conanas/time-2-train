@@ -9,5 +9,8 @@ export default {
   },
   postWorkout: function (workoutData) {
     return axios.post('/api/workouts', workoutData);
+  },
+  putWorkout: function (workoutData) {
+    return axios.put(`/api/workouts/${workoutData._id}`, workoutData);
   }
 };
