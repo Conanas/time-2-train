@@ -5,6 +5,7 @@
   --on-primary: white;
   --on-primary-light: white;
   --on-primary-dark: white;
+  --on-background: black;
 }
 
 .wrapper {
