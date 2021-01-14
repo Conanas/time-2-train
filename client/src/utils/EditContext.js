@@ -3,7 +3,7 @@ import { START, EDIT, CREATE } from "./actions";
 
 const EditContext = createContext();
 
-const DEFAULT_STATE = [START]
+const DEFAULT_STATE = START
 
 const reducer = (state, action) => {
   switch (action.type) {
