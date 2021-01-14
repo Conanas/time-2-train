@@ -12,7 +12,7 @@ export default function LoadModal() {
         <ul>
           {Object.keys(workoutState).map((key, index) => {
             return (
-              <li>
+              <li key={index}>
                 {key !== "id" ?
                   key !== "title" ?
                     `${key.charAt(0).toUpperCase() + key.slice(1)}: ${workoutState[key]}`
