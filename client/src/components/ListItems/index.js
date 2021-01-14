@@ -37,7 +37,7 @@ export default function ListItems() {
 
       // When we reach the title element then do not render anything
       if (key === "title") {
-        inputs = <label className="flow-text">{state[key]}</label>
+        inputs = <span className="flow-text">{state[key]}</span>
       }
 
       // When we reach the continuous object in the state then render the continuous toggle button
