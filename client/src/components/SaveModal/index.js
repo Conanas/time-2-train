@@ -15,7 +15,7 @@ export default function SaveModal() {
   return (
     <div id="save-modal" className="modal">
       <div className="modal-content">
-        <h4 className="flow-text">Enter Save Name</h4>
+        <h4 className="flow-text">Give Workout a New Name</h4>
         <input type="text" onChange={((e) => dispatch({ type: SET_ACTIONS.title, payload: e.target.value }))} />
       </div>
       <div className="modal-footer">
