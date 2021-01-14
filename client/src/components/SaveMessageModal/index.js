@@ -1,13 +1,15 @@
 import React from 'react';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
-import { SET_ACTIONS } from '../../utils/actions';
+import { useEditContext } from '../../utils/EditContext';
+import { START } from '../../utils/actions';
 import API from '../../utils/API';
 
 export default function SaveModal() {
-  const [workoutState, dispatchWorkout] = useWorkoutContext();
+  const [workoutState] = useWorkoutContext();
+  const [editState, editDispatch] = useEditContext();
 
   function updateWorkout() {
-    console.log(workoutState)
+    editDispatch({ type: START })
     API.putWorkout(workoutState)
       .then(res => res.json)
       .catch(err => console.log(err));

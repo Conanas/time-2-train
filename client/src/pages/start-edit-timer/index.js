@@ -138,19 +138,18 @@ export default function StartEditTimer(props) {
         {editState === START ?
           <>
             <button className="form-button">
-              <i className="fas fa-play"></i>
+              <i className="fas fa-play flow-text"></i>
             </button>
             <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}>
-              <i className="fas fa-edit"></i>
+              <i className="fas fa-edit flow-text"></i>
             </button>
           </>
           :
           <button
             className="form-button modal-trigger"
             type="button"
-            data-target="save-message-modal"
-            onClick={() => dispatchEditState({ type: START })}>
-            <i className="far fa-save"></i>
+            data-target="save-message-modal">
+            <i className="fas fa-save flow-text"></i>
           </button>}
       </div>
       <SaveMessageModal />
