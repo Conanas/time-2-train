@@ -16,17 +16,17 @@
   cursor: pointer;
 }
 
-.plus-minus-buttons {
+.font-awesome-buttons {
   background-color: transparent;
   border: none;
   padding: 0;
 }
 
-.plus-minus-buttons:active {
+.font-awesome-buttons:active {
   color: var(--primary);;
 }
 
-.plus-minus-buttons:focus {
+.font-awesome-buttons:focus {
   background-color: transparent;
 }
 
@@ -36,6 +36,9 @@
   text-align: center;
 }
 
+.number-input:disabled {
+  color: var(--on-background) !important;
+}
 
 .button-div {
     display: flex;
