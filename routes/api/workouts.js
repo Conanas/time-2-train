@@ -10,7 +10,7 @@ router.route("/")
 router
   .route("/:id")
   .get(workoutController.findById)
-// .put(workoutController.update)
+  .put(workoutController.update)
 // .delete(workoutController.remove);
 
 module.exports = router;
