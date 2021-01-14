@@ -13,7 +13,7 @@ export default function LoadModal() {
           {Object.keys(workoutState).map((key, index) => {
             return (
               <li key={index}>
-                {key !== "id" ?
+                {key !== "_id" ?
                   key !== "title" ?
                     `${key.charAt(0).toUpperCase() + key.slice(1)}: ${workoutState[key]}`
                     : null
@@ -24,7 +24,14 @@ export default function LoadModal() {
         </ul>
       </div>
       <div className="modal-footer">
-        <a href={`/workout/${workoutState.id}`}><button className="modal-close waves-effect waves-green btn-flat" onClick={localStorage.setItem("workoutId", workoutState.id)}>Load</button></a>
+        <a href={`/workout/${workoutState._id}`}>
+          <button
+            className="modal-close waves-effect waves-green btn-flat"
+            onClick={localStorage.setItem("workoutId", workoutState._id)}
+          >
+            Load
+          </button>
+        </a>
       </div>
     </div>
   )
