@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import SaveModal from '../../components/SaveModal/';
 import API from '../../utils/API';
-import { useWorkoutContext } from "../../utils/GlobalState";
+import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { SET_ACTIONS } from '../../utils/actions';
 import './style.css';
 
@@ -21,6 +22,7 @@ export default function StartEditTimer(props) {
       .catch(error => console.log(error))
   }, [])
 
+  // Function to render the different workout attributes to be edited
   function renderListItems(state) {
     const listItems = Object.keys(state).map((key, index) => {
 
@@ -88,6 +90,7 @@ export default function StartEditTimer(props) {
         <input className="form-button" type="button" value="Start"></input>
         <input className="form-button modal-trigger" type="button" value="Save" data-target="save-modal"></input>
       </div>
+      <SaveModal />
     </>
   )
 }

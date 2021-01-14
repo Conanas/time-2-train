@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWorkoutContext } from "../../utils/GlobalState";
+import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { SET_ACTIONS } from '../../utils/actions';
 import API from '../../utils/API';
 
