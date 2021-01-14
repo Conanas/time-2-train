@@ -9,10 +9,22 @@ export default function LoadModal() {
     <div id="load-modal" className="modal">
       <div className="modal-content">
         <h4>{workoutState.title}</h4>
-        <label>Workout Details</label>
+        <ul>
+          {Object.keys(workoutState).map((key, index) => {
+            return (
+              <li>
+                {key !== "id" ?
+                  key !== "title" ?
+                    `${key.charAt(0).toUpperCase() + key.slice(1)}: ${workoutState[key]}`
+                    : null
+                  : null}
+              </li>
+            )
+          })}
+        </ul>
       </div>
       <div className="modal-footer">
-        <button className="modal-close waves-effect waves-green btn-flat">Load</button>
+        <a href={`/workout/${workoutState.id}`}><button className="modal-close waves-effect waves-green btn-flat">Load</button></a>
       </div>
     </div>
   )
