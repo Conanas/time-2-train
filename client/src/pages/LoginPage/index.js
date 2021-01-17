@@ -5,7 +5,7 @@ export default function LoginPage() {
   return (
     <>
       <h4>Login</h4>
-      <button>Google+</button>
+      <a href="/auth/google"><button>Google+</button></a>
     </>
   )
 }
