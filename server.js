@@ -15,8 +15,14 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(logger("dev"));
 
+// app.get('/auth/google', (req, res) => {
+//   res.send('Logging in with Google')
+// })
+
 // Add routes
 app.use(routes);
+
+
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
   useNewUrlParser: true
