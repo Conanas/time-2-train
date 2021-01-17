@@ -11,6 +11,7 @@ export default function Navbar() {
           <ul className="left hide-on-med-and-down">
             <li><a className="nav-item" href="/">Start/Edit Timer</a></li>
             <li><a className="nav-item" href="/load">Load Workout</a></li>
+            <li><a className="nav-item" href="/auth/login">Login</a></li>
           </ul>
         </div>
       </nav>
@@ -18,6 +19,7 @@ export default function Navbar() {
       <ul className="sidenav" id="mobile-demo">
         <li><a href="/">Start/Edit Timer</a></li>
         <li><a href="/load">Load Workout</a></li>
+        <li><a href="/auth/login">Login</a></li>
       </ul>
     </>
   )
