@@ -1,28 +1,30 @@
 const router = require("express").Router();
+const passport = require('passport');
 const authController = require("../../controllers/authController");
 
-// Matches with "/auth"
-// router.route("/")
-//     .get(authController.findAll)
-//     .post(authController.create);
-
-// Matches with "/api/workouts/:id"
-// router
-//     .route("/:id")
-//     .get(authController.findById)
-//     .put(authController.update)
-// .delete(authController.remove);
-
 // auth logout
-router.get('/logout', (req, res) => {
+router.route('/logout')
+  .get((req, res) => {
     // handle with passport
-    res.send('logging out');
-});
+  });
+
+router.get('/google', (req, res) => {
+  res.send('Logging in with Google')
+})
 
 // auth with google+
-router.get('/google', (req, res) => {
-    // handle with passport
-    res.send('logging in with Google');
-});
+// router.route('/google')
+//   .get((req, res) => {
+//     res.send("Logging in with Google")
+//   }
+//     // , passport.authenticate('google', {
+//     //   scope: ['profile']
+//     // })
+//   );
+
+// callback route for google to redirect to 
+// router.route('/google/redirect').get(passport.authenticate('google'), (req, res) => {
+//   res.send("you reached the callback URI")
+// })
 
 module.exports = router;
