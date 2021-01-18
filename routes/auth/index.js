@@ -14,6 +14,7 @@ router.get("/login/success", (req, res) => {
 
 // when login failed, send failed msg
 router.get("/login/failed", (req, res) => {
+  console.log(req)
   res.status(401).json({
     success: false,
     message: "user failed to authenticate."
@@ -28,16 +29,19 @@ router.get("/logout", (req, res) => {
 
 // auth with google+
 router.get("/google", passport.authenticate("google", {
-  scope: ['email']
+  scope: ['profile']
 }));
 
 // callback route for google to redirect to 
 router.get(
-  "/google/redirect",
+  "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "/",
     failureRedirect: "/auth/login/failed"
-  })
+  }), function (req, res) {
+    console.log("success")
+    console.log(req.user);
+    res.redirect('/');
+  }
 );
 
 module.exports = router;

@@ -10,6 +10,9 @@ passport.serializeUser((user, done) => {
 
 // deserialize the cookieUserId to user in the database
 passport.deserializeUser((id, done) => {
+  return done(null, {
+    username: "tom"
+  })
   User.findById(id)
     .then(user => {
       done(null, user);
@@ -25,10 +28,11 @@ passport.use(
       // options for the google strategy
       clientID: keys.google.clientID,
       clientSecret: keys.google.clientSecret,
-      callbackURL: 'http://localhost:3000/auth/google/redirect'
-    }, async (token, tokenSecret, profile, done) => {
+      callbackURL: '/auth/google/callback'
+    }, (token, tokenSecret, profile, cb) => {
       // find current user in UserModel
-      console.log(profile)
+      console.log(profile);
+      return cb(null, profile);
     }
   )
 )

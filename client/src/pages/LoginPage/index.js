@@ -14,8 +14,8 @@ export default function LoginPage() {
     //   console.log("error")
     //   console.log(error)
     // }
-    Auth.authGoogle().then(res => res.send()).catch(err => console.log(err))
-    // window.open("http://localhost:3000/auth/google", "_self");
+    // Auth.authGoogle().then(res => res.send()).catch(err => console.log(err))
+    window.location.href = "http://localhost:3001/auth/google";
   }
 
   return (

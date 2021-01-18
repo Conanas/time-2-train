@@ -1,4 +1,6 @@
 const cookieSession = require("cookie-session");
+const path = require('path')
+const session = require('express-session')
 const express = require("express");
 const logger = require("morgan");
 const cors = require('cors');
@@ -11,7 +13,11 @@ const passportSetup = require('./config/passport-setup');
 const cookieParser = require("cookie-parser"); // parse cookie header
 
 // initalize passport
+app.use(session({
+  secret: 'coding',
+}))
 app.use(passport.initialize());
+app.use(passport.session());
 
 // set up cors to allow us to accept requests from our client
 app.use(
@@ -39,18 +45,19 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
   useNewUrlParser: true
 });
 
-app.use(
-  cookieSession({
-    name: "session",
-    keys: ["cookie-key"],
-    maxAge: 24 * 60 * 60 * 100
-  })
-);
+// app.use(
+//   cookieSession({
+//     name: "session",
+//     keys: ["cookie-key"],
+//     maxAge: 24 * 60 * 60 * 100
+//   })
+// );
 
 // parse cookies
 app.use(cookieParser());
 
 const authCheck = (req, res, next) => {
+  console.log("req user", req.user)
   if (!req.user) {
     res.status(401).json({
       authenticated: false,
