@@ -9,7 +9,12 @@ export const SET_ACTIONS = {
   break: "SET_BREAK",
   workout: "SET_WORKOUT",
   title: "SET_TITLE",
-  import: "IMPORT_WORKOUTS"
+  import: "IMPORT_WORKOUTS",
+  userId: "SET_USER_ID",
+  userGoogleId: "SET_USER_GOOGLE_ID",
+  userGivenName: "SET_USER_GIVEN_NAME",
+  userEmail: "SET_USER_EMAIL",
+  user: "SET_USER"
 }
 
 export const EDIT = "EDIT";
