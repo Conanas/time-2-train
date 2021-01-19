@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   givenName: String,
-  googleId: String,
+  email: {
+    type: String,
+    unique: true
+  },
   workouts: [{
     type: Schema.Types.ObjectId,
     ref: "Workout"
