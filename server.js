@@ -1,5 +1,4 @@
-const path = require('path')
-const session = require('express-session')
+require('dotenv').config();
 const express = require("express");
 const logger = require("morgan");
 const cors = require('cors');
