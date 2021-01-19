@@ -33,10 +33,10 @@ export default function GoogleLogin() {
   });
 
   return (
-    <button onClick={signIn} className="button">
+    <button onClick={signIn} className="google-button">
       <img src="/icons/google.svg" alt="google login" className="icon"></img>
 
-      <span className="buttonText">Sign in with Google</span>
+      <span className="google-button-text">Sign in with Google</span>
     </button>
   );
 }
