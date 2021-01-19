@@ -26,6 +26,10 @@ const workoutSchema = new Schema({
   },
   break: {
     type: Number
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
   }
 })
 
