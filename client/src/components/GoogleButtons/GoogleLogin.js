@@ -1,25 +1,38 @@
 import React from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from '../../utils/refreshToken';
+import { useUserContext } from '../../utils/UserContext';
+import { SET_ACTIONS } from '../../utils/actions';
+import API from '../../utils/API';
 import './style.css';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 export default function GoogleLogin() {
+  const [userState, dispatchUser] = useUserContext();
+
+  const getOrCreateUser = async (profileObj) => {
+    try {
+      const { email } = profileObj;
+      let user = await API.getUser(email)
+      if (user.data === null) {
+        user = await API.createUser(profileObj)
+      }
+      dispatchUser({ type: SET_ACTIONS.userLogin, payload: user.data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
-    alert(
-      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    );
+    getOrCreateUser(res.profileObj)
     refreshTokenSetup(res);
   };
 
   const onFailure = (res) => {
     console.log('Login failed: res:', res);
-    alert(
-      `Failed to login. 😢 Please ping this to repo owner twitter.com/sivanesh_fiz`
-    );
+    alert("Login failed");
   };
 
   const { signIn } = useGoogleLogin({
@@ -34,9 +47,11 @@ export default function GoogleLogin() {
 
   return (
     <button onClick={signIn} className="google-button">
-      <img src="/icons/google.svg" alt="google login" className="icon"></img>
+      {/* <img src="/icons/google.svg" alt="google login" className="icon"></img> */}
 
-      <span className="google-button-text">Sign in with Google</span>
+      {/* <span className="google-button-text"> */}
+          Google Sign in
+      {/* </span> */}
     </button>
   );
 }

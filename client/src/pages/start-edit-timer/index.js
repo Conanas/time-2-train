@@ -19,7 +19,9 @@ export default function StartEditTimer(props) {
     }
     API.getWorkout(workoutId)
       .then(res => {
-        dispatch({ type: SET_ACTIONS.workout, payload: res.data });
+        if (res.data) {
+          dispatch({ type: SET_ACTIONS.workout, payload: res.data });
+        }
       })
       .catch(error => console.log(error))
   }, [])

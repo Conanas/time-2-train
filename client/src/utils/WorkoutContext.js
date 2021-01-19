@@ -5,7 +5,7 @@ const WorkoutContext = createContext();
 
 const DEFAULT_STATE = {
   _id: 0,
-  title: "Test Title",
+  title: "Default Workout",
   continuous: false,
   prepare: 15,
   reps: 4,
