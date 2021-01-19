@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import GoogleLogin from '../GoogleButtons/GoogleLogin';
 import GoogleLogout from '../GoogleButtons/GoogleLogout';
 import { useUserContext } from '../../utils/UserContext';
@@ -7,12 +7,6 @@ import './style.css';
 export default function Navbar() {
   const [userState, dispatchUser] = useUserContext();
 
-  let userName = ""
-
-  useEffect(() => {
-    userName = userState.givenName;
-  }, [userState])
-
   return (
     <>
       <nav>
@@ -20,7 +14,7 @@ export default function Navbar() {
           <a href="/" className="brand-logo right">Workout Time</a>
           <GoogleLogin />
           <GoogleLogout />
-          <span>Hello {userName}</span>
+          <span>Hello {userState.givenName}</span>
           <a data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="left hide-on-med-and-down">
             <li><a className="nav-item" href="/">Start/Edit Timer</a></li>
