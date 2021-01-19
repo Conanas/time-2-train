@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { getObjectId } = require('mongo-seeding');
 const db = require("../models");
 
 // This file empties the Books collection and inserts the books below
@@ -113,6 +114,7 @@ db.Workout
 
 // const userSeed = [
 //   {
+
 //     givenName: "Jo",
 //     googleId: "123456789"
 //   },
