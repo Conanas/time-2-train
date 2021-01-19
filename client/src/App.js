@@ -13,29 +13,29 @@ import "./App.css";
 
 export default function App() {
   return (
-    <div className="wrapper">
-      <header>
-        <Navbar />
-      </header>
-      <main className="container">
-        <UserProvider>
-          <LoadProvider>
-            <WorkoutProvider>
-              <EditProvider>
+    <UserProvider>
+      <LoadProvider>
+        <WorkoutProvider>
+          <EditProvider>
+            <div className="wrapper">
+              <header>
+                <Navbar />
+              </header>
+              <main className="container">
                 <Router>
                   <Switch>
                     <Route exact path="/" component={StartEditTimer} />
                     <Route exact path="/workout/:id" component={StartEditTimer} />
                     <Route exact path="/load" component={LoadPage} />
-                    <Route exact path="/login" component={LoginPage} />
+                    {/* <Route exact path="/login" component={LoginPage} /> */}
                   </Switch>
                 </Router>
-              </EditProvider>
-            </WorkoutProvider>
-          </LoadProvider>
-        </UserProvider>
-      </main>
-      <Footer />
-    </div>
+              </main>
+              <Footer />
+            </div>
+          </EditProvider>
+        </WorkoutProvider>
+      </LoadProvider>
+    </UserProvider>
   )
 }
