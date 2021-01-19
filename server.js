@@ -1,4 +1,3 @@
-const cookieSession = require("cookie-session");
 const path = require('path')
 const session = require('express-session')
 const express = require("express");
@@ -10,7 +9,6 @@ const routes = require("./routes/");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const passportSetup = require('./config/passport-setup');
-const cookieParser = require("cookie-parser"); // parse cookie header
 
 // initalize passport
 app.use(session({
@@ -44,17 +42,6 @@ app.use(routes);
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
   useNewUrlParser: true
 });
-
-// app.use(
-//   cookieSession({
-//     name: "session",
-//     keys: ["cookie-key"],
-//     maxAge: 24 * 60 * 60 * 100
-//   })
-// );
-
-// parse cookies
-app.use(cookieParser());
 
 const authCheck = (req, res, next) => {
   console.log("req user", req.user)
