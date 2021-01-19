@@ -11,10 +11,10 @@ export const SET_ACTIONS = {
   title: "SET_TITLE",
   import: "IMPORT_WORKOUTS",
   userId: "SET_USER_ID",
-  userGoogleId: "SET_USER_GOOGLE_ID",
   userGivenName: "SET_USER_GIVEN_NAME",
   userEmail: "SET_USER_EMAIL",
-  user: "SET_USER"
+  userLogin: "SET_USER_LOGIN",
+  userLogout: "SET_USER_LOGOUT"
 }
 
 export const EDIT = "EDIT";
