@@ -12,5 +12,11 @@ export default {
   },
   putWorkout: function (workoutData) {
     return axios.put(`/api/workouts/${workoutData._id}`, workoutData);
+  },
+  getUser: function (googleId) {
+    return axios.get(`./api/users/${googleId}`);
+  },
+  createUser: function (userData) {
+    return axios.post(`/api/users`, userData);
   }
 };
