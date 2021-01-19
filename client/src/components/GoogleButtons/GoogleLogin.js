@@ -16,10 +16,9 @@ export default function GoogleLogin() {
       const { email } = profileObj;
       let user = await API.getUser(email)
       if (user.data === null) {
-        let createdUser = await API.createUser(profileObj)
-        dispatchUser({ type: SET_ACTIONS.user, payload: createdUser })
-        console.log("userState", userState)
+        user = await API.createUser(profileObj)
       }
+      dispatchUser({ type: SET_ACTIONS.userLogin, payload: user.data })
     } catch (error) {
       console.log(error)
     }
@@ -47,10 +46,13 @@ export default function GoogleLogin() {
   });
 
   return (
-    <button onClick={signIn} className="google-button">
-      <img src="/icons/google.svg" alt="google login" className="icon"></img>
+    <>
+      <button onClick={signIn} className="google-button">
+        <img src="/icons/google.svg" alt="google login" className="icon"></img>
 
-      <span className="google-button-text">Sign in with Google</span>
-    </button>
+        <span className="google-button-text">Sign in with Google</span>
+      </button>
+      <p>Hello: {userState.givenName}</p>
+    </>
   );
 }
