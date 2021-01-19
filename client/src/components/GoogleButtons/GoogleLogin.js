@@ -1,22 +1,24 @@
 import React from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from '../../utils/refreshToken';
+import { useUserContext } from '../../utils/UserContext';
+import { SET_ACTIONS } from '../../utils/actions';
 import API from '../../utils/API';
 import './style.css';
-import { get } from 'mongoose';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 export default function GoogleLogin() {
+  const [userState, dispatchUser] = useUserContext();
 
   const getOrCreateUser = async (profileObj) => {
     try {
-      console.log(profileObj.googleId)
-      let user = await API.getUser(profileObj.googleId)
-      if (!user.data) {
-        console.log("user: ", user)
+      const { email } = profileObj;
+      let user = await API.getUser(email)
+      if (user.data === null) {
         let createdUser = await API.createUser(profileObj)
-        console.log("createdUser: ", createdUser)
+        dispatchUser({ type: SET_ACTIONS.user, payload: createdUser })
+        console.log("userState", userState)
       }
     } catch (error) {
       console.log(error)
