@@ -8,6 +8,7 @@ import Footer from './components/Footer/';
 import { WorkoutProvider } from './utils/WorkoutContext';
 import { LoadProvider } from './utils/LoadContext';
 import { EditProvider } from './utils/EditContext';
+import { UserProvider } from './utils/UserContext';
 import "./App.css";
 
 export default function App() {
@@ -17,20 +18,22 @@ export default function App() {
         <Navbar />
       </header>
       <main className="container">
-        <LoadProvider>
-          <WorkoutProvider>
-            <EditProvider>
-              <Router>
-                <Switch>
-                  <Route exact path="/" component={StartEditTimer} />
-                  <Route exact path="/workout/:id" component={StartEditTimer} />
-                  <Route exact path="/load" component={LoadPage} />
-                  <Route exact path="/login" component={LoginPage} />
-                </Switch>
-              </Router>
-            </EditProvider>
-          </WorkoutProvider>
-        </LoadProvider>
+        <UserProvider>
+          <LoadProvider>
+            <WorkoutProvider>
+              <EditProvider>
+                <Router>
+                  <Switch>
+                    <Route exact path="/" component={StartEditTimer} />
+                    <Route exact path="/workout/:id" component={StartEditTimer} />
+                    <Route exact path="/load" component={LoadPage} />
+                    <Route exact path="/login" component={LoginPage} />
+                  </Switch>
+                </Router>
+              </EditProvider>
+            </WorkoutProvider>
+          </LoadProvider>
+        </UserProvider>
       </main>
       <Footer />
     </div>
