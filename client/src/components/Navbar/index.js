@@ -10,8 +10,8 @@ export default function Navbar() {
   let userName = ""
 
   useEffect(() => {
-    userName = userState.giveName;
-  })
+    userName = userState.givenName;
+  }, [userState])
 
   return (
     <>
