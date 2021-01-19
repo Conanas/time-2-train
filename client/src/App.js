@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import StartEditTimer from './pages/Start-Edit-Timer/';
 import LoadPage from './pages/LoadPage/';
+import LoginPage from './pages/LoginPage/';
 import Navbar from './components/Navbar/';
 import Footer from './components/Footer/';
 import { WorkoutProvider } from './utils/WorkoutContext';
@@ -24,6 +25,7 @@ export default function App() {
                   <Route exact path="/" component={StartEditTimer} />
                   <Route exact path="/workout/:id" component={StartEditTimer} />
                   <Route exact path="/load" component={LoadPage} />
+                  <Route exact path="/login" component={LoginPage} />
                 </Switch>
               </Router>
             </EditProvider>
