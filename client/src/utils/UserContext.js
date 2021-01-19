@@ -6,19 +6,21 @@ const UserContext = createContext();
 const DEFAULT_STATE = {
   _id: null,
   email: null,
-  googleId: null,
   givenName: null,
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case SET_ACTIONS.user:
+    case SET_ACTIONS.userLogin:
       return {
-        _id: state._id,
-        email: null,
-        googleId: null,
-        givenName: null,
+        _id: action.payload._id,
+        email: action.payload.email,
+        givenName: action.payload.givenName,
       }
+    case SET_ACTIONS.userLogout:
+      return DEFAULT_STATE
+    default:
+      return state;
   }
 }
 
