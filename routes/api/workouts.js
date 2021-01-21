@@ -13,4 +13,8 @@ router
   .post(workoutController.create)
 // .delete(workoutController.remove);
 
+router
+  .route("/title/:title")
+  .get(workoutController.findByTitle)
+
 module.exports = router;

@@ -19,9 +19,14 @@ export default function StartEditTimer(props) {
 
   async function saveWorkout() {
     try {
-      // let existingWorkout = await API.getWorkoutByName(workoutState);
-      let createdWorkout = await API.postWorkout(userState._id, workoutState);
-      await API.putUser(userState._id, createdWorkout);
+      let existingWorkout = await API.getWorkoutByTitle(workoutState.title);
+      console.log(existingWorkout)
+      if (existingWorkout.data.title === workoutState.title) {
+        // Workout already exists
+      } else {
+        let createdWorkout = await API.postWorkout(userState._id, workoutState);
+        await API.putUser(userState._id, createdWorkout);
+      }
     } catch (error) {
       console.log(error);
     }

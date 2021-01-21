@@ -13,6 +13,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByTitle: function (req, res) {
+    console.log(req.params.title)
+    db.Workout
+      .findOne({ title: req.params.title })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function (req, res) {
     let userId = req.params.id;
     let workoutData = req.body;
