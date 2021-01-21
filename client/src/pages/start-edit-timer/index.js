@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import InputList from '../../components/InputList/';
-import SaveMessageModal from '../../components/SaveMessageModal';
+import UpdateModal from '../../components/UpdateModal/';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
@@ -14,6 +14,7 @@ export default function StartEditTimer(props) {
   const [userState, dispatchUser] = useUserContext();
 
   useEffect(() => {
+    dispatchEditState({ type: START })
     let workoutId = "";
     if (localStorage.workoutId) {
       workoutId = localStorage.workoutId;
@@ -63,7 +64,7 @@ export default function StartEditTimer(props) {
           </>
         }
       </div>
-      <SaveMessageModal />
+      <UpdateModal />
     </>
   )
 }

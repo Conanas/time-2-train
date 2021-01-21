@@ -4,7 +4,7 @@ import { useEditContext } from '../../utils/EditContext';
 import { START } from '../../utils/actions';
 import API from '../../utils/API';
 
-export default function SaveModal() {
+export default function UpdateModal() {
   const [workoutState] = useWorkoutContext();
   const [editState, editDispatch] = useEditContext();
 
