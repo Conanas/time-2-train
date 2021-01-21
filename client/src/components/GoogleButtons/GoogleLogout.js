@@ -25,11 +25,7 @@ export default function GoogleLogout() {
 
   return (
     <button onClick={signOut} className="google-button">
-      {/* <img src="/icons/google.svg" alt="google login" className="icon"></img> */}
-
-      {/* <span className="google-button-text"> */}
-        Sign out
-      {/* </span> */}
+      Sign out
     </button>
   );
 }

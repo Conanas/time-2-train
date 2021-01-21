@@ -47,11 +47,8 @@ export default function GoogleLogin() {
 
   return (
     <button onClick={signIn} className="google-button">
-      {/* <img src="/icons/google.svg" alt="google login" className="icon"></img> */}
-
-      {/* <span className="google-button-text"> */}
-          Google Sign in
-      {/* </span> */}
+      <i className="fab fa-google-plus-g"></i>
+      <span>&nbsp;Sign in</span>
     </button>
   );
 }
