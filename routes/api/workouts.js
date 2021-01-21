@@ -4,13 +4,13 @@ const workoutController = require("../../controllers/workoutController");
 // Matches with "/api/workouts"
 router.route("/")
   .get(workoutController.findAll)
-  .post(workoutController.create);
 
 // Matches with "/api/workouts/:id"
 router
   .route("/:id")
   .get(workoutController.findById)
   .put(workoutController.update)
+  .post(workoutController.create)
 // .delete(workoutController.remove);
 
 module.exports = router;

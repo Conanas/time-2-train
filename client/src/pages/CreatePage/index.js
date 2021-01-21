@@ -20,7 +20,7 @@ export default function StartEditTimer(props) {
   async function saveWorkout() {
     try {
       // let existingWorkout = await API.getWorkoutByName(workoutState);
-      let createdWorkout = await API.postWorkout(workoutState);
+      let createdWorkout = await API.postWorkout(userState._id, workoutState);
       await API.putUser(userState._id, createdWorkout);
     } catch (error) {
       console.log(error);

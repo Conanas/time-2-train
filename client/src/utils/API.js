@@ -7,8 +7,8 @@ export default {
   getWorkout: function (id) {
     return axios.get(`/api/workouts/${id}`);
   },
-  postWorkout: function (workoutData) {
-    return axios.post(`/api/workouts/`, workoutData);
+  postWorkout: function (userId, workoutData) {
+    return axios.post(`/api/workouts/${userId}`, workoutData);
   },
   putWorkout: function (workoutData) {
     return axios.put(`/api/workouts/${workoutData._id}`, workoutData);

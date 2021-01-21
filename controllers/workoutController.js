@@ -14,6 +14,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
+    let userId = req.params.id;
+    let workoutData = req.body;
+    workoutData.user = userId;
     db.Workout
       .create(req.body)
       .then(dbModel => res.json(dbModel))
