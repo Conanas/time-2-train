@@ -12,5 +12,11 @@ module.exports = {
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  update: function (req, res) {
+    db.User
+      .updateOne({ _id: req.params.id }, { $push: { workouts: req.body.data._id } })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 }

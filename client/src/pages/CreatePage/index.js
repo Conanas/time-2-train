@@ -17,10 +17,14 @@ export default function StartEditTimer(props) {
     dispatchEditState({ type: EDIT })
   }, [])
 
-  function saveWorkout() {
-    API.postWorkout(workoutState)
-      .then(res => res.json)
-      .catch(err => console.log(err));
+  async function saveWorkout() {
+    try {
+      // let existingWorkout = await API.getWorkoutByName(workoutState);
+      let createdWorkout = await API.postWorkout(workoutState);
+      await API.putUser(userState._id, createdWorkout);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

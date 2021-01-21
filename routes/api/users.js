@@ -8,6 +8,7 @@ router
 
 router
   .route("/:id")
-  .get(userController.findOneByEmail);
+  .get(userController.findOneByEmail)
+  .put(userController.update)
 
 module.exports = router;

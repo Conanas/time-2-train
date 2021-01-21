@@ -8,7 +8,7 @@ export default {
     return axios.get(`/api/workouts/${id}`);
   },
   postWorkout: function (workoutData) {
-    return axios.post('/api/workouts', workoutData);
+    return axios.post(`/api/workouts/`, workoutData);
   },
   putWorkout: function (workoutData) {
     return axios.put(`/api/workouts/${workoutData._id}`, workoutData);
@@ -18,5 +18,8 @@ export default {
   },
   createUser: function (userData) {
     return axios.post(`/api/users`, userData);
+  },
+  putUser: function (userId, workoutId) {
+    return axios.put(`/api/users/${userId}`, workoutId)
   }
 };
