@@ -1,0 +1,13 @@
+.sign-in-out {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 1em;
+}
+
+.sign-in-out span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
