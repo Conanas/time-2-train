@@ -5,6 +5,7 @@
   --on-primary: white;
   --on-primary-light: white;
   --on-primary-dark: white;
+  --background: white;
   --on-background: black;
 }
 
@@ -14,13 +15,12 @@
   flex-direction: column;
 }
 
-main {
+.main-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   max-width: 360px !important;
   min-height: 100%;
   flex: 1;
-  padding-top: 2em;
   padding-bottom: 2em;
 }
