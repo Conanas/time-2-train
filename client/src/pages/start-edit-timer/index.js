@@ -3,12 +3,14 @@ import SaveMessageModal from '../../components/SaveMessageModal';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
+import { userUserContext, useUserContext } from '../../utils/UserContext';
 import { SET_ACTIONS, EDIT, START } from '../../utils/actions';
 import './style.css';
 
 export default function StartEditTimer(props) {
   const [editState, dispatchEditState] = useEditContext();
   const [state, dispatch] = useWorkoutContext();
+  const [userState, dispatchUser] = useUserContext();
 
   useEffect(() => {
     let workoutId = "";
@@ -148,13 +150,16 @@ export default function StartEditTimer(props) {
           </>
           :
           <>
-            <button
-              className="form-button modal-trigger"
-              data-target="save-message-modal">
-              <i className="fas fa-save flow-text"></i>
-            </button>
+            {userState.email === null ?
+              null
+              :
+              <button
+                className="form-button modal-trigger"
+                data-target="save-message-modal">
+                <i className="fas fa-save flow-text"></i>
+              </button>}
             <button className="form-button" onClick={() => dispatchEditState({ type: START })}>
-              <i class="fas fa-window-close flow-text"></i>
+              <i class="fas fa-check-square flow-text"></i>
             </button>
           </>
         }
