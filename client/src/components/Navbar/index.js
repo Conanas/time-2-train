@@ -1,6 +1,4 @@
 import React from 'react';
-import GoogleLogin from '../GoogleButtons/GoogleLogin';
-import GoogleLogout from '../GoogleButtons/GoogleLogout';
 import { useUserContext } from '../../utils/UserContext';
 import './style.css';
 
