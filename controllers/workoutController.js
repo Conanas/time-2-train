@@ -14,9 +14,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByTitle: function (req, res) {
-    console.log(req.params.title)
     db.Workout
       .findOne({ title: req.params.title })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByUser: function (req, res) {
+    db.Workout.find({ user: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

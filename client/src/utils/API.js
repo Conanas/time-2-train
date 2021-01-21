@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-  getWorkouts: function () {
-    return axios('/api/workouts');
+  getWorkouts: function (id) {
+    return axios(`/api/workouts/user/${id}`);
   },
   getWorkout: function (id) {
     return axios.get(`/api/workouts/${id}`);
@@ -17,7 +17,7 @@ export default {
     return axios.put(`/api/workouts/${workoutData._id}`, workoutData);
   },
   getUser: function (email) {
-    return axios.get(`./api/users/${email}`);
+    return axios.get(`/api/users/${email}`);
   },
   createUser: function (userData) {
     return axios.post(`/api/users`, userData);

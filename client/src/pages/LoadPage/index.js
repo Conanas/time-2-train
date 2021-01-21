@@ -13,12 +13,14 @@ export default function LoadPage() {
   const [userState, dispatchUser] = useUserContext();
 
   useEffect(() => {
-    API.getWorkouts()
+    console.log("user id: ", userState)
+    API.getWorkouts(userState._id)
       .then(res => {
+        console.log(res.data)
         loadDispatch({ type: SET_ACTIONS.import, payload: res.data })
       })
       .catch(error => console.log(error))
-  }, [])
+  }, [userState])
 
   return (
     <>

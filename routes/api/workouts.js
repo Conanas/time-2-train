@@ -17,4 +17,8 @@ router
   .route("/title/:title")
   .get(workoutController.findByTitle)
 
+router
+  .route('/user/:id')
+  .get(workoutController.findByUser)
+
 module.exports = router;

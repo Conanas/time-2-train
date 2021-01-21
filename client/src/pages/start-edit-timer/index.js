@@ -59,7 +59,7 @@ export default function StartEditTimer(props) {
                 <i className="fas fa-save flow-text"></i>
               </button>}
             <button className="form-button" onClick={() => dispatchEditState({ type: START })}>
-              <i class="fas fa-check-square flow-text"></i>
+              <i className="fas fa-check-square flow-text"></i>
             </button>
           </>
         }
