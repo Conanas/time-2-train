@@ -15,7 +15,7 @@ export default function Navbar() {
           <a data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="left hide-on-med-and-down">
             <li><a className="nav-item" href="/">Start/Edit Workout</a></li>
-            <li><a className="nav-item" href="/create">Create New Workout</a></li>
+            <li><a className="nav-item" href="/create">Create Workout</a></li>
             <li><a className="nav-item" href="/load">Load Workout</a></li>
           </ul>
         </div>
