@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import InputList from '../../components/InputList/';
 import SaveModal from '../../components/SaveModal/';
 import API from '../../utils/API';
@@ -8,7 +8,8 @@ import { useUserContext } from '../../utils/UserContext';
 import { SET_ACTIONS, EDIT, START } from '../../utils/actions';
 import './style.css';
 
-export default function StartEditTimer(props) {
+export default function CreatePage() {
+  const [saveState, setSaveState] = useState();
   const [editState, dispatchEditState] = useEditContext();
   const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [userState, dispatchUser] = useUserContext();
@@ -21,11 +22,12 @@ export default function StartEditTimer(props) {
     try {
       let existingWorkout = await API.getWorkoutByTitle(workoutState.title);
       console.log(existingWorkout)
-      if (existingWorkout.data.title === workoutState.title) {
-        // Workout already exists
+      if (existingWorkout.data != null) {
+        setSaveState('Workout already exists, please enter a different title');
       } else {
         let createdWorkout = await API.postWorkout(userState._id, workoutState);
         await API.putUser(userState._id, createdWorkout);
+        setSaveState('Workout has been saved');
       }
     } catch (error) {
       console.log(error);
@@ -53,7 +55,7 @@ export default function StartEditTimer(props) {
           </button>
         }
       </div>
-      <SaveModal />
+      <SaveModal message={saveState} />
     </>
   )
 }
