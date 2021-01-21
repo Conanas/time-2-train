@@ -4,6 +4,7 @@ import StartEditTimer from './pages/Start-Edit-Timer/';
 import LoadPage from './pages/LoadPage/';
 import Navbar from './components/Navbar/';
 import SignInOut from './components/SignInOut/';
+import CreatePage from './pages/CreatePage/';
 import Footer from './components/Footer/';
 import { WorkoutProvider } from './utils/WorkoutContext';
 import { LoadProvider } from './utils/LoadContext';
@@ -28,6 +29,7 @@ export default function App() {
                     <Switch>
                       <Route exact path="/" component={StartEditTimer} />
                       <Route exact path="/workout/:id" component={StartEditTimer} />
+                      <Route exact path="/create" component={CreatePage} />
                       <Route exact path="/load" component={LoadPage} />
                     </Switch>
                   </Router>
