@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import StartEditTimer from './pages/Start-Edit-Timer/';
+import TimerPage from './pages/TimerPage';
 import LoadPage from './pages/LoadPage/';
 import Navbar from './components/Navbar/';
 import SignInOut from './components/SignInOut/';
@@ -29,6 +30,7 @@ export default function App() {
                     <Switch>
                       <Route exact path="/" component={StartEditTimer} />
                       <Route exact path="/workout/:id" component={StartEditTimer} />
+                      <Route exact path="/timer" component={TimerPage} />
                       <Route exact path="/create" component={CreatePage} />
                       <Route exact path="/load" component={LoadPage} />
                     </Switch>

@@ -41,7 +41,7 @@ export default function StartEditTimer(props) {
       <div className="button-div">
         {editState === START ?
           <>
-            <button className="form-button">
+            <button className="form-button" href="/timer">
               <i className="fas fa-play flow-text"></i>
             </button>
             <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}>
