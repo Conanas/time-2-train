@@ -1,25 +1,35 @@
 import React, { useEffect } from 'react';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import { useLoadContext } from '../../utils/LoadContext';
-import { userUserContext, useUserContext } from '../../utils/UserContext';
+import { useUserContext } from '../../utils/UserContext';
 import { SET_ACTIONS } from '../../utils/actions';
 import API from '../../utils/API';
 import LoadModal from '../../components/LoadModal/';
+import MessageModal from '../../components/MessageModal/';
 import './style.css';
 
 export default function LoadPage() {
   const [loadState, loadDispatch] = useLoadContext();
-  const [, workoutDispatch] = useWorkoutContext();
+  const [workoutState, workoutDispatch] = useWorkoutContext();
   const [userState, dispatchUser] = useUserContext();
 
+  async function deleteWorkout(workoutId) {
+    try {
+      console.log("delete workout: ", workoutId)
+      await API.deleteWorkout(workoutId)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
-    console.log("user id: ", userState)
-    API.getWorkouts(userState._id)
-      .then(res => {
-        console.log(res.data)
-        loadDispatch({ type: SET_ACTIONS.import, payload: res.data })
-      })
-      .catch(error => console.log(error))
+    if (userState._id !== null) {
+      API.getWorkouts(userState._id)
+        .then(res => {
+          loadDispatch({ type: SET_ACTIONS.import, payload: res.data })
+        })
+        .catch(error => console.log(error))
+    }
   }, [userState])
 
   return (
@@ -37,7 +47,8 @@ export default function LoadPage() {
                   <span><label className="flow-text">{workout.title}</label></span>
                 </div>
                 <div>
-                  <i className="fas fa-times"></i>
+                  <i className="fas fa-times modal-trigger"
+                    data-target="save-modal"></i>
                 </div>
               </label>
             )
@@ -51,6 +62,7 @@ export default function LoadPage() {
           <button className="show-button modal-trigger" data-target="load-modal">Show</button>
         </div>}
       <LoadModal />
+      <MessageModal message={"Are you sure?"} deleteMode={true} deleteWorkout={deleteWorkout} workoutId={workoutState._id} />
     </>
   )
 }
