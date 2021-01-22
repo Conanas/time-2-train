@@ -38,5 +38,11 @@ module.exports = {
       .updateOne({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  delete: function (req, res) {
+    db.Workout
+      .findByIdAndDelete({ _id: req.params.id })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 }

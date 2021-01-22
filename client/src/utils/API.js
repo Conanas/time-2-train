@@ -16,6 +16,9 @@ export default {
   putWorkout: function (workoutData) {
     return axios.put(`/api/workouts/${workoutData._id}`, workoutData);
   },
+  deleteWorkout: function (workoutId) {
+    return axios.delete(`/api/workouts/${workoutId}`);
+  },
   getUser: function (email) {
     return axios.get(`/api/users/${email}`);
   },

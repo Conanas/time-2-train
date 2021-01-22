@@ -11,7 +11,7 @@ router
   .get(workoutController.findById)
   .put(workoutController.update)
   .post(workoutController.create)
-// .delete(workoutController.remove);
+  .delete(workoutController.delete);
 
 router
   .route("/title/:title")
