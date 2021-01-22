@@ -10,7 +10,7 @@ import './style.css';
 
 export default function StartEditTimer(props) {
   const [editState, dispatchEditState] = useEditContext();
-  const [state, dispatch] = useWorkoutContext();
+  const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [userState, dispatchUser] = useUserContext();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function StartEditTimer(props) {
     API.getWorkout(workoutId)
       .then(res => {
         if (res.data) {
-          dispatch({ type: SET_ACTIONS.workout, payload: res.data });
+          dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data });
         }
       })
       .catch(error => console.log(error))
@@ -41,9 +41,11 @@ export default function StartEditTimer(props) {
       <div className="button-div">
         {editState === START ?
           <>
-            <button className="form-button" href="/timer">
-              <i className="fas fa-play flow-text"></i>
-            </button>
+            <a href="/timer">
+              <button className="form-button">
+                <i className="fas fa-play flow-text"></i>
+              </button>
+            </a>
             <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}>
               <i className="fas fa-edit flow-text"></i>
             </button>
