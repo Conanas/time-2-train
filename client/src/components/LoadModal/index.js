@@ -28,7 +28,7 @@ export default function LoadModal() {
         <a href={`/workout/${workoutState._id}`}>
           <button
             className="modal-close waves-effect waves-green btn-flat"
-            onClick={localStorage.setItem("workoutId", workoutState._id)}
+            onClick={() => localStorage.setItem("workoutId", workoutState._id)}
           >
             {BUTTONS.LOAD}
           </button>
