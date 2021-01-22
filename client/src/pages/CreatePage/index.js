@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import InputList from '../../components/InputList/';
-import SaveModal from '../../components/SaveModal/';
+import MessageModal from '../../components/MessageModal/';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
@@ -55,7 +55,7 @@ export default function CreatePage() {
           </button>
         }
       </div>
-      <SaveModal message={saveState} />
+      <MessageModal message={saveState} />
     </>
   )
 }
