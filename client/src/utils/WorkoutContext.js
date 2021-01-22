@@ -51,31 +51,67 @@ const reducer = (state, action) => {
         continuous: action.payload
       }
     case SET_ACTIONS.prepare:
+      if (state.prepare + action.payload < 0) {
+        return {
+          ...state,
+          prepare: 0
+        }
+      }
       return {
         ...state,
         prepare: action.payload
       }
     case SET_ACTIONS.reps:
+      if (state.reps + action.payload <= 1) {
+        return {
+          ...state,
+          reps: 1
+        }
+      }
       return {
         ...state,
         reps: action.payload
       }
     case SET_ACTIONS.work:
+      if (state.work + action.payload < 0) {
+        return {
+          ...state,
+          work: 0
+        }
+      }
       return {
         ...state,
         work: action.payload
       }
     case SET_ACTIONS.rest:
+      if (state.rest + action.payload < 0) {
+        return {
+          ...state,
+          rest: 0
+        }
+      }
       return {
         ...state,
         rest: action.payload
       }
     case SET_ACTIONS.sets:
+      if (state.sets + action.payload <= 1) {
+        return {
+          ...state,
+          sets: 1
+        }
+      }
       return {
         ...state,
         sets: action.payload
       }
     case SET_ACTIONS.break:
+      if (state.break + action.payload < 0) {
+        return {
+          ...state,
+          break: 0
+        }
+      }
       return {
         ...state,
         break: action.payload
