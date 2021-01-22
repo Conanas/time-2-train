@@ -22,13 +22,17 @@ export default function LoadPage() {
     }
   }
 
+  function getWorkouts() {
+    API.getWorkouts(userState._id)
+      .then(res => {
+        loadDispatch({ type: SET_ACTIONS.import, payload: res.data })
+      })
+      .catch(error => console.log(error))
+  }
+
   useEffect(() => {
     if (userState._id !== null) {
-      API.getWorkouts(userState._id)
-        .then(res => {
-          loadDispatch({ type: SET_ACTIONS.import, payload: res.data })
-        })
-        .catch(error => console.log(error))
+      getWorkouts();
     }
   }, [userState])
 
@@ -42,8 +46,10 @@ export default function LoadPage() {
           loadState.map((workout, index) => {
             return (
               <label className="load-label flow-text" key={index}>
+                {index === 0 ? localStorage.setItem("workoutId", workout._id) : null}
                 <div>
                   <input className="load-radio" type="radio" name="workouts" id={workout._id}
+                    defaultChecked={index === 0 ? true : false}
                     onChange={(() => workoutDispatch({ type: SET_ACTIONS.workout, payload: workout }))}
                   />
                   <span><label className="flow-text">{workout.title}</label></span>
@@ -64,7 +70,7 @@ export default function LoadPage() {
           <button className="show-button modal-trigger" data-target="load-modal">{BUTTONS.SHOW}</button>
         </div>}
       <LoadModal />
-      <MessageModal message={"Are you sure?"} deleteMode={true} deleteWorkout={deleteWorkout} workoutId={workoutState._id} />
+      <MessageModal message={"Are you sure?"} deleteMode={true} getWorkouts={getWorkouts} deleteWorkout={deleteWorkout} workoutId={workoutState._id} />
     </>
   )
 }
