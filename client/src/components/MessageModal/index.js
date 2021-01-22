@@ -1,7 +1,7 @@
 import React from 'react';
 import { BUTTONS } from '../../utils/actions';
 
-export default function MessageModal({ message, deleteMode, deleteWorkout, workoutId }) {
+export default function MessageModal({ message, deleteMode, deleteWorkout, getWorkouts, workoutId }) {
   return (
     <div id="message-modal" className="modal">
       <div className="modal-content">
@@ -11,7 +11,15 @@ export default function MessageModal({ message, deleteMode, deleteWorkout, worko
         {deleteMode ?
           <>
             <button className="modal-close waves-effect waves-green btn-flat">{BUTTONS.CANCEL}</button>
-            <button className="modal-close waves-effect waves-green btn-flat" onClick={() => deleteWorkout(workoutId)}>{BUTTONS.CONFIRM}</button>
+            <button className="modal-close waves-effect waves-green btn-flat"
+              onClick={() => {
+                deleteWorkout(workoutId)
+                localStorage.setItem("workoutId", null)
+                getWorkouts();
+              }}
+            >
+              {BUTTONS.CONFIRM}
+            </button>
           </>
           :
           <button className="modal-close waves-effect waves-green btn-flat">{BUTTONS.CONFIRM}</button>
