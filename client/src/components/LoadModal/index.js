@@ -1,4 +1,5 @@
 import React from 'react';
+import { BUTTONS } from '../../utils/actions';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import './style.css';
 
@@ -29,7 +30,7 @@ export default function LoadModal() {
             className="modal-close waves-effect waves-green btn-flat"
             onClick={localStorage.setItem("workoutId", workoutState._id)}
           >
-            Load
+            {BUTTONS.LOAD}
           </button>
         </a>
       </div>

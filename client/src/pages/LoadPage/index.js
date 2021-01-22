@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import { useLoadContext } from '../../utils/LoadContext';
 import { useUserContext } from '../../utils/UserContext';
-import { SET_ACTIONS } from '../../utils/actions';
+import { SET_ACTIONS, MESSAGES, BUTTONS } from '../../utils/actions';
 import API from '../../utils/API';
 import LoadModal from '../../components/LoadModal/';
 import MessageModal from '../../components/MessageModal/';
@@ -37,7 +37,7 @@ export default function LoadPage() {
       <h4>Load Workout</h4>
       <div className="load-list">
         {userState.email === null ?
-          <label className="flow-text">You must be signed in to load a workout</label>
+          <label className="flow-text">{MESSAGES.MUST_BE_SIGNED_IN_TO_LOAD}</label>
           :
           loadState.map((workout, index) => {
             return (
@@ -59,7 +59,7 @@ export default function LoadPage() {
         null
         :
         <div className="button-div">
-          <button className="show-button modal-trigger" data-target="load-modal">Show</button>
+          <button className="show-button modal-trigger" data-target="load-modal">{BUTTONS.SHOW}</button>
         </div>}
       <LoadModal />
       <MessageModal message={"Are you sure?"} deleteMode={true} deleteWorkout={deleteWorkout} workoutId={workoutState._id} />

@@ -5,7 +5,7 @@ import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
 import { useUserContext } from '../../utils/UserContext';
-import { SET_ACTIONS, EDIT, START } from '../../utils/actions';
+import { SET_ACTIONS, EDIT, START, MESSAGES } from '../../utils/actions';
 import './style.css';
 
 export default function CreatePage() {
@@ -23,11 +23,11 @@ export default function CreatePage() {
       let existingWorkout = await API.getWorkoutByTitle(workoutState.title);
       console.log(existingWorkout)
       if (existingWorkout.data != null) {
-        setSaveState('Workout already exists, please enter a different title');
+        setSaveState(MESSAGES.WORKOUT_EXISTS);
       } else {
         let createdWorkout = await API.postWorkout(userState._id, workoutState);
         await API.putUser(userState._id, createdWorkout);
-        setSaveState('Workout has been saved');
+        setSaveState(MESSAGES.WORKOUT_SAVED);
       }
     } catch (error) {
       console.log(error);
@@ -44,7 +44,7 @@ export default function CreatePage() {
       </div>
       <div className="button-div">
         {userState.email === null ?
-          <label className="flow-text">You must be signed in to save a new workout</label>
+          <label className="flow-text">{MESSAGES.MUST_BE_SIGNED_IN_TO_SAVE}</label>
           :
           <button
             className="form-button modal-trigger"

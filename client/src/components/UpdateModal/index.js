@@ -1,4 +1,5 @@
 import React from 'react';
+import { MESSAGES, BUTTONS } from '../../utils/actions';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import { useEditContext } from '../../utils/EditContext';
 import { START } from '../../utils/actions';
@@ -18,12 +19,12 @@ export default function UpdateModal() {
   return (
     <div id="save-message-modal" className="modal">
       <div className="modal-content">
-        <h4 className="flow-text">Are you sure?</h4>
-        <label>This will overwrite the current workout</label>
+        <h4 className="flow-text">{MESSAGES.ARE_YOU_SURE}</h4>
+        <label>{MESSAGES.OVERWRITE}</label>
       </div>
       <div className="modal-footer">
-        <button className="modal-close waves-effect waves-green btn-flat">Cancel</button>
-        <button className="modal-close waves-effect waves-green btn-flat" onClick={() => updateWorkout()}>Confirm</button>
+        <button className="modal-close waves-effect waves-green btn-flat">{BUTTONS.CANCEL}</button>
+        <button className="modal-close waves-effect waves-green btn-flat" onClick={() => updateWorkout()}>{BUTTONS.CONFIRM}</button>
       </div>
     </div >
   )
