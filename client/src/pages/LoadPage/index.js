@@ -43,12 +43,14 @@ export default function LoadPage() {
             return (
               <label className="load-label flow-text" key={index}>
                 <div>
-                  <input className="load-radio" type="radio" name="workouts" id={workout._id} onChange={(() => workoutDispatch({ type: SET_ACTIONS.workout, payload: workout }))} />
+                  <input className="load-radio" type="radio" name="workouts" id={workout._id}
+                    onChange={(() => workoutDispatch({ type: SET_ACTIONS.workout, payload: workout }))}
+                  />
                   <span><label className="flow-text">{workout.title}</label></span>
                 </div>
-                <div>
+                <div onClick={() => workoutDispatch({ type: SET_ACTIONS.workout, payload: workout })}>
                   <i className="fas fa-times modal-trigger"
-                    data-target="save-modal"></i>
+                    data-target="message-modal"></i>
                 </div>
               </label>
             )
