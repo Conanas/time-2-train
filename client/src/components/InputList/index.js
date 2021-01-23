@@ -30,7 +30,10 @@ export default function InputList() {
             className="fa-icon far fa-minus-square flow-text"
             onClick={
               disable === false ?
-                () => dispatchWorkout({ type: SET_ACTIONS[key], payload: workoutState[key] - 1 })
+                () => {
+                  dispatchWorkout({ type: SET_ACTIONS[key], payload: workoutState[key] - 1 })
+                  localStorage.setItem("workoutState", JSON.stringify(workoutState))
+                }
                 : null
             }>
           </i>
@@ -41,14 +44,20 @@ export default function InputList() {
             type="number"
             value={workoutState[key]}
             disabled={disable === true ? true : false}
-            onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })}
+            onChange={(e) => {
+              dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })
+              localStorage.setItem("workoutState", JSON.stringify(workoutState))
+            }}
           />
         </div>
         <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
           <i className="fa-icon far fa-plus-square flow-text"
             onClick={
               disable === false ?
-                () => dispatchWorkout({ type: SET_ACTIONS[key], payload: workoutState[key] + 1 })
+                () => {
+                  dispatchWorkout({ type: SET_ACTIONS[key], payload: workoutState[key] + 1 })
+                  localStorage.setItem("workoutState", JSON.stringify(workoutState))
+                }
                 : null
             }>
           </i>
@@ -62,7 +71,10 @@ export default function InputList() {
         <input
           className="form-input flow-text"
           disabled={disable === true ? true : false}
-          onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })}
+          onChange={(e) => {
+            dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })
+            localStorage.setItem("workoutState", JSON.stringify(workoutState))
+          }}
           value={workoutState[key]}
         />
     }
@@ -77,7 +89,10 @@ export default function InputList() {
             <i
               className="fa-icon fas fa-toggle-on flow-text"
               onClick={disable === false ?
-                () => dispatchWorkout({ type: SET_ACTIONS.continuous, payload: false })
+                () => {
+                  dispatchWorkout({ type: SET_ACTIONS.continuous, payload: false })
+                  localStorage.setItem("workoutState", JSON.stringify(workoutState))
+                }
                 : null}>
             </i>
           </button>
@@ -91,7 +106,10 @@ export default function InputList() {
               className="fa-icon fas fa-toggle-off flow-text"
               onClick={
                 disable === false ?
-                  () => dispatchWorkout({ type: SET_ACTIONS.continuous, payload: true })
+                  () => {
+                    dispatchWorkout({ type: SET_ACTIONS.continuous, payload: true })
+                    localStorage.setItem("workoutState", JSON.stringify(workoutState))
+                  }
                   : null}>
             </i>
           </button>
