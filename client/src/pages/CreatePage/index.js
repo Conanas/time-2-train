@@ -48,7 +48,7 @@ export default function CreatePage() {
           :
           <button
             className="form-button modal-trigger"
-            data-target="save-modal"
+            data-target="message-modal"
             onClick={(() => saveWorkout())}
           >
             <i className="fas fa-save flow-text"></i>
