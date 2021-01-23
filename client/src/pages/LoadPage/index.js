@@ -46,15 +46,19 @@ export default function LoadPage() {
           loadState.map((workout, index) => {
             return (
               <label className="load-label flow-text" key={index}>
-                {index === 0 ? localStorage.setItem("workoutId", workout._id) : null}
                 <div>
                   <input className="load-radio" type="radio" name="workouts" id={workout._id}
-                    defaultChecked={index === 0 ? true : false}
-                    onChange={(() => workoutDispatch({ type: SET_ACTIONS.workout, payload: workout }))}
+                    onChange={(() => {
+                      workoutDispatch({ type: SET_ACTIONS.workout, payload: workout })
+                      localStorage.setItem("workoutState", JSON.stringify(workoutState))
+                    })}
                   />
                   <span><label className="flow-text">{workout.title}</label></span>
                 </div>
-                <div onClick={() => workoutDispatch({ type: SET_ACTIONS.workout, payload: workout })}>
+                <div onClick={() => {
+                  workoutDispatch({ type: SET_ACTIONS.workout, payload: workout })
+                  localStorage.setItem("workoutState", JSON.stringify(workoutState))
+                }}>
                   <i className="fas fa-times modal-trigger"
                     data-target="message-modal"></i>
                 </div>
