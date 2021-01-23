@@ -25,10 +25,12 @@ export default function LoadModal() {
         </ul>
       </div>
       <div className="modal-footer">
-        <a href={`/workout/${workoutState._id}`}>
+        <a href={`/`}>
           <button
             className="modal-close waves-effect waves-green btn-flat"
-            onClick={() => localStorage.setItem("workoutId", workoutState._id)}
+            onClick={() => {
+              localStorage.setItem("workoutId", workoutState._id)
+            }}
           >
             {BUTTONS.LOAD}
           </button>
