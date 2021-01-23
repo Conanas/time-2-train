@@ -32,7 +32,6 @@ export default function InputList() {
               disable === false ?
                 () => {
                   dispatchWorkout({ type: SET_ACTIONS[key], payload: workoutState[key] - 1 })
-                  localStorage.setItem("workoutState", JSON.stringify(workoutState))
                 }
                 : null
             }>
@@ -46,7 +45,6 @@ export default function InputList() {
             disabled={disable === true ? true : false}
             onChange={(e) => {
               dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })
-              localStorage.setItem("workoutState", JSON.stringify(workoutState))
             }}
           />
         </div>
@@ -56,7 +54,6 @@ export default function InputList() {
               disable === false ?
                 () => {
                   dispatchWorkout({ type: SET_ACTIONS[key], payload: workoutState[key] + 1 })
-                  localStorage.setItem("workoutState", JSON.stringify(workoutState))
                 }
                 : null
             }>
@@ -73,7 +70,6 @@ export default function InputList() {
           disabled={disable === true ? true : false}
           onChange={(e) => {
             dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })
-            localStorage.setItem("workoutState", JSON.stringify(workoutState))
           }}
           value={workoutState[key]}
         />
@@ -91,12 +87,11 @@ export default function InputList() {
               onClick={disable === false ?
                 () => {
                   dispatchWorkout({ type: SET_ACTIONS.continuous, payload: false })
-                  localStorage.setItem("workoutState", JSON.stringify(workoutState))
                 }
                 : null}>
             </i>
           </button>
-        </div>
+        </div >
     }
     if (key === "continuous" && workoutState.continuous === false) {
       inputs =
@@ -108,7 +103,6 @@ export default function InputList() {
                 disable === false ?
                   () => {
                     dispatchWorkout({ type: SET_ACTIONS.continuous, payload: true })
-                    localStorage.setItem("workoutState", JSON.stringify(workoutState))
                   }
                   : null}>
             </i>
