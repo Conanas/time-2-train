@@ -8,7 +8,6 @@ export default function TimerPage() {
   const [workoutState, dispatchWorkout] = useWorkoutContext();
 
   useEffect(() => {
-    console.log(workoutState)
     let workoutId = localStorage.workoutId
     API.getWorkout(workoutId)
       .then(res => {
@@ -20,15 +19,32 @@ export default function TimerPage() {
 
   return (
     <>
-      {Object.keys(workoutState).map((key, index) => {
-        if (key === "_id") {
-          return null
-        }
-        if (key === "continuous") {
-          return <label key={index}>{key} : {workoutState[key] === true ? "true" : "false"}</label>
-        }
-        return <label key={index}>{key} : {workoutState[key]}</label>
-      })}
+      <div className="timer-labels-div">
+        <label className="flow-text title-label"><span>{workoutState.title}</span></label>
+        <label className="flow-text reps-sets-labels">
+          Reps Left: <span id="reps-left">{workoutState.reps}</span>
+        </label>
+        <label className="flow-text reps-sets-labels">
+          Sets Left: <span id="sets-left">{workoutState.sets}</span>
+        </label>
+        <label className="flow-text">
+          <span id="stage">Prepare</span>
+        </label>
+        <label className="flow-text">
+          <span id="countdown">{workoutState.prepare}</span>
+        </label>
+      </div>
+      <div className="timer-button-div">
+        <button className="flow-text" id="start">
+          <i class="fas fa-play"></i>
+        </button>
+        <button className="flow-text" id="pause">
+          <i class="fas fa-pause"></i>
+        </button>
+        <button className="flow-text" id="cancel">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
     </>
   )
 }
