@@ -1,0 +1,26 @@
+.timer-labels-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-label {
+  font-size: 2em;
+}
+
+.reps-sets-labels {
+  font-size: 2em;
+}
+
+#stage {
+  font-size: 2em;
+}
+
+#countdown {
+  font-size: 6em;
+}
+
+.timer-button-div {
+  display: flex;
+  justify-content: space-evenly;
+}
