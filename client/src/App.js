@@ -14,33 +14,36 @@ import { UserProvider } from './utils/UserContext';
 import "./App.css";
 
 export default function App() {
+
   return (
+
     <UserProvider>
       <LoadProvider>
         <WorkoutProvider>
           <EditProvider>
-            <div className="wrapper">
-              <header>
-                <Navbar />
-              </header>
-              <main className="container">
-                <SignInOut />
-                <div className="container main-container">
-                  <Router>
+            <Router>
+              <div className="wrapper">
+                <header>
+                  <Navbar />
+                </header>
+                <main className="container">
+                  <SignInOut />
+                  <div className="container main-container">
                     <Switch>
                       <Route exact path="/" component={StartEditTimer} />
                       <Route exact path="/timer" component={TimerPage} />
                       <Route exact path="/create" component={CreatePage} />
                       <Route exact path="/load" component={LoadPage} />
                     </Switch>
-                  </Router>
-                </div>
-              </main>
-              <Footer />
-            </div>
+                  </div>
+                </main>
+                <Footer />
+              </div>
+            </Router>
           </EditProvider>
         </WorkoutProvider>
       </LoadProvider>
     </UserProvider>
+
   )
 }
