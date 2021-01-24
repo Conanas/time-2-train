@@ -116,6 +116,8 @@ const reducer = (state, action) => {
         ...state,
         break: action.payload
       }
+    case SET_ACTIONS.reset:
+      return DEFAULT_STATE
     default:
       return state;
   }
