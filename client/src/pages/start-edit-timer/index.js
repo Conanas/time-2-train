@@ -19,8 +19,6 @@ export default function StartEditTimer(props) {
     let workoutId = "";
     if (localStorage.workoutId) {
       workoutId = localStorage.workoutId;
-    } else {
-      workoutId = props.match.params.id;
     }
     API.getWorkout(workoutId)
       .then(res => {
