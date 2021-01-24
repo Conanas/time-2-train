@@ -21,9 +21,9 @@ export default function Navbar() {
       </nav>
 
       <ul className="sidenav" id="mobile-demo">
-        <li><a href="/">Start/Edit Workout</a></li>
-        <li><a href="/create">Create Workout</a></li>
-        <li><a href="/load">Load Workout</a></li>
+        <li><Link to="/">Start/Edit Workout</Link></li>
+        <li><Link to="/create">Create Workout</Link></li>
+        <li><Link to="/load">Load Workout</Link></li>
       </ul>
     </>
   )
