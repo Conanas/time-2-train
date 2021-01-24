@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BUTTONS } from '../../utils/actions';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import './style.css';
@@ -25,7 +26,7 @@ export default function LoadModal() {
         </ul>
       </div>
       <div className="modal-footer">
-        <a href={`/`}>
+        <Link to="/">
           <button
             className="modal-close waves-effect waves-green btn-flat"
             onClick={() => {
@@ -34,7 +35,7 @@ export default function LoadModal() {
           >
             {BUTTONS.LOAD}
           </button>
-        </a>
+        </Link>
       </div>
     </div>
   )

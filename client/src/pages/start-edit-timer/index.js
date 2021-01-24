@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import InputList from '../../components/InputList/';
 import UpdateModal from '../../components/UpdateModal/';
 import API from '../../utils/API';
@@ -41,11 +42,11 @@ export default function StartEditTimer(props) {
       <div className="button-div">
         {editState === START ?
           <>
-            <a href="/timer">
+            <Link to="/timer">
               <button className="form-button">
                 <i className="fas fa-play flow-text"></i>
               </button>
-            </a>
+            </Link>
             <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}>
               <i className="fas fa-edit flow-text"></i>
             </button>
