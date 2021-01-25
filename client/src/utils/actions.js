@@ -34,6 +34,5 @@ export const MESSAGES = {
 export const BUTTONS = {
   CONFIRM: "Confirm",
   CANCEL: "Cancel",
-  SHOW: "Show",
   LOAD: "Load"
 }
