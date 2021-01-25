@@ -6,11 +6,11 @@ import UpdateModal from '../../components/UpdateModal/';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
-import { userUserContext, useUserContext } from '../../utils/UserContext';
+import { useUserContext } from '../../utils/UserContext';
 import { SET_ACTIONS, EDIT, START } from '../../utils/actions';
 import './style.css';
 
-export default function StartEditTimer(props) {
+export default function EditPage(props) {
   const [editState, dispatchEditState] = useEditContext();
   const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [userState, dispatchUser] = useUserContext();
@@ -18,7 +18,7 @@ export default function StartEditTimer(props) {
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
-    dispatchEditState({ type: START })
+    dispatchEditState({ type: EDIT })
     let workoutId = "";
     if (localStorage.workoutId) {
       workoutId = localStorage.workoutId;
@@ -35,7 +35,7 @@ export default function StartEditTimer(props) {
   return (
     <>
       <div className="row">
-        <h4>{editState === START ? "Start" : "Edit"} Workout</h4>
+        <h4>Edit Workout</h4>
         <ul className="edit-timer-list">
           <InputList />
         </ul>

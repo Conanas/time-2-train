@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'materialize-css/dist/css/materialize.min.css';
-import StartEditTimer from './pages/Start-Edit-Timer/';
+import CreatePage from './pages/CreatePage/';
+import EditPage from './pages/EditPage'
 import TimerPage from './pages/TimerPage';
 import LoadPage from './pages/LoadPage/';
 import Navbar from './components/Navbar/';
 import SignInOut from './components/SignInOut/';
-import CreatePage from './pages/CreatePage/';
 import Footer from './components/Footer/';
 import { WorkoutProvider } from './utils/WorkoutContext';
 import { LoadProvider } from './utils/LoadContext';
@@ -31,7 +31,7 @@ export default function App() {
                   <SignInOut />
                   <div className="container main-container">
                     <Switch>
-                      <Route exact path="/" component={StartEditTimer} />
+                      <Route exact path="/edit" component={EditPage} />
                       <Route exact path="/timer" component={TimerPage} />
                       <Route exact path="/create" component={CreatePage} />
                       <Route exact path="/load" component={LoadPage} />
