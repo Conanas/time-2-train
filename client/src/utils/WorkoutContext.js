@@ -4,6 +4,7 @@ import { SET_ACTIONS } from './actions';
 const WorkoutContext = createContext();
 
 const DEFAULT_STATE = {
+  _id: 0,
   title: "Quick Start",
   continuous: false,
   prepare: 15,
