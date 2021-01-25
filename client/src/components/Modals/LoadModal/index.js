@@ -22,7 +22,6 @@ export default function LoadModal() {
       startingTop: "4%",
       endingTop: "10%"
     };
-    console.log(modalRef)
     M.Modal.init(modalRef.current, options);
   }, [])
 
