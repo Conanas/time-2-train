@@ -29,7 +29,7 @@ module.exports = {
     let workoutData = req.body;
     workoutData.user = userId;
     db.Workout
-      .create(req.body)
+      .create(workoutData)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

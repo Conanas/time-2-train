@@ -24,7 +24,6 @@ export default function CreatePage() {
   async function saveWorkout() {
     try {
       let existingWorkout = await API.getWorkoutByTitle(workoutState.title);
-      console.log(existingWorkout)
       if (existingWorkout.data != null) {
         setSaveState(MESSAGES.WORKOUT_EXISTS);
       } else {
