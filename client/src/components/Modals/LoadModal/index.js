@@ -5,8 +5,8 @@ import { BUTTONS } from '../../../utils/actions';
 import { useWorkoutContext } from '../../../utils/WorkoutContext';
 import './style.css';
 
-export default function LoadModal() {
-  const [workoutState] = useWorkoutContext();
+export default function LoadModal({ workout }) {
+  const [, dispatchWorkout] = useWorkoutContext();
   const modalRef = useRef();
 
   useEffect(() => {
@@ -25,30 +25,40 @@ export default function LoadModal() {
     M.Modal.init(modalRef.current, options);
   }, [])
 
+  function renderWorkoutDetails(workout, key) {
+
+    if (key === "continuous" || key === "prepare" || key === "reps" || key === "rest" || key === "work" || key === "sets" || key === "break") {
+      return (`${key.charAt(0).toUpperCase() + key.slice(1)}: ${workout[key]}`)
+    } else {
+      return null
+    }
+  }
+
   return (
     <div id="load-modal" className="modal" ref={modalRef}>
       <div className="modal-content">
-        <h4>{workoutState.title}</h4>
+        <h4>{workout ? workout.title : null}</h4>
         <ul>
-          {Object.keys(workoutState).map((key, index) => {
-            return (
-              <li key={index}>
-                {key !== "_id" ?
-                  key !== "title" ?
-                    `${key.charAt(0).toUpperCase() + key.slice(1)}: ${workoutState[key]}`
-                    : null
-                  : null}
-              </li>
-            )
-          })}
+          {workout ?
+            Object.keys(workout).map((key, index) => {
+              return (
+                <li key={index}>
+                  {renderWorkoutDetails(workout, key)}
+                </li>
+              )
+            })
+            :
+            null}
         </ul>
       </div>
       <div className="modal-footer">
+        <button className="modal-close waves-effect waves-green btn-flat">{BUTTONS.CANCEL}</button>
         <Link to="/">
           <button
             className="modal-close waves-effect waves-green btn-flat"
             onClick={() => {
-              localStorage.setItem("workoutId", workoutState._id)
+              dispatchWorkout(workout)
+              localStorage.setItem("workoutId", workout._id)
             }}
           >
             {BUTTONS.LOAD}
