@@ -25,6 +25,7 @@ export default function CreatePage() {
     try {
       let existingWorkout = await API.getWorkoutByTitle(workoutState.title);
       if (existingWorkout.data != null) {
+        console.log("Save Exists")
         setSaveState(MESSAGES.WORKOUT_EXISTS);
       } else {
         let createdWorkout = await API.postWorkout(userState._id, workoutState);
