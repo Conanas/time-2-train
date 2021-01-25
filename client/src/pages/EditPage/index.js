@@ -19,17 +19,18 @@ export default function EditPage(props) {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
     dispatchEditState({ type: EDIT })
-    let workoutId = "";
-    if (localStorage.workoutId) {
-      workoutId = localStorage.workoutId;
-    }
-    API.getWorkout(workoutId)
-      .then(res => {
-        if (res.data) {
-          dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data });
-        }
-      })
-      .catch(error => console.log(error))
+    console.log(workoutState)
+    // let workoutId = "";
+    // if (localStorage.workoutId) {
+    //   workoutId = localStorage.workoutId;
+    // }
+    // API.getWorkout(workoutId)
+    //   .then(res => {
+    //     if (res.data) {
+    //       dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data });
+    //     }
+    //   })
+    //   .catch(error => console.log(error))
   }, [])
 
   return (

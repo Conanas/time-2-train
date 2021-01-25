@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { useLoadContext } from '../../utils/LoadContext';
+import { useWorkoutContext } from '../../utils/WorkoutContext';
 import { useUserContext } from '../../utils/UserContext';
 import { MESSAGES, SET_ACTIONS } from '../../utils/actions';
 import API from '../../utils/API';
@@ -11,6 +13,7 @@ import './style.css';
 export default function LoadPage() {
   const [loadState, loadDispatch] = useLoadContext();
   const [userState] = useUserContext();
+  const [workoutState, dispatchWorkout] = useWorkoutContext();
 
   const [selectState, setSelect] = useState();
 
@@ -61,9 +64,11 @@ export default function LoadPage() {
                   </div>
                   <div className="collapsible-body flow-text">
                     <div className="collapsible-body-div">
-                      <button className="modal-trigger" data-target="load-modal"><i className="fas fa-play"></i></button>
-                      <button><i className="fas fa-edit"></i></button>
                       <button className="modal-trigger" data-target="delete-modal"><i className="fas fa-trash-alt"></i></button>
+                      <Link to="/edit" onClick={() => selectState ? dispatchWorkout({ type: SET_ACTIONS.workout, payload: selectState }) : null}>
+                        <button><i className="fas fa-edit"></i></button>
+                      </Link>
+                      <button className="modal-trigger" data-target="load-modal"><i className="fas fa-play"></i></button>
                     </div>
                   </div>
                 </li>

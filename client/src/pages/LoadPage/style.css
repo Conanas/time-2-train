@@ -5,7 +5,7 @@
 }
 
 .collapsible-body-div button {
-  padding: 0.5em 1em;
+  padding: 0.2em 0.5em;
   background-color: var(--primary);
   color: var(--on-primary);
   border: none;

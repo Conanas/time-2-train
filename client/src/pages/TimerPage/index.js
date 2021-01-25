@@ -14,7 +14,6 @@ export default function TimerPage() {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
     setLocalWorkout(workoutState)
-    console.log(localWorkout)
   }, [localWorkout])
 
   function startTimer() {
