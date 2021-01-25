@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'materialize-css/dist/css/materialize.min.css';
+import HomePage from './pages/HomePage/';
 import CreatePage from './pages/CreatePage/';
 import EditPage from './pages/EditPage'
 import TimerPage from './pages/TimerPage';
@@ -31,6 +32,7 @@ export default function App() {
                   <SignInOut />
                   <div className="container main-container">
                     <Switch>
+                      <Route exact path="/" component={HomePage} />
                       <Route exact path="/edit" component={EditPage} />
                       <Route exact path="/timer" component={TimerPage} />
                       <Route exact path="/create" component={CreatePage} />
