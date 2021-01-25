@@ -7,19 +7,35 @@ import { useWorkoutContext } from '../../utils/WorkoutContext';
 import './style.css';
 
 export default function TimerPage() {
+
+  const MODES = {
+    PREPARE: "Prepare",
+    WORK: "Work",
+    REST: "Rest",
+    BREAK: "Break"
+  }
+
   const [workoutState, dispatchWorkout] = useWorkoutContext();
-  const [localWorkout, setLocalWorkout] = useState();
+  const [timerState, setTimerState] = useState({
+    ...workoutState,
+    rep: 1,
+    set: 1,
+    mode: MODES.PREPARE
+  });
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
-    setLocalWorkout(workoutState)
-  }, [localWorkout])
+    console.log(timerState)
+  }, [timerState])
 
   function startTimer() {
     let timer = setInterval(playTimer, 1000)
     function playTimer() {
-
+      if (timerState.mode = MODES.PREPARE) {
+        setTimerState(prevState => timerState.prepare = prevState.prepare - 1)
+        console.log(timerState)
+      }
     }
   }
 
@@ -28,16 +44,16 @@ export default function TimerPage() {
       <div className="timer-labels-div">
         <label className="flow-text title-label"><span>{workoutState.title}</span></label>
         <label className="flow-text reps-sets-labels">
-          Reps Left: <span id="reps-left">{workoutState.reps}</span>
+          Rep: <span id="reps-left">{timerState.rep}/{workoutState.reps}</span>
         </label>
         <label className="flow-text reps-sets-labels">
-          Sets Left: <span id="sets-left">{workoutState.sets}</span>
+          Set: <span id="sets-left">{timerState.set}/{workoutState.sets}</span>
         </label>
         <label className="flow-text">
-          <span id="stage">Prepare</span>
+          <span id="stage">{timerState.mode}</span>
         </label>
         <label className="flow-text">
-          <span id="countdown">{workoutState.prepare}</span>
+          <span id="countdown">{timerState.prepare}</span>
         </label>
       </div>
       <div className="timer-button-div">
