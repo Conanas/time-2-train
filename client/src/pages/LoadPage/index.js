@@ -5,8 +5,8 @@ import { useLoadContext } from '../../utils/LoadContext';
 import { useUserContext } from '../../utils/UserContext';
 import { SET_ACTIONS, MESSAGES, BUTTONS } from '../../utils/actions';
 import API from '../../utils/API';
-import LoadModal from '../../components/LoadModal/';
-import MessageModal from '../../components/MessageModal/';
+import LoadModal from '../../components/Modals/LoadModal/';
+import MessageModal from '../../components/Modals/MessageModal/';
 import './style.css';
 
 export default function LoadPage() {

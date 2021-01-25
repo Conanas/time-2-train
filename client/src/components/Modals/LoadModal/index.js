@@ -1,14 +1,41 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { BUTTONS } from '../../utils/actions';
-import { useWorkoutContext } from '../../utils/WorkoutContext';
+import M from "materialize-css";
+import { BUTTONS } from '../../../utils/actions';
+import { useWorkoutContext } from '../../../utils/WorkoutContext';
 import './style.css';
 
 export default function LoadModal() {
   const [workoutState] = useWorkoutContext();
+  const modalRef = useRef();
+
+  useEffect(() => {
+    const options = {
+      onOpenStart: () => {
+        console.log("Open Start");
+      },
+      onOpenEnd: () => {
+        console.log("Open End");
+      },
+      onCloseStart: () => {
+        console.log("Close Start");
+      },
+      onCloseEnd: () => {
+        console.log("Close End");
+      },
+      inDuration: 250,
+      outDuration: 250,
+      opacity: 0.5,
+      dismissible: true,
+      startingTop: "4%",
+      endingTop: "10%"
+    };
+    console.log(modalRef)
+    M.Modal.init(modalRef.current, options);
+  }, [])
 
   return (
-    <div id="load-modal" className="modal">
+    <div id="load-modal" className="modal" ref={modalRef}>
       <div className="modal-content">
         <h4>{workoutState.title}</h4>
         <ul>

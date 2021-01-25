@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
-import MessageModal from '../../components/MessageModal/';
+import MessageModal from '../../components/Modals/MessageModal/';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';

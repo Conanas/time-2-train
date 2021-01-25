@@ -1,5 +1,5 @@
 import React from 'react';
-import { BUTTONS } from '../../utils/actions';
+import { BUTTONS } from '../../../utils/actions';
 
 export default function MessageModal({ message, deleteMode, deleteWorkout, getWorkouts, workoutId }) {
   return (
