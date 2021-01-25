@@ -1,19 +1,9 @@
-.load-label {
+.collapsible-body-div {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;
 }
 
-.show-button {
-  padding: 1em 2em;
-  background-color: var(--primary);
-  color: var(--on-primary);
-  border: none;
-  border-radius: 8px;
-}
-
-.show-button:hover {
+.collapsible-body-div button:hover {
   cursor: pointer;
-  background-color: var(--primary-dark);
 }

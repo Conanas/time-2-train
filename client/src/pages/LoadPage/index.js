@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import { useLoadContext } from '../../utils/LoadContext';
 import { useUserContext } from '../../utils/UserContext';
-import { SET_ACTIONS, MESSAGES, BUTTONS } from '../../utils/actions';
+import { SET_ACTIONS, MESSAGES } from '../../utils/actions';
 import API from '../../utils/API';
 import LoadModal from '../../components/Modals/LoadModal/';
 import MessageModal from '../../components/Modals/MessageModal/';
@@ -13,6 +13,8 @@ export default function LoadPage() {
   const [loadState, loadDispatch] = useLoadContext();
   const [workoutState, workoutDispatch] = useWorkoutContext();
   const [userState, dispatchUser] = useUserContext();
+
+  let collapsibleRef = useRef();
 
   async function deleteWorkout(workoutId) {
     try {
@@ -34,6 +36,7 @@ export default function LoadPage() {
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
+    M.Collapsible.init(collapsibleRef.current);
     if (userState._id !== null) {
       getWorkouts();
     }
@@ -46,36 +49,30 @@ export default function LoadPage() {
         {userState.email === null ?
           <label className="flow-text">{MESSAGES.MUST_BE_SIGNED_IN_TO_LOAD}</label>
           :
-          loadState.map((workout, index) => {
-            return (
-              <label className="load-label flow-text" key={index}>
-                <div>
-                  <input className="load-radio" type="radio" name="workouts" id={workout._id}
-                    onChange={(() => {
-                      workoutDispatch({ type: SET_ACTIONS.workout, payload: workout })
-                      localStorage.setItem("workoutState", JSON.stringify(workoutState))
-                    })}
-                  />
-                  <span><label className="flow-text">{workout.title}</label></span>
-                </div>
-                <div onClick={() => {
-                  workoutDispatch({ type: SET_ACTIONS.workout, payload: workout })
-                  localStorage.setItem("workoutState", JSON.stringify(workoutState))
-                }}>
-                  <i className="fas fa-times modal-trigger"
-                    data-target="message-modal"></i>
-                </div>
-              </label>
-            )
-          })
+          <ul
+            ref={collapsibleRef}
+            className="collapsible popout"
+          >
+            {loadState.map((workout, index) => {
+              return (
+                <li key={index}>
+                  <div className="collapsible-header">
+                    {workout.title}
+                  </div>
+                  <div className="collapsible-body flow-text">
+                    <div className="collapsible-body-div">
+                      <button><i className="fas fa-play"></i></button>
+                      <button><i className="fas fa-edit"></i></button>
+                      <button><i className="fas fa-trash-alt"></i></button>
+                    </div>
+                  </div>
+                </li>
+              )
+            })
+            }
+          </ul>
         }
       </div>
-      {userState.email === null ?
-        null
-        :
-        <div className="button-div">
-          <button className="show-button modal-trigger" data-target="load-modal">{BUTTONS.SHOW}</button>
-        </div>}
       <LoadModal />
       <MessageModal message={"Are you sure?"} deleteMode={true} getWorkouts={getWorkouts} deleteWorkout={deleteWorkout} workoutId={workoutState._id} />
     </>
