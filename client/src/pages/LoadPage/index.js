@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import M from 'materialize-css/dist/js/materialize.min.js';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import { useLoadContext } from '../../utils/LoadContext';
 import { useUserContext } from '../../utils/UserContext';
@@ -31,6 +32,8 @@ export default function LoadPage() {
   }
 
   useEffect(() => {
+    let sidenav = document.querySelector('#mobile-demo');
+    M.Sidenav.init(sidenav, {});
     if (userState._id !== null) {
       getWorkouts();
     }

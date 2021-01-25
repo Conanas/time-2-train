@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
 import MessageModal from '../../components/MessageModal/';
 import API from '../../utils/API';
@@ -15,6 +16,8 @@ export default function CreatePage() {
   const [userState, dispatchUser] = useUserContext();
 
   useEffect(() => {
+    let sidenav = document.querySelector('#mobile-demo');
+    M.Sidenav.init(sidenav, {});
     dispatchEditState({ type: EDIT })
   }, [])
 

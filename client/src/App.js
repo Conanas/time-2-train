@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import 'materialize-css/dist/css/materialize.min.css';
 import StartEditTimer from './pages/Start-Edit-Timer/';
 import TimerPage from './pages/TimerPage';
 import LoadPage from './pages/LoadPage/';

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import M from 'materialize-css/dist/js/materialize.min.js';
 import API from '../../utils/API';
 import { SET_ACTIONS } from '../../utils/actions';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
@@ -10,6 +11,8 @@ export default function TimerPage() {
   const [localWorkout, setLocalWorkout] = useState();
 
   useEffect(() => {
+    let sidenav = document.querySelector('#mobile-demo');
+    M.Sidenav.init(sidenav, {});
     setLocalWorkout(workoutState)
     console.log(localWorkout)
   }, [localWorkout])

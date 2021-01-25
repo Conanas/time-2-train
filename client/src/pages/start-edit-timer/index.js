@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
 import UpdateModal from '../../components/UpdateModal/';
 import API from '../../utils/API';
@@ -15,6 +16,8 @@ export default function StartEditTimer(props) {
   const [userState, dispatchUser] = useUserContext();
 
   useEffect(() => {
+    let sidenav = document.querySelector('#mobile-demo');
+    M.Sidenav.init(sidenav, {});
     dispatchEditState({ type: START })
     let workoutId = "";
     if (localStorage.workoutId) {
