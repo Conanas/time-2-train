@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import API from '../../utils/API';
 import { SET_ACTIONS } from '../../utils/actions';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
@@ -6,16 +7,19 @@ import './style.css';
 
 export default function TimerPage() {
   const [workoutState, dispatchWorkout] = useWorkoutContext();
+  const [localWorkout, setLocalWorkout] = useState();
 
   useEffect(() => {
-    let workoutId = localStorage.workoutId
-    API.getWorkout(workoutId)
-      .then(res => {
-        if (res.data) {
-          dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data });
-        }
-      }).catch(err => console.log(err))
-  }, [])
+    setLocalWorkout(workoutState)
+    console.log(localWorkout)
+  }, [localWorkout])
+
+  function startTimer() {
+    let timer = setInterval(playTimer, 1000)
+    function playTimer() {
+
+    }
+  }
 
   return (
     <>
@@ -35,16 +39,18 @@ export default function TimerPage() {
         </label>
       </div>
       <div className="timer-button-div">
-        <button className="flow-text" id="start">
-          <i class="fas fa-play"></i>
+        <button className="flow-text" id="start" onClick={() => startTimer()}>
+          <i className="fas fa-play"></i>
         </button>
         <button className="flow-text" id="pause">
-          <i class="fas fa-pause"></i>
+          <i className="fas fa-pause"></i>
         </button>
-        <button className="flow-text" id="cancel">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
+        <Link to="/">
+          <button className="flow-text" id="cancel">
+            <i className="fas fa-times"></i>
+          </button>
+        </Link >
+      </div >
     </>
   )
 }
