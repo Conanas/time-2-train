@@ -15,7 +15,7 @@ module.exports = {
   },
   findByTitle: function (req, res) {
     db.Workout
-      .findOne({ title: req.params.title })
+      .findOne({ title: req.params.title, user: req.params.user })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

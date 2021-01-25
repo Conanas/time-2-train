@@ -14,7 +14,7 @@ router
   .delete(workoutController.delete);
 
 router
-  .route("/title/:title")
+  .route("/title/:title/:user")
   .get(workoutController.findByTitle)
 
 router
