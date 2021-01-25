@@ -13,3 +13,7 @@
   background-color: var(--primary);
   color: var(--on-primary);
 }
+
+.google-button:hover {
+  cursor: pointer;
+}
