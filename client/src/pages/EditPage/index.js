@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
-import UpdateModal from '../../components/UpdateModal/';
+import UpdateModal from '../../components/Modals/UpdateModal';
 import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
@@ -19,18 +19,6 @@ export default function EditPage(props) {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
     dispatchEditState({ type: EDIT })
-    console.log(workoutState)
-    // let workoutId = "";
-    // if (localStorage.workoutId) {
-    //   workoutId = localStorage.workoutId;
-    // }
-    // API.getWorkout(workoutId)
-    //   .then(res => {
-    //     if (res.data) {
-    //       dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data });
-    //     }
-    //   })
-    //   .catch(error => console.log(error))
   }, [])
 
   return (
