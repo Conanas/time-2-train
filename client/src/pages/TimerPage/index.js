@@ -18,7 +18,6 @@ export default function TimerPage() {
 
   const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [timerState, setTimerState] = useState({
-    ...workoutState,
     rep: 1,
     set: 1,
     mode: MODES.PREPARE,
@@ -33,10 +32,14 @@ export default function TimerPage() {
   function startTimer() {
     console.log(timerRef)
     if (timerState.mode === MODES.WORK) {
-      setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep + 1, set: 1, ...workoutState })
+      if (timerState.rep === workoutState.reps) {
+        setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set + 1 })
+      } else {
+        setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
+      }
     }
     if (timerState.mode === MODES.REST) {
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: 1, ...workoutState })
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
     }
     timerRef.current.api.start();
   }
@@ -47,10 +50,10 @@ export default function TimerPage() {
 
   function onComplete() {
     if (timerState.mode === MODES.PREPARE) {
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: 1, set: 1, ...workoutState })
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
     }
     if (timerState.mode === MODES.REST) {
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: 1, ...workoutState })
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
     }
   }
 
