@@ -33,13 +33,13 @@ export default function TimerPage() {
     console.log(timerRef)
     if (timerState.mode === MODES.WORK) {
       if (timerState.rep === workoutState.reps) {
-        setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set + 1 })
+        setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
       } else {
-        setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
+        setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
       }
     }
     if (timerState.mode === MODES.REST) {
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
     }
     timerRef.current.api.start();
   }
@@ -53,7 +53,10 @@ export default function TimerPage() {
       setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
     }
     if (timerState.mode === MODES.REST) {
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
+    }
+    if (timerState.mode === MODES.BREAK) {
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: 1, set: timerState.set + 1 })
     }
   }
 
