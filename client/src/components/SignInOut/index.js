@@ -5,7 +5,7 @@ import GoogleLogout from '../GoogleButtons/GoogleLogout';
 import './style.css';
 
 export default function SignInOut() {
-  const [userState, dispatchUser] = useUserContext();
+  const [userState] = useUserContext();
   return (
     <div className="row sign-in-out">
       {userState.email !== null ? <span>Hello {userState.givenName}&nbsp;</span> : null}

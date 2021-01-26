@@ -13,7 +13,7 @@ import './style.css';
 export default function LoadPage() {
   const [loadState, loadDispatch] = useLoadContext();
   const [userState] = useUserContext();
-  const [workoutState, dispatchWorkout] = useWorkoutContext();
+  const [, dispatchWorkout] = useWorkoutContext();
 
   const [selectState, setSelect] = useState();
 

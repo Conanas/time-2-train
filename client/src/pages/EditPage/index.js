@@ -3,17 +3,14 @@ import { Link } from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
 import UpdateModal from '../../components/Modals/UpdateModal';
-import API from '../../utils/API';
-import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
 import { useUserContext } from '../../utils/UserContext';
-import { SET_ACTIONS, EDIT, START } from '../../utils/actions';
+import { EDIT, START } from '../../utils/actions';
 import './style.css';
 
-export default function EditPage(props) {
+export default function EditPage() {
   const [editState, dispatchEditState] = useEditContext();
-  const [workoutState, dispatchWorkout] = useWorkoutContext();
-  const [userState, dispatchUser] = useUserContext();
+  const [userState] = useUserContext();
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');

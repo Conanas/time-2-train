@@ -9,7 +9,7 @@ import './style.css';
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 export default function GoogleLogin() {
-  const [userState, dispatchUser] = useUserContext();
+  const [, dispatchUser] = useUserContext();
 
   const getOrCreateUser = async (profileObj) => {
     try {

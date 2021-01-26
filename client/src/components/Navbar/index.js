@@ -1,11 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useUserContext } from '../../utils/UserContext';
 import './style.css';
 
 export default function Navbar() {
-  const [userState, dispatchUser] = useUserContext();
-
   return (
     <>
       <nav>

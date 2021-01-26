@@ -1,12 +1,12 @@
 import React from 'react';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import { useEditContext } from '../../utils/EditContext';
-import { SET_ACTIONS, EDIT, START } from '../../utils/actions';
+import { SET_ACTIONS, START } from '../../utils/actions';
 import './style.css';
 
 export default function InputList() {
   const [workoutState, dispatchWorkout] = useWorkoutContext();
-  const [editState, dispatchEdit] = useEditContext();
+  const [editState] = useEditContext();
 
   return Object.keys(workoutState).map((key, index) => {
 

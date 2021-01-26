@@ -6,14 +6,14 @@ import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
 import { useUserContext } from '../../utils/UserContext';
-import { SET_ACTIONS, EDIT, START, MESSAGES } from '../../utils/actions';
+import { EDIT, MESSAGES } from '../../utils/actions';
 import './style.css';
 
 export default function CreatePage() {
   const [saveState, setSaveState] = useState();
-  const [editState, dispatchEditState] = useEditContext();
-  const [workoutState, dispatchWorkout] = useWorkoutContext();
-  const [userState, dispatchUser] = useUserContext();
+  const [, dispatchEditState] = useEditContext();
+  const [workoutState] = useWorkoutContext();
+  const [userState] = useUserContext();
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');

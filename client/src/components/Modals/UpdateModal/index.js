@@ -8,7 +8,7 @@ import API from '../../../utils/API';
 
 export default function UpdateModal() {
   const [workoutState] = useWorkoutContext();
-  const [editState, editDispatch] = useEditContext();
+  const [, editDispatch] = useEditContext();
 
   const modalRef = useRef();
 

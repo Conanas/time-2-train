@@ -7,7 +7,7 @@ import { SET_ACTIONS } from '../../../utils/actions';
 import './style.css';
 
 export default function LoadModal({ workout }) {
-  const [workoutState, dispatchWorkout] = useWorkoutContext();
+  const [, dispatchWorkout] = useWorkoutContext();
   const modalRef = useRef();
 
   useEffect(() => {
