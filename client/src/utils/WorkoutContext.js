@@ -5,10 +5,10 @@ const WorkoutContext = createContext();
 
 const DEFAULT_STATE = {
   title: "Quick Start",
-  continuous: false,
+  continuous: true,
   prepare: 5,
   reps: 4,
-  work: 0,
+  work: 10,
   rest: 5,
   sets: 3,
   break: 10
