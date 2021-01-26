@@ -41,6 +41,7 @@ export default function TimerPage() {
           setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
         }
       }
+
       if (timerState.mode === MODES.REST) {
         setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
       }
@@ -54,6 +55,7 @@ export default function TimerPage() {
           setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
         }
       }
+
       if (timerState.mode === MODES.REST) {
         setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
       }
@@ -72,8 +74,13 @@ export default function TimerPage() {
     if (workoutState.continuous === false) {
 
       if (timerState.mode === MODES.PREPARE) {
-        setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
+        if (workoutState.reps === 1 && workoutState.sets === 1) {
+          setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep, set: timerState.set })
+        } else {
+          setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
+        }
       }
+
       if (timerState.mode === MODES.REST) {
         if (timerState.rep === workoutState.reps - 1 && timerState.set === workoutState.sets) {
           setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep + 1, set: timerState.set })
@@ -81,6 +88,7 @@ export default function TimerPage() {
           setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
         }
       }
+
       if (timerState.mode === MODES.BREAK) {
         setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: 1, set: timerState.set + 1 })
       }
@@ -91,6 +99,7 @@ export default function TimerPage() {
         console.log("here")
         setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
       }
+
       if (timerState.mode === MODES.REST) {
         if (timerState.rep === workoutState.reps - 1 && timerState.set === workoutState.sets) {
           setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep + 1, set: timerState.set })
@@ -98,6 +107,7 @@ export default function TimerPage() {
           setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
         }
       }
+
       if (timerState.mode === MODES.BREAK) {
         setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: 1, set: timerState.set + 1 })
       }
