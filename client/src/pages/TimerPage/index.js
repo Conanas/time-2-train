@@ -11,7 +11,8 @@ export default function TimerPage() {
     PREPARE: "Prepare",
     WORK: "Work",
     REST: "Rest",
-    BREAK: "Break"
+    BREAK: "Break",
+    COMPLETED: "Completed"
   }
 
   const timerRef = useRef();
@@ -30,7 +31,6 @@ export default function TimerPage() {
   }, [])
 
   function startTimer() {
-    console.log(timerRef)
     if (timerState.mode === MODES.WORK) {
       if (timerState.rep === workoutState.reps) {
         setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
@@ -53,7 +53,11 @@ export default function TimerPage() {
       setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
     }
     if (timerState.mode === MODES.REST) {
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
+      if (timerState.rep === workoutState.reps - 1 && timerState.set === workoutState.sets) {
+        setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep + 1, set: timerState.set })
+      } else {
+        setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
+      }
     }
     if (timerState.mode === MODES.BREAK) {
       setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: 1, set: timerState.set + 1 })
