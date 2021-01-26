@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Countdown, { zeroPad } from 'react-countdown';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import API from '../../utils/API';
-import { SET_ACTIONS } from '../../utils/actions';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import './style.css';
 
@@ -15,28 +14,41 @@ export default function TimerPage() {
     BREAK: "Break"
   }
 
+  const timerRef = useRef();
+
   const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [timerState, setTimerState] = useState({
     ...workoutState,
     rep: 1,
     set: 1,
-    mode: MODES.PREPARE
+    mode: MODES.PREPARE,
+    countdown: workoutState.prepare
   });
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
-    console.log(timerState)
-  }, [timerState])
+  }, [])
 
   function startTimer() {
-    let timer = setInterval(playTimer, 1000)
-    function playTimer() {
-      if (timerState.mode = MODES.PREPARE) {
-        setTimerState(prevState => timerState.prepare = prevState.prepare - 1)
-        console.log(timerState)
-      }
+    console.log(timerRef)
+    timerRef.current.api.start();
+  }
+
+  function pauseTimer() {
+    timerRef.current.api.pause();
+  }
+
+  function onComplete() {
+    if (timerState.mode === MODES.PREPARE) {
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: 1, set: 1, ...workoutState })
     }
+  }
+
+  function renderer({ minutes, seconds }) {
+    return (
+      <span id="countdown">{zeroPad(minutes)}:{zeroPad(seconds)}</span>
+    )
   }
 
   return (
@@ -53,18 +65,24 @@ export default function TimerPage() {
           <span id="stage">{timerState.mode}</span>
         </label>
         <label className="flow-text">
-          <span id="countdown">{timerState.prepare}</span>
+          <Countdown
+            ref={timerRef}
+            autoStart={false}
+            date={Date.now() + timerState.countdown * 1000}
+            renderer={renderer}
+            onComplete={onComplete}
+          />
         </label>
       </div>
       <div className="timer-button-div">
-        <button className="flow-text" id="start" onClick={() => startTimer()}>
+        <button className="timer-buttons flow-text" id="start" onClick={() => startTimer()}>
           <i className="fas fa-play"></i>
         </button>
-        <button className="flow-text" id="pause">
+        <button className="timer-buttons flow-text" id="pause" onClick={() => pauseTimer()}>
           <i className="fas fa-pause"></i>
         </button>
         <Link to="/">
-          <button className="flow-text" id="cancel">
+          <button className="timer-buttons flow-text" id="cancel">
             <i className="fas fa-times"></i>
           </button>
         </Link >
