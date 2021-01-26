@@ -32,6 +32,12 @@ export default function TimerPage() {
 
   function startTimer() {
     console.log(timerRef)
+    if (timerState.mode === MODES.WORK) {
+      setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep + 1, set: 1, ...workoutState })
+    }
+    if (timerState.mode === MODES.REST) {
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: 1, ...workoutState })
+    }
     timerRef.current.api.start();
   }
 
@@ -41,7 +47,10 @@ export default function TimerPage() {
 
   function onComplete() {
     if (timerState.mode === MODES.PREPARE) {
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: 1, set: 1, ...workoutState })
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: 1, set: 1, ...workoutState })
+    }
+    if (timerState.mode === MODES.REST) {
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: 1, ...workoutState })
     }
   }
 
