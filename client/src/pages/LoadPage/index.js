@@ -56,24 +56,28 @@ export default function LoadPage() {
             ref={collapsibleRef}
             className="collapsible popout"
           >
-            {loadState.map((workout, index) => {
-              return (
-                <li key={index} onClick={() => setSelect(workout)}>
-                  <div className="collapsible-header">
-                    {workout.title}
-                  </div>
-                  <div className="collapsible-body flow-text">
-                    <div className="collapsible-body-div">
-                      <button className="modal-trigger" data-target="delete-modal"><i className="fas fa-trash-alt"></i></button>
-                      <Link to="/edit" onClick={() => selectState ? dispatchWorkout({ type: SET_ACTIONS.workout, payload: selectState }) : null}>
-                        <button><i className="fas fa-edit"></i></button>
-                      </Link>
-                      <button className="modal-trigger" data-target="load-modal"><i className="fas fa-play"></i></button>
+            {loadState.length === 0 ?
+              <label className="flow-text">You have no saved workouts</label>
+              :
+              loadState.map((workout, index) => {
+                return (
+                  <li key={index} onClick={() => setSelect(workout)}>
+                    <div className="collapsible-header">
+                      {workout.title}
                     </div>
-                  </div>
-                </li>
-              )
-            })
+                    <div className="collapsible-body flow-text">
+                      <div className="collapsible-body-div">
+                        <button className="modal-trigger" data-target="delete-modal"><i className="fas fa-trash-alt"></i></button>
+                        <Link to="/edit" onClick={() => selectState ? dispatchWorkout({ type: SET_ACTIONS.workout, payload: selectState }) : null}>
+                          <button><i className="fas fa-edit"></i></button>
+                        </Link>
+                        <button className="modal-trigger" data-target="load-modal"><i className="fas fa-play"></i></button>
+                      </div>
+                    </div>
+                  </li>
+                )
+              })
+
             }
           </ul>
         }
