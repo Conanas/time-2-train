@@ -1,11 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Countdown, { zeroPad } from 'react-countdown';
+import useSound from 'use-sound';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import './style.css';
 
+import beep2 from '../../assets/beep-1.wav';
+
 export default function TimerPage() {
+
+  const [play] = useSound(beep2);
 
   const BACKGROUND_COLORS = {
     INITIAL: "white",
@@ -96,6 +101,7 @@ export default function TimerPage() {
   }
 
   function onComplete() {
+    play();
     setPlayState(false)
     if (workoutState.continuous === false) {
 
