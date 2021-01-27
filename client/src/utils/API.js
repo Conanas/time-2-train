@@ -27,5 +27,8 @@ export default {
   },
   putUser: function (userId, workoutId) {
     return axios.put(`/api/users/${userId}`, workoutId)
+  },
+  putUserDeleteWorkout: function (userId, workoutId) {
+    return axios.put(`/api/users/${userId}/${workoutId}`)
   }
 };

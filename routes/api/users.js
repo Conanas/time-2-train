@@ -11,4 +11,8 @@ router
   .get(userController.findOneByEmail)
   .put(userController.update)
 
+router
+  .route("/:userId/:workoutId")
+  .put(userController.deleteWorkout)
+
 module.exports = router;

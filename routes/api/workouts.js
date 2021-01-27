@@ -3,7 +3,7 @@ const workoutController = require("../../controllers/workoutController");
 
 // Matches with "/api/workouts"
 router.route("/")
-  .get(workoutController.findAll)
+  .get(workoutController.findAll);
 
 // Matches with "/api/workouts/:id"
 router
@@ -15,10 +15,10 @@ router
 
 router
   .route("/title/:title/:user")
-  .get(workoutController.findByTitle)
+  .get(workoutController.findByTitle);
 
 router
   .route('/user/:id')
-  .get(workoutController.findByUser)
+  .get(workoutController.findByUser);
 
 module.exports = router;

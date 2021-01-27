@@ -21,8 +21,8 @@ export default function LoadPage() {
 
   async function deleteWorkout(workoutId) {
     try {
-      console.log("delete workout: ", workoutId)
       await API.deleteWorkout(workoutId)
+      await API.putUserDeleteWorkout(userState._id, workoutId)
     } catch (error) {
       console.log(error)
     }
