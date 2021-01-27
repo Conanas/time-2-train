@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
 import MessageModal from '../../components/Modals/MessageModal/';
@@ -49,13 +50,20 @@ export default function CreatePage() {
         {userState.email === null ?
           <label className="flow-text">{MESSAGES.MUST_BE_SIGNED_IN_TO_SAVE}</label>
           :
-          <button
-            className="form-button modal-trigger"
-            data-target="message-modal"
-            onClick={(() => saveWorkout())}
-          >
-            <i className="fas fa-save flow-text"></i>
-          </button>
+          <>
+            <Link to="/timer">
+              <button className="form-button">
+                <i class="fas fa-play flow-text"></i>
+              </button>
+            </Link>
+            <button
+              className="form-button modal-trigger"
+              data-target="message-modal"
+              onClick={(() => saveWorkout())}
+            >
+              <i className="fas fa-save flow-text"></i>
+            </button>
+          </>
         }
       </div>
       <MessageModal message={saveState} />
