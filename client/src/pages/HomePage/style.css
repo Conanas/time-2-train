@@ -12,7 +12,8 @@
   border: none;
   border-radius: 0.5em;
   padding: 1em 2em;
-  width: 250px;
+  width: 288px;
+  max-width: 100%;
 }
 
 .welcome-button:hover {
