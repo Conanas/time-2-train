@@ -27,6 +27,7 @@ export default function TimerPage() {
   }
 
   const [timerState, setTimerState] = useState(initialState);
+  const [playState, setPlayState] = useState(false);
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
@@ -34,7 +35,6 @@ export default function TimerPage() {
   }, [])
 
   function startTimer() {
-    // console.log(timerRef)
     console.log("onStart: ", timerState)
     if (workoutState.continuous === false) {
 
@@ -69,6 +69,7 @@ export default function TimerPage() {
 
     }
     timerRef.current.api.start();
+    setPlayState(true)
     console.log("Started")
   }
 
@@ -78,6 +79,7 @@ export default function TimerPage() {
 
   function onComplete() {
     console.log("onComplete: ", timerState)
+    setPlayState(false)
     if (workoutState.continuous === false) {
 
       if (timerState.mode === MODES.PREPARE) {
@@ -172,12 +174,15 @@ export default function TimerPage() {
           </>
           :
           <>
-            <button className="timer-buttons flow-text" id="start" onClick={() => startTimer()}>
-              <i className="fas fa-play"></i>
-            </button>
-            <button className="timer-buttons flow-text" id="pause" onClick={() => pauseTimer()}>
-              <i className="fas fa-pause"></i>
-            </button>
+            {playState === true ?
+              <button className="timer-buttons flow-text" id="pause" onClick={() => pauseTimer()}>
+                <i className="fas fa-pause"></i>
+              </button>
+              :
+              <button className="timer-buttons flow-text" id="start" onClick={() => startTimer()}>
+                <i className="fas fa-play"></i>
+              </button>
+            }
             <Link to="/">
               <button className="timer-buttons flow-text" id="cancel">
                 <i className="fas fa-times"></i>
