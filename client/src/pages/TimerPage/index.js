@@ -39,7 +39,6 @@ export default function TimerPage() {
 
   const [timerState, setTimerState] = useState(initialState);
   const [playState, setPlayState] = useState(false);
-  const [backgroundState, setBackground] = useState(BACKGROUND_COLORS.INITIAL)
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
@@ -51,22 +50,16 @@ export default function TimerPage() {
     if (workoutState.continuous === false) {
 
       if (timerState.mode === MODES.PREPARE) {
-        // setBackground(BACKGROUND_COLORS.PREPARE)
-        // document.body.style.backgroundColor = backgroundState;
         backgroundColor = BACKGROUND_COLORS.PREPARE;
         document.body.style.backgroundColor = backgroundColor;
       }
 
       if (timerState.mode === MODES.WORK) {
         if (timerState.rep === workoutState.reps) {
-          // setBackground(BACKGROUND_COLORS.BREAK)
-          // document.body.style.backgroundColor = backgroundState;
           backgroundColor = BACKGROUND_COLORS.BREAK;
           document.body.style.backgroundColor = backgroundColor;
           setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
         } else {
-          // setBackground(BACKGROUND_COLORS.REST)
-          // document.body.style.backgroundColor = backgroundState;
           backgroundColor = BACKGROUND_COLORS.REST;
           document.body.style.backgroundColor = backgroundColor;
           setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
@@ -74,8 +67,6 @@ export default function TimerPage() {
       }
 
       if (timerState.mode === MODES.REST) {
-        // setBackground(BACKGROUND_COLORS.REST)
-        // document.body.style.backgroundColor = backgroundState;
         backgroundColor = BACKGROUND_COLORS.WORK;
         document.body.style.backgroundColor = backgroundColor;
         setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
@@ -110,14 +101,10 @@ export default function TimerPage() {
 
       if (timerState.mode === MODES.PREPARE) {
         if (workoutState.reps === 1 && workoutState.sets === 1) {
-          // setBackground(BACKGROUND_COLORS.COMPLETED)
-          // document.body.style.backgroundColor = backgroundState;
           backgroundColor = BACKGROUND_COLORS.COMPLETED;
           document.body.style.backgroundColor = backgroundColor;
           setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep, set: timerState.set })
         } else {
-          // setBackground(BACKGROUND_COLORS.WORK)
-          // document.body.style.backgroundColor = backgroundState;
           backgroundColor = BACKGROUND_COLORS.WORK;
           document.body.style.backgroundColor = backgroundColor;
           setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
@@ -126,14 +113,10 @@ export default function TimerPage() {
 
       if (timerState.mode === MODES.REST) {
         if (timerState.rep === workoutState.reps - 1 && timerState.set === workoutState.sets) {
-          // setBackground(BACKGROUND_COLORS.COMPLETED)
-          // document.body.style.backgroundColor = backgroundState;
           backgroundColor = BACKGROUND_COLORS.COMPLETED;
           document.body.style.backgroundColor = backgroundColor;
           setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep + 1, set: timerState.set })
         } else {
-          // setBackground(BACKGROUND_COLORS.WORK)
-          // document.body.style.backgroundColor = backgroundState;
           backgroundColor = BACKGROUND_COLORS.WORK;
           document.body.style.backgroundColor = backgroundColor;
           setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
@@ -141,8 +124,6 @@ export default function TimerPage() {
       }
 
       if (timerState.mode === MODES.BREAK) {
-        // setBackground(BACKGROUND_COLORS.BREAK)
-        // document.body.style.backgroundColor = backgroundState;
         backgroundColor = BACKGROUND_COLORS.WORK;
         document.body.style.backgroundColor = backgroundColor;
         setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: 1, set: timerState.set + 1 })
