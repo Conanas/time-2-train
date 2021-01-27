@@ -17,7 +17,7 @@ export default function TimerPage() {
 
   const timerRef = useRef();
 
-  const [workoutState, dispatchWorkout] = useWorkoutContext();
+  const [workoutState] = useWorkoutContext();
   const [timerState, setTimerState] = useState({
     rep: 1,
     set: 1,
@@ -32,6 +32,7 @@ export default function TimerPage() {
 
   function startTimer() {
     // console.log(timerRef)
+    console.log("onStart: ", timerState)
     if (workoutState.continuous === false) {
 
       if (timerState.mode === MODES.WORK) {
@@ -50,19 +51,22 @@ export default function TimerPage() {
 
       if (timerState.mode === MODES.WORK) {
         if (timerState.rep === workoutState.reps) {
+          console.log("mode: ", timerState.mode)
           setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
         } else {
+          console.log("mode: ", timerState.mode)
           setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
         }
       }
 
       if (timerState.mode === MODES.REST) {
+        console.log("mode: ", timerState.mode)
         setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
       }
 
     }
-    console.log("onStart: ", timerState)
     timerRef.current.api.start();
+    console.log("Started")
   }
 
   function pauseTimer() {
@@ -96,19 +100,22 @@ export default function TimerPage() {
     } else {
 
       if (timerState.mode === MODES.PREPARE) {
-        console.log("here")
+        console.log("mode: ", timerState.mode)
         setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
       }
 
       if (timerState.mode === MODES.REST) {
         if (timerState.rep === workoutState.reps - 1 && timerState.set === workoutState.sets) {
+          console.log("mode: ", timerState.mode)
           setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep + 1, set: timerState.set })
         } else {
+          console.log("mode: ", timerState.mode)
           setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
         }
       }
 
       if (timerState.mode === MODES.BREAK) {
+        console.log("mode: ", timerState.mode)
         setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: 1, set: timerState.set + 1 })
       }
       startTimer();
@@ -126,6 +133,9 @@ export default function TimerPage() {
     <>
       <div className="timer-labels-div">
         <label className="flow-text title-label"><span>{workoutState.title}</span></label>
+        {workoutState.continuous ?
+          <label className="flow-text reps-sets-labels">Continuous</label>
+          : null}
         <label className="flow-text reps-sets-labels">
           Rep: <span id="reps-left">{timerState.rep}/{workoutState.reps}</span>
         </label>
@@ -141,7 +151,7 @@ export default function TimerPage() {
             autoStart={false}
             date={Date.now() + timerState.countdown * 1000}
             renderer={renderer}
-            onComplete={onComplete}
+            onComplete={() => onComplete()}
           />
         </label>
       </div>
