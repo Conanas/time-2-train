@@ -18,12 +18,15 @@ export default function TimerPage() {
   const timerRef = useRef();
 
   const [workoutState] = useWorkoutContext();
-  const [timerState, setTimerState] = useState({
+
+  const initialState = {
     rep: 1,
     set: 1,
     mode: MODES.PREPARE,
     countdown: workoutState.prepare
-  });
+  }
+
+  const [timerState, setTimerState] = useState(initialState);
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
@@ -156,17 +159,32 @@ export default function TimerPage() {
         </label>
       </div>
       <div className="timer-button-div">
-        <button className="timer-buttons flow-text" id="start" onClick={() => startTimer()}>
-          <i className="fas fa-play"></i>
-        </button>
-        <button className="timer-buttons flow-text" id="pause" onClick={() => pauseTimer()}>
-          <i className="fas fa-pause"></i>
-        </button>
-        <Link to="/">
-          <button className="timer-buttons flow-text" id="cancel">
-            <i className="fas fa-times"></i>
-          </button>
-        </Link >
+        {timerState.mode === MODES.COMPLETED ?
+          <>
+            <Link to="/">
+              <button className="timer-buttons flow-text">
+                <i class="fas fa-stop"></i>
+              </button>
+            </Link>
+            <button className="timer-buttons flow-text" onClick={() => setTimerState(initialState)}>
+              <i class="fas fa-redo-alt"></i>
+            </button>
+          </>
+          :
+          <>
+            <button className="timer-buttons flow-text" id="start" onClick={() => startTimer()}>
+              <i className="fas fa-play"></i>
+            </button>
+            <button className="timer-buttons flow-text" id="pause" onClick={() => pauseTimer()}>
+              <i className="fas fa-pause"></i>
+            </button>
+            <Link to="/">
+              <button className="timer-buttons flow-text" id="cancel">
+                <i className="fas fa-times"></i>
+              </button>
+            </Link >
+          </>
+        }
       </div >
     </>
   )
