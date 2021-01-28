@@ -20,7 +20,10 @@ app.use(logger("dev"));
 app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 // Send every request to the React app
