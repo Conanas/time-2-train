@@ -57,7 +57,7 @@ export default function TimerPage() {
     if (workoutState.continuous === false) {
       startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
-      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
+      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef);
     }
     timerRef.current.api.start();
     setPlayState(true)

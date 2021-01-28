@@ -11,10 +11,6 @@ module.exports = {
         setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
       }
     }
-    else if (timerState.mode === MODES.REST) {
-      // after rest
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
-    }
   },
 
   onCompleteNonContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground) => {
