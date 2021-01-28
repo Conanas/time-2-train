@@ -53,7 +53,7 @@ export default function CreatePage() {
           <>
             <Link to="/timer">
               <button className="form-button">
-                <i class="fas fa-play flow-text"></i>
+                <i className="fas fa-play flow-text"></i>
               </button>
             </Link>
             <button
