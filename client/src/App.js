@@ -32,11 +32,11 @@ export default function App() {
                   <SignInOut />
                   <div className="container main-container">
                     <Switch>
-                      <Route exact path="/" component={HomePage} />
                       <Route exact path="/edit" component={EditPage} />
                       <Route exact path="/timer" component={TimerPage} />
                       <Route exact path="/create" component={CreatePage} />
                       <Route exact path="/load" component={LoadPage} />
+                      <Route exact path="*" component={HomePage} />
                     </Switch>
                   </div>
                 </main>
