@@ -7,7 +7,7 @@ export default function Navbar() {
     <>
       <nav>
         <div className="nav-wrapper container">
-          <Link to="/" className="brand-logo right">Workout Time</Link>
+          <Link to="/" className="brand-logo right">Time-2-Train</Link>
           <a data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="left hide-on-med-and-down">
             <li><Link className="nav-item" to="/create">Create Workout</Link></li>
