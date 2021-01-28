@@ -44,18 +44,20 @@ export default function TimerPage() {
 
   const [timerState, setTimerState] = useState(initialState);
   const [playState, setPlayState] = useState(false);
+  const [backgroundState, setBackground] = useState(BACKGROUND_COLORS.INITIAL)
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
+    document.body.style.backgroundColor = backgroundState;
     return () => document.body.style.backgroundColor = BACKGROUND_COLORS.INITIAL;
-  }, [])
+  }, [timerState, backgroundState])
 
   function startTimer() {
     if (workoutState.continuous === false) {
-      startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS);
+      startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
-      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS);
+      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     }
     timerRef.current.api.start();
     setPlayState(true)
@@ -69,9 +71,9 @@ export default function TimerPage() {
     play();
     setPlayState(false)
     if (workoutState.continuous === false) {
-      onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS);
+      onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
-      onCompleteContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS);
+      onCompleteContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
       startTimer();
     }
   }
