@@ -8,7 +8,7 @@ const DEFAULT_STATE = {
   continuous: true,
   prepare: 5,
   reps: 2,
-  work: 3,
+  work: 5,
   rest: 5,
   sets: 2,
   break: 10
@@ -51,7 +51,7 @@ const reducer = (state, action) => {
         continuous: action.payload
       }
     case SET_ACTIONS.prepare:
-      if (state.prepare + action.payload < 0) {
+      if (state.prepare + action.payload < 0 || action.payload === "") {
         return {
           ...state,
           prepare: 0
@@ -62,7 +62,7 @@ const reducer = (state, action) => {
         prepare: action.payload
       }
     case SET_ACTIONS.reps:
-      if (state.reps + action.payload <= 1) {
+      if (state.reps + action.payload <= 1 || action.payload === "") {
         return {
           ...state,
           reps: 1
@@ -73,7 +73,7 @@ const reducer = (state, action) => {
         reps: action.payload
       }
     case SET_ACTIONS.work:
-      if (state.work + action.payload < 0) {
+      if (state.work + action.payload < 0 || action.payload === "") {
         return {
           ...state,
           work: 0
@@ -84,7 +84,7 @@ const reducer = (state, action) => {
         work: action.payload
       }
     case SET_ACTIONS.rest:
-      if (state.rest + action.payload < 0) {
+      if (state.rest + action.payload < 0 || action.payload === "") {
         return {
           ...state,
           rest: 0
@@ -95,7 +95,7 @@ const reducer = (state, action) => {
         rest: action.payload
       }
     case SET_ACTIONS.sets:
-      if (state.sets + action.payload <= 1) {
+      if (state.sets + action.payload <= 1 || action.payload === "") {
         return {
           ...state,
           sets: 1
@@ -106,7 +106,7 @@ const reducer = (state, action) => {
         sets: action.payload
       }
     case SET_ACTIONS.break:
-      if (state.break + action.payload < 0) {
+      if (state.break + action.payload < 0 || action.payload === "") {
         return {
           ...state,
           break: 0

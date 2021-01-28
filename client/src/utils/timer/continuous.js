@@ -16,10 +16,16 @@ module.exports = {
       }
       else if (timerState.rep === workoutState.reps) {
         // if on last rep of set go to break
+
         console.log(3)
         setBackground(BACKGROUND_COLORS.BREAK)
         setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
-      } else {
+      }
+      // else {
+      //   setBackground(BACKGROUND_COLORS.WORK)
+      //   setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
+      // }
+      else {
         // go to rest mode
         console.log(4)
         setBackground(BACKGROUND_COLORS.REST)
@@ -41,6 +47,9 @@ module.exports = {
       setBackground(BACKGROUND_COLORS.WORK)
       setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
     }
+    // else if (timerState.mode) {
+
+    // }
     else if (timerState.mode === MODES.BREAK) {
       // go to work mode after break
       console.log(7)

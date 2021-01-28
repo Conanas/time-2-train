@@ -24,14 +24,17 @@ export default function CreatePage() {
 
   async function saveWorkout() {
     try {
-      let existingWorkout = await API.getWorkoutByTitle(workoutState.title, userState._id);
-      if (existingWorkout.data != null) {
-        console.log("Save Exists")
-        setSaveState(MESSAGES.WORKOUT_EXISTS);
+      if (workoutState.title === "") {
+        setSaveState(MESSAGES.MUST_BE_A_TITLE);
       } else {
-        let createdWorkout = await API.postWorkout(userState._id, workoutState);
-        await API.putUser(userState._id, createdWorkout);
-        setSaveState(MESSAGES.WORKOUT_SAVED);
+        let existingWorkout = await API.getWorkoutByTitle(workoutState.title, userState._id);
+        if (existingWorkout.data != null) {
+          setSaveState(MESSAGES.WORKOUT_EXISTS);
+        } else {
+          let createdWorkout = await API.postWorkout(userState._id, workoutState);
+          await API.putUser(userState._id, createdWorkout);
+          setSaveState(MESSAGES.WORKOUT_SAVED);
+        }
       }
     } catch (error) {
       console.log(error);

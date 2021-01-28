@@ -27,31 +27,35 @@ export default function EditPage() {
         </ul>
       </div>
       <div className="button-div">
-        {editState === START ?
-          <>
-            <Link to="/timer">
-              <button className="form-button">
-                <i className="fas fa-play flow-text"></i>
+        {
+          editState === START ?
+            <>
+              <Link to="/timer">
+                <button className="form-button">
+                  <i className="fas fa-play flow-text"></i>
+                </button>
+              </Link>
+              <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}>
+                <i className="fas fa-edit flow-text"></i>
               </button>
-            </Link>
-            <button className="form-button" onClick={() => dispatchEditState({ type: EDIT })}>
-              <i className="fas fa-edit flow-text"></i>
-            </button>
-          </>
-          :
-          <>
-            {userState.email === null ?
-              null
-              :
-              <button
-                className="form-button modal-trigger"
-                data-target="save-message-modal">
-                <i className="fas fa-save flow-text"></i>
-              </button>}
-            <button className="form-button" onClick={() => dispatchEditState({ type: START })}>
-              <i className="fas fa-check-square flow-text"></i>
-            </button>
-          </>
+            </>
+            :
+            <>
+              {
+                userState.email === null ?
+                  null
+                  :
+                  <button
+                    className="form-button modal-trigger"
+                    data-target="save-message-modal"
+                  >
+                    <i className="fas fa-save flow-text"></i>
+                  </button>
+              }
+              <button className="form-button" onClick={() => dispatchEditState({ type: START })}>
+                <i className="fas fa-check-square flow-text"></i>
+              </button>
+            </>
         }
       </div>
       <UpdateModal />

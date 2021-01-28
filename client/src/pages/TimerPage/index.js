@@ -35,14 +35,14 @@ export default function TimerPage() {
 
   const [workoutState] = useWorkoutContext();
 
-  const initialState = {
+  const initialTimerState = {
     rep: 1,
     set: 1,
     mode: MODES.PREPARE,
     countdown: workoutState.prepare
   }
 
-  const [timerState, setTimerState] = useState(initialState);
+  const [timerState, setTimerState] = useState(initialTimerState);
   const [playState, setPlayState] = useState(false);
   const [backgroundState, setBackground] = useState(BACKGROUND_COLORS.INITIAL)
 
@@ -54,7 +54,7 @@ export default function TimerPage() {
   }, [timerState, backgroundState])
 
   function startTimer() {
-    if (workoutState.continuous === false) {
+    if (!workoutState.continuous) {
       startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
       startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef);
@@ -69,9 +69,9 @@ export default function TimerPage() {
   }
 
   function onComplete() {
-    playSound();
+    // playSound();
     setPlayState(false)
-    if (workoutState.continuous === false) {
+    if (!workoutState.continuous) {
       onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
       onCompleteContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
@@ -123,22 +123,16 @@ export default function TimerPage() {
                 <i className="fas fa-stop"></i>
               </button>
             </Link>
-            <button className="timer-buttons flow-text" onClick={() => setTimerState(initialState)}>
+            <button className="timer-buttons flow-text" onClick={() => setTimerState(initialTimerState)}>
               <i className="fas fa-redo-alt"></i>
             </button>
           </>
           :
           <>
-            {
-              playState === true ?
-                <button className="timer-buttons flow-text" id="pause" onClick={() => pauseTimer()}>
-                  <i className="fas fa-pause"></i>
-                </button>
-                :
-                <button className="timer-buttons flow-text" id="start" onClick={() => startTimer()}>
-                  <i className="fas fa-play"></i>
-                </button>
-            }
+            <button className="timer-buttons flow-text" onClick={() => playState ? pauseTimer() : startTimer()}>
+              <i className={`fas ${playState ? "fa-pause" : "fa-play"}`}></i>
+            </button>
+
             <Link to="/">
               <button className="timer-buttons flow-text" id="cancel">
                 <i className="fas fa-times"></i>
