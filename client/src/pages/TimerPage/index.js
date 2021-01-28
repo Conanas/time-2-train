@@ -23,8 +23,6 @@ export default function TimerPage() {
     COMPLETED: "white"
   }
 
-  let backgroundColor = BACKGROUND_COLORS.INITIAL;
-
   const MODES = {
     PREPARE: "Prepare",
     WORK: "Work",
@@ -53,15 +51,11 @@ export default function TimerPage() {
     return () => document.body.style.backgroundColor = BACKGROUND_COLORS.INITIAL;
   }, [])
 
-  function changeBackground(colour) {
-
-  }
-
   function startTimer() {
     if (workoutState.continuous === false) {
-      startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, backgroundColor, BACKGROUND_COLORS);
+      startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS);
     } else {
-      startTimerContinuous(timerState, setTimerState, workoutState, MODES, backgroundColor, BACKGROUND_COLORS);
+      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS);
     }
     timerRef.current.api.start();
     setPlayState(true)
@@ -75,9 +69,9 @@ export default function TimerPage() {
     play();
     setPlayState(false)
     if (workoutState.continuous === false) {
-      onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, backgroundColor, BACKGROUND_COLORS);
+      onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS);
     } else {
-      onCompleteContinuous(timerState, setTimerState, workoutState, MODES, backgroundColor, BACKGROUND_COLORS);
+      onCompleteContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS);
       startTimer();
     }
   }
