@@ -12,7 +12,7 @@ import beep2 from '../../assets/beep-1.wav';
 
 export default function TimerPage() {
 
-  const [play] = useSound(beep2);
+  const [playSound] = useSound(beep2);
 
   const BACKGROUND_COLORS = {
     INITIAL: "white",
@@ -68,7 +68,7 @@ export default function TimerPage() {
   }
 
   function onComplete() {
-    play();
+    playSound();
     setPlayState(false)
     if (workoutState.continuous === false) {
       onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
@@ -79,9 +79,13 @@ export default function TimerPage() {
   }
 
   function renderer({ minutes, seconds }) {
-    return (
-      <span id="countdown">{zeroPad(minutes)}:{zeroPad(seconds)}</span>
-    )
+    if (timerState.mode === MODES.WORK && !workoutState.continuous) {
+      return <span id="countdown">Go!</span>
+    } else if (timerState.mode === MODES.COMPLETED) {
+      return <span id="countdown">Congratulations!</span>
+    } else {
+      return <span id="countdown">{zeroPad(minutes)}:{zeroPad(seconds)}</span>
+    }
   }
 
   return (
