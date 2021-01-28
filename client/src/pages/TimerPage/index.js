@@ -65,6 +65,7 @@ export default function TimerPage() {
 
   function pauseTimer() {
     timerRef.current.api.pause();
+    setPlayState(false);
   }
 
   function onComplete() {
@@ -82,7 +83,7 @@ export default function TimerPage() {
     if (timerState.mode === MODES.WORK && !workoutState.continuous) {
       return <span id="countdown">Go!</span>
     } else if (timerState.mode === MODES.COMPLETED) {
-      return <span id="countdown">Congratulations!</span>
+      return <span id="countdown">Nice!</span>
     } else {
       return <span id="countdown">{zeroPad(minutes)}:{zeroPad(seconds)}</span>
     }
