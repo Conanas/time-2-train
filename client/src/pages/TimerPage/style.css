@@ -43,6 +43,6 @@
 }
 
 .cancel-button {
-  position: fixed;
+  position: absolute;
   right: 1em;
 }
