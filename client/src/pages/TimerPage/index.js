@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Countdown, { zeroPad } from 'react-countdown';
-import useSound from 'use-sound';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
 import { startTimerContinuous, onCompleteContinuous } from '../../utils/timer/continuous';
@@ -75,7 +74,7 @@ export default function TimerPage() {
   }, [timerState, backgroundState])
 
   function startTimer() {
-    if (timerRef.current.state.timeDelta.seconds === 3) {
+    if ([1, 2, 3].includes(timerRef.current.state.timeDelta.seconds)) {
       beep321.play();
     }
     if (!workoutState.continuous) {
