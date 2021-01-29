@@ -92,11 +92,9 @@ export default function TimerPage() {
   }
 
   function onComplete() {
-    // playSound();
-    // beep.play()
     setPlayState(false)
     if (!workoutState.continuous) {
-      onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
+      onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, beepGo, beepCompleted);
     } else {
       onCompleteContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, beepGo);
       startTimer();
