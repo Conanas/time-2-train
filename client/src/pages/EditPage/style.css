@@ -9,10 +9,6 @@
   width: 50%;
 }
 
-.workout-units {
-  width: 20%;
-}
-
 .fa-icon:hover {
   cursor: pointer;
 }
@@ -29,11 +25,6 @@
 
 .font-awesome-buttons:focus {
   background-color: transparent;
-}
-
-.form-input {
-  margin-bottom: 0 !important;
-  text-align: center;
 }
 
 .form-input:disabled {

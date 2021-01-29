@@ -50,23 +50,24 @@ export default function CreatePage() {
         </ul>
       </div>
       <div className="button-div">
-        {userState.email === null ?
-          <label className="flow-text">{MESSAGES.MUST_BE_SIGNED_IN_TO_SAVE}</label>
-          :
-          <>
-            <Link to="/timer">
-              <button className="form-button">
-                <i className="fas fa-play flow-text"></i>
+        {
+          userState.email === null ?
+            <label className="flow-text">{MESSAGES.MUST_BE_SIGNED_IN_TO_SAVE}</label>
+            :
+            <>
+              <Link to="/timer">
+                <button className="form-button">
+                  <i className="fas fa-play flow-text"></i>
+                </button>
+              </Link>
+              <button
+                className="form-button modal-trigger"
+                data-target="message-modal"
+                onClick={() => saveWorkout()}
+              >
+                <i className="fas fa-save flow-text"></i>
               </button>
-            </Link>
-            <button
-              className="form-button modal-trigger"
-              data-target="message-modal"
-              onClick={(() => saveWorkout())}
-            >
-              <i className="fas fa-save flow-text"></i>
-            </button>
-          </>
+            </>
         }
       </div>
       <MessageModal message={saveState} />

@@ -8,6 +8,39 @@ export default function InputList() {
   const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [editState] = useEditContext();
 
+  function renderWorkoutUnits(key, disable) {
+
+    if (key === "prepare" || key === 'work' || key === 'rest' || key === 'break') {
+      return (
+        <>
+          <div className="time-units">
+            <input className="form-input time-unit" value='0' />
+            :
+            <input
+              className="form-input time-unit flow-text"
+              type="number"
+              value={workoutState[key]}
+              disabled={disable === true ? true : false}
+              onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })}
+            />
+          </div>
+        </>
+      )
+    } else {
+      return (
+        <div className="workout-units">
+          <input
+            className="form-input flow-text"
+            type="number"
+            value={workoutState[key]}
+            disabled={disable === true ? true : false}
+            onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })}
+          />
+        </div>
+      )
+    }
+  }
+
   return Object.keys(workoutState).map((key, index) => {
 
     let disable = false;
@@ -34,20 +67,11 @@ export default function InputList() {
                   dispatchWorkout({ type: SET_ACTIONS[key], payload: workoutState[key] - 1 })
                 }
                 : null
-            }>
+            }
+          >
           </i>
         </button>
-        <div className="workout-units">
-          <input
-            className="form-input flow-text"
-            type="number"
-            value={workoutState[key]}
-            disabled={disable === true ? true : false}
-            onChange={(e) => {
-              dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })
-            }}
-          />
-        </div>
+        {renderWorkoutUnits(key, disable)}
         <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
           <i className="fa-icon far fa-plus-square flow-text"
             onClick={

@@ -1,0 +1,20 @@
+.workout-units {
+  width: 20%;
+}
+
+.form-input {
+  margin-bottom: 0 !important;
+  text-align: center;
+}
+
+.time-unit {
+  width: 50% !important;
+}
+
+.time-units {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
