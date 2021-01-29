@@ -6,7 +6,7 @@ import GoogleLogout from '../GoogleButtons/GoogleLogout';
 import './style.css';
 
 export default function Navbar() {
-  const [userState, dispatchUser] = useUserContext();
+  const [userState] = useUserContext();
   return (
     <>
       <nav>
