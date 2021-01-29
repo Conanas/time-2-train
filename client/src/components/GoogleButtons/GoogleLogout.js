@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { useGoogleLogout } from 'react-google-login';
 import { useUserContext } from '../../utils/UserContext';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
@@ -27,8 +28,8 @@ export default function GoogleLogout() {
   });
 
   return (
-    <button onClick={signOut} className="google-button">
+    <Link onClick={signOut} className="google-button nav-item">
       Sign out
-    </button>
+    </Link>
   );
 }

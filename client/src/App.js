@@ -7,7 +7,7 @@ import EditPage from './pages/EditPage'
 import TimerPage from './pages/TimerPage';
 import LoadPage from './pages/LoadPage/';
 import Navbar from './components/Navbar/';
-import SignInOut from './components/SignInOut/';
+import HelloUser from './components/HelloUser/';
 import Footer from './components/Footer/';
 import { WorkoutProvider } from './utils/WorkoutContext';
 import { LoadProvider } from './utils/LoadContext';
@@ -16,9 +16,7 @@ import { UserProvider } from './utils/UserContext';
 import "./App.css";
 
 export default function App() {
-
   return (
-
     <UserProvider>
       <LoadProvider>
         <WorkoutProvider>
@@ -29,8 +27,10 @@ export default function App() {
                   <Navbar />
                 </header>
                 <main className="container">
-                  <SignInOut />
-                  <div className="container main-container">
+                  <div className="row">
+                    <HelloUser />
+                  </div>
+                  <div className="row">
                     <Switch>
                       <Route exact path="/edit" component={EditPage} />
                       <Route exact path="/timer" component={TimerPage} />
@@ -47,6 +47,5 @@ export default function App() {
         </WorkoutProvider>
       </LoadProvider>
     </UserProvider>
-
   )
 }

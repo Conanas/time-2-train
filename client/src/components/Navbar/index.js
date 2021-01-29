@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useUserContext } from '../../utils/UserContext';
+import GoogleLogin from '../GoogleButtons/GoogleLogin';
+import GoogleLogout from '../GoogleButtons/GoogleLogout';
 import './style.css';
 
 export default function Navbar() {
+  const [userState, dispatchUser] = useUserContext();
   return (
     <>
       <nav>
@@ -13,6 +17,7 @@ export default function Navbar() {
             <li><Link className="nav-item" to="/">Home</Link></li>
             <li><Link className="nav-item" to="/create">Create Workout</Link></li>
             <li><Link className="nav-item" to="/load">Load Workout</Link></li>
+            <li>{userState.email === null ? <GoogleLogin /> : <GoogleLogout />}</li>
           </ul>
         </div>
       </nav>
@@ -21,6 +26,7 @@ export default function Navbar() {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/create">Create Workout</Link></li>
         <li><Link to="/load">Load Workout</Link></li>
+        <li>{userState.email === null ? <GoogleLogin /> : <GoogleLogout />}</li>
       </ul>
     </>
   )

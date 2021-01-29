@@ -15,12 +15,9 @@
   flex-direction: column;
 }
 
-.main-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+main {
   max-width: 360px !important;
   min-height: 100%;
   flex: 1;
-  padding-bottom: 2em;
+  padding-top: 1em;
 }

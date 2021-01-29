@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useGoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from '../../utils/refreshToken';
 import { useUserContext } from '../../utils/UserContext';
 import { SET_ACTIONS } from '../../utils/actions';
 import API from '../../utils/API';
-import './style.css';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -46,9 +46,8 @@ export default function GoogleLogin() {
   });
 
   return (
-    <button onClick={signIn} className="google-button">
-      <i className="fab fa-google-plus-g"></i>
-      <span>&nbsp;Sign in</span>
-    </button>
+    <Link onClick={signIn} className="google-button nav-item">
+      Sign in
+    </Link>
   );
 }
