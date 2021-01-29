@@ -15,6 +15,7 @@ export default function Navbar() {
           <a data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="left hide-on-med-and-down">
             <li><Link className="nav-item" to="/">Home</Link></li>
+            <li><Link className="nav-item" to="/timer">Timer</Link></li>
             <li><Link className="nav-item" to="/create">Create Workout</Link></li>
             <li><Link className="nav-item" to="/load">Load Workout</Link></li>
             <li>{userState.email === null ? <GoogleLogin /> : <GoogleLogout />}</li>
@@ -24,6 +25,7 @@ export default function Navbar() {
 
       <ul className="sidenav" id="mobile-demo">
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/timer">Timer</Link></li>
         <li><Link to="/create">Create Workout</Link></li>
         <li><Link to="/load">Load Workout</Link></li>
         <li>{userState.email === null ? <GoogleLogin /> : <GoogleLogout />}</li>
