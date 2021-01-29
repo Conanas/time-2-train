@@ -16,8 +16,8 @@ export default function TimerPage() {
 
   const BACKGROUND_COLORS = {
     INITIAL: "white",
-    PREPARE: "yellow",
-    WORK: "green",
+    PREPARE: "white",
+    WORK: "white",
     REST: "red",
     BREAK: "blue",
     COMPLETED: "white"
@@ -36,10 +36,10 @@ export default function TimerPage() {
   const [workoutState] = useWorkoutContext();
 
   const initialTimerState = {
-    rep: 1,
-    set: 1,
     mode: MODES.PREPARE,
-    countdown: workoutState.prepare
+    countdown: workoutState.prepare,
+    rep: 0,
+    set: 0
   }
 
   const [timerState, setTimerState] = useState(initialTimerState);

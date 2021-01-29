@@ -21,6 +21,10 @@ module.exports = {
         setBackground(BACKGROUND_COLORS.BREAK)
         setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
       }
+      // else if (timerState.rep === 1 && timerState.set === 1) {
+      //   console.log("Here")
+      //   setBackground(BACKGROUND_COLORS.WORK)
+      // }
       // else {
       //   setBackground(BACKGROUND_COLORS.WORK)
       //   setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
@@ -38,6 +42,7 @@ module.exports = {
       setBackground(BACKGROUND_COLORS.WORK)
       setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
     }
+    console.log(timerState)
   },
 
   onCompleteContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground) => {
@@ -45,11 +50,23 @@ module.exports = {
       // go to work mode after prepare - first rep
       console.log(6)
       setBackground(BACKGROUND_COLORS.WORK)
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
+      document.body.style.backgroundColor = BACKGROUND_COLORS.WORK;
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set + 1 })
     }
     // else if (timerState.mode) {
 
     // }
+
+    // if (timerState.mode === MODES.REST) {
+    //   if (timerState.rep === workoutState.reps - 1 && timerState.set === workoutState.sets) {
+    //     document.body.style.backgroundColor = BACKGROUND_COLORS.COMPLETED;
+    //     setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep + 1, set: timerState.set })
+    //   } else {
+    //     document.body.style.backgroundColor = BACKGROUND_COLORS.WORK;
+    //     setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
+    //   }
+    // }
+
     else if (timerState.mode === MODES.BREAK) {
       // go to work mode after break
       console.log(7)
