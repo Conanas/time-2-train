@@ -75,6 +75,9 @@ export default function TimerPage() {
   }, [timerState, backgroundState])
 
   function startTimer() {
+    if (timerRef.current.state.timeDelta.seconds === 3) {
+      beep321.play();
+    }
     if (!workoutState.continuous) {
       startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
@@ -112,7 +115,6 @@ export default function TimerPage() {
   }
 
   function onTick() {
-    console.log(timerRef.current.state.timeDelta.seconds)
     if ([1, 2, 3].includes(timerRef.current.state.timeDelta.seconds)) {
       beep321.play()
     }
