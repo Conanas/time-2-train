@@ -34,6 +34,9 @@ const reducer = (state, action) => {
         _id: action.payload
       }
     case SET_ACTIONS.title:
+      if (action.payload.length > 24) {
+        return state
+      }
       return {
         ...state,
         title: action.payload
