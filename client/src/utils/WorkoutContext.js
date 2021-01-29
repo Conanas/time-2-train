@@ -15,6 +15,7 @@ const DEFAULT_STATE = {
 }
 
 const reducer = (state, action) => {
+  let seconds = 0;
   switch (action.type) {
     case SET_ACTIONS.workout:
       return {
@@ -64,6 +65,12 @@ const reducer = (state, action) => {
         ...state,
         prepare: action.payload
       }
+    case SET_ACTIONS.prepareMinutes:
+      seconds = action.payload * 60;
+      return {
+        ...state,
+        prepare: state.prepare + seconds
+      }
     case SET_ACTIONS.reps:
       if (state.reps + action.payload <= 1 || action.payload === "") {
         return {
@@ -86,6 +93,12 @@ const reducer = (state, action) => {
         ...state,
         work: action.payload
       }
+    case SET_ACTIONS.workMinutes:
+      seconds = action.payload * 60;
+      return {
+        ...state,
+        work: state.work + seconds
+      }
     case SET_ACTIONS.rest:
       if (state.rest + action.payload < 0 || action.payload === "") {
         return {
@@ -96,6 +109,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         rest: action.payload
+      }
+    case SET_ACTIONS.restMinutes:
+      seconds = action.payload * 60;
+      return {
+        ...state,
+        rest: state.rest + seconds
       }
     case SET_ACTIONS.sets:
       if (state.sets + action.payload <= 1 || action.payload === "") {
@@ -118,6 +137,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         break: action.payload
+      }
+    case SET_ACTIONS.breakMinutes:
+      seconds = action.payload * 60;
+      return {
+        ...state,
+        break: state.break + seconds
       }
     case SET_ACTIONS.reset:
       return DEFAULT_STATE

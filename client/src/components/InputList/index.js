@@ -8,18 +8,35 @@ export default function InputList() {
   const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [editState] = useEditContext();
 
-  function renderWorkoutUnits(key, disable) {
+  function getMinutes(seconds) {
+    return Math.floor(seconds / 60);
+  }
 
+  function getSeconds(seconds) {
+    let remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+      return '0' + remainingSeconds
+    }
+    return remainingSeconds;
+  }
+
+  function renderWorkoutUnits(key, disable) {
     if (key === "prepare" || key === 'work' || key === 'rest' || key === 'break') {
+      let minutes = getMinutes(workoutState[key])
+      let seconds = getSeconds(workoutState[key])
       return (
         <>
           <div className="time-units">
-            <input className="form-input time-unit" value='0' />
+            <input className="form-input time-unit flow-text" value={minutes}
+              type="number"
+              disabled={disable === true ? true : false}
+              onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: e.target.value })}
+            />
             :
             <input
               className="form-input time-unit flow-text"
               type="number"
-              value={workoutState[key]}
+              value={seconds}
               disabled={disable === true ? true : false}
               onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })}
             />
