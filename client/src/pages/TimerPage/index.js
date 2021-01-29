@@ -11,6 +11,7 @@ import './style.css';
 import beep321Import from '../../assets/beep321.wav';
 import beepGoImport from '../../assets/beepGo.mp3';
 import beepBreakImport from '../../assets/beepBreak.wav';
+import beepCompletedImport from '../../assets/beepCompleted.wav';
 
 export default function TimerPage() {
 
@@ -32,6 +33,7 @@ export default function TimerPage() {
   let beep321 = new sound(beep321Import);
   let beepGo = new sound(beepGoImport);
   let beepBreak = new sound(beepBreakImport);
+  let beepCompleted = new sound(beepCompletedImport);
 
   const BACKGROUND_COLORS = {
     INITIAL: "white",
@@ -76,7 +78,7 @@ export default function TimerPage() {
     if (!workoutState.continuous) {
       startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
-      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo, beepBreak);
+      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo, beepBreak, beepCompleted);
     }
     timerRef.current.api.start();
     setPlayState(true)

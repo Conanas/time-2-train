@@ -1,5 +1,5 @@
 module.exports = {
-  startTimerContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo, beepBreak) => {
+  startTimerContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo, beepBreak, beepCompleted) => {
     if (timerState.mode === MODES.PREPARE) {
       // set background color for prepare mode
       // console.log(1)
@@ -10,6 +10,7 @@ module.exports = {
       if (timerState.rep === workoutState.reps && timerState.set === workoutState.sets) {
         // if on last rep of last set then finish
         // console.log(2)
+        beepCompleted.play();
         setBackground(BACKGROUND_COLORS.COMPLETED)
         setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep, set: timerState.set })
         timerRef.current.api.stop();
