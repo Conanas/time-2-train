@@ -41,3 +41,8 @@
 .timer-buttons:hover {
   cursor: pointer;
 }
+
+.cancel-button {
+  position: fixed;
+  right: 1em;
+}

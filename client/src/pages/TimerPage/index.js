@@ -93,9 +93,12 @@ export default function TimerPage() {
     <>
       <div className="timer-labels-div">
         <label className="flow-text title-label"><span>{workoutState.title}</span></label>
-        {workoutState.continuous ?
-          <label className="flow-text reps-sets-labels">Continuous</label>
-          : null}
+        {
+          workoutState.continuous ?
+            <label className="flow-text reps-sets-labels">Continuous</label>
+            :
+            null
+        }
         <label className="flow-text reps-sets-labels">
           Rep: <span id="reps-left">{timerState.rep}/{workoutState.reps}</span>
         </label>
@@ -116,29 +119,29 @@ export default function TimerPage() {
         </label>
       </div>
       <div className="timer-button-div">
-        {timerState.mode === MODES.COMPLETED ?
-          <>
-            <Link to="/">
-              <button className="timer-buttons flow-text">
-                <i className="fas fa-stop"></i>
+        {
+          timerState.mode === MODES.COMPLETED ?
+            <>
+              <Link to="/">
+                <button className="timer-buttons flow-text">
+                  <i className="fas fa-stop"></i>
+                </button>
+              </Link>
+              <button className="timer-buttons flow-text" onClick={() => setTimerState(initialTimerState)}>
+                <i className="fas fa-redo-alt"></i>
               </button>
-            </Link>
-            <button className="timer-buttons flow-text" onClick={() => setTimerState(initialTimerState)}>
-              <i className="fas fa-redo-alt"></i>
-            </button>
-          </>
-          :
-          <>
-            <button className="timer-buttons flow-text" onClick={() => playState ? pauseTimer() : startTimer()}>
-              <i className={`fas ${playState ? "fa-pause" : "fa-play"}`}></i>
-            </button>
-
-            <Link to="/">
-              <button className="timer-buttons flow-text" id="cancel">
-                <i className="fas fa-times"></i>
+            </>
+            :
+            <>
+              <button className="timer-buttons flow-text" onClick={() => playState ? pauseTimer() : startTimer()}>
+                <i className={`fas ${playState ? "fa-pause" : "fa-play"}`}></i>
               </button>
-            </Link >
-          </>
+              <Link to="/" className="cancel-button">
+                <button className="timer-buttons flow-text" id="cancel">
+                  <i className="fas fa-times"></i>
+                </button>
+              </Link >
+            </>
         }
       </div >
     </>
