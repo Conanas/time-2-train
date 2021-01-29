@@ -1,5 +1,5 @@
 module.exports = {
-  startTimerContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, setPlayState) => {
+  startTimerContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo) => {
     if (timerState.mode === MODES.PREPARE) {
       // set background color for prepare mode
       // console.log(1)
@@ -32,6 +32,7 @@ module.exports = {
       else {
         // go to rest mode
         // console.log(4)
+        beepGo.play();
         setBackground(BACKGROUND_COLORS.REST)
         setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
       }
@@ -39,15 +40,17 @@ module.exports = {
     else if (timerState.mode === MODES.REST && playState) {
       // if in rest mode go to work mode
       // console.log(5)
+      beepGo.play();
       setBackground(BACKGROUND_COLORS.WORK)
       setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
     }
   },
 
-  onCompleteContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground) => {
+  onCompleteContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, beepGo) => {
     if (timerState.mode === MODES.PREPARE) {
       // go to work mode after prepare - first rep
       // console.log(6)
+      beepGo.play();
       setBackground(BACKGROUND_COLORS.WORK)
       document.body.style.backgroundColor = BACKGROUND_COLORS.WORK;
       setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set + 1 })
@@ -69,6 +72,7 @@ module.exports = {
     else if (timerState.mode === MODES.BREAK) {
       // go to work mode after break
       // console.log(7)
+      beepGo.play();
       setBackground(BACKGROUND_COLORS.WORK)
       setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: 1, set: timerState.set + 1 })
     }

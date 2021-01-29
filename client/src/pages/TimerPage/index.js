@@ -8,11 +8,28 @@ import { startTimerContinuous, onCompleteContinuous } from '../../utils/timer/co
 import { startTimerNonContinuous, onCompleteNonContinuous } from '../../utils/timer/nonContinuous';
 import './style.css';
 
-import beep2 from '../../assets/beep-1.wav';
+import beep321Import from '../../assets/beep321.wav';
+import beepGoImport from '../../assets/beepGo.mp3';
 
 export default function TimerPage() {
 
-  const [playSound] = useSound(beep2);
+  function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function () {
+      this.sound.play();
+    }
+    this.stop = function () {
+      this.sound.pause();
+    }
+  }
+
+  let beep321 = new sound(beep321Import);
+  let beepGo = new sound(beepGoImport);
 
   const BACKGROUND_COLORS = {
     INITIAL: "white",
@@ -57,7 +74,7 @@ export default function TimerPage() {
     if (!workoutState.continuous) {
       startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
-      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, setPlayState);
+      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo);
     }
     timerRef.current.api.start();
     setPlayState(true)
@@ -66,19 +83,16 @@ export default function TimerPage() {
   function pauseTimer() {
     timerRef.current.api.pause();
     setPlayState(false);
-    console.log(timerState)
-    if (timerState.mode === MODES.WORK) {
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
-    }
   }
 
   function onComplete() {
     // playSound();
+    // beep.play()
     setPlayState(false)
     if (!workoutState.continuous) {
       onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
-      onCompleteContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
+      onCompleteContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, beepGo);
       startTimer();
     }
   }
@@ -90,6 +104,13 @@ export default function TimerPage() {
       return <span id="countdown">Nice!</span>
     } else {
       return <span id="countdown">{zeroPad(minutes)}:{zeroPad(seconds)}</span>
+    }
+  }
+
+  function onTick() {
+    console.log(timerRef.current.state.timeDelta.seconds)
+    if ([1, 2, 3].includes(timerRef.current.state.timeDelta.seconds)) {
+      beep321.play()
     }
   }
 
@@ -124,6 +145,7 @@ export default function TimerPage() {
             date={Date.now() + timerState.countdown * 1000}
             renderer={renderer}
             onComplete={() => onComplete()}
+            onTick={() => onTick()}
           />
         </label>
       </div>
