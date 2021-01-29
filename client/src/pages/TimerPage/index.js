@@ -57,7 +57,7 @@ export default function TimerPage() {
     if (!workoutState.continuous) {
       startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
     } else {
-      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef);
+      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, setPlayState);
     }
     timerRef.current.api.start();
     setPlayState(true)
@@ -66,6 +66,10 @@ export default function TimerPage() {
   function pauseTimer() {
     timerRef.current.api.pause();
     setPlayState(false);
+    console.log(timerState)
+    if (timerState.mode === MODES.WORK) {
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
+    }
   }
 
   function onComplete() {
@@ -87,6 +91,11 @@ export default function TimerPage() {
     } else {
       return <span id="countdown">{zeroPad(minutes)}:{zeroPad(seconds)}</span>
     }
+  }
+
+  function resetTimer() {
+    setTimerState(initialTimerState);
+    setPlayState(false)
   }
 
   return (
@@ -127,7 +136,7 @@ export default function TimerPage() {
                   <i className="fas fa-stop"></i>
                 </button>
               </Link>
-              <button className="timer-buttons flow-text" onClick={() => setTimerState(initialTimerState)}>
+              <button className="timer-buttons flow-text" onClick={() => resetTimer()}>
                 <i className="fas fa-redo-alt"></i>
               </button>
             </>
