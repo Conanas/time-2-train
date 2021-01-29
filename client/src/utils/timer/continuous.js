@@ -1,5 +1,5 @@
 module.exports = {
-  startTimerContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo) => {
+  startTimerContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo, beepBreak) => {
     if (timerState.mode === MODES.PREPARE) {
       // set background color for prepare mode
       // console.log(1)
@@ -18,6 +18,7 @@ module.exports = {
         // if on last rep of set go to break
 
         // console.log(3)
+        beepBreak.play();
         setBackground(BACKGROUND_COLORS.BREAK)
         setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
       }
