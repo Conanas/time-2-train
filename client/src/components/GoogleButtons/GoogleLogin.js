@@ -46,7 +46,7 @@ export default function GoogleLogin() {
   });
 
   return (
-    <Link onClick={signIn} className="google-button nav-item">
+    <Link to="" onClick={signIn} className="google-button nav-item">
       Sign in
     </Link>
   );

@@ -28,7 +28,7 @@ export default function GoogleLogout() {
   });
 
   return (
-    <Link onClick={signOut} className="google-button nav-item">
+    <Link to="" onClick={signOut} className="google-button nav-item">
       Sign out
     </Link>
   );
