@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Countdown, { zeroPad } from 'react-countdown';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { useWorkoutContext } from '../../utils/WorkoutContext';
-import { useUserContext } from '../../utils/UserContext';
+import { useWorkoutContext } from '../../utils/contexts/WorkoutContext';
+import { useUserContext } from '../../utils/contexts/UserContext';
 import { startTimerContinuous, onCompleteContinuous } from '../../utils/timer/continuous';
 import { startTimerNonContinuous, onCompleteNonContinuous } from '../../utils/timer/nonContinuous';
 import './style.css';
@@ -13,7 +13,7 @@ import beepGoImport from '../../assets/beepGo.mp3';
 import beepBreakImport from '../../assets/beepBreak.wav';
 import beepCompletedImport from '../../assets/beepCompleted.wav';
 import API from '../../utils/API';
-import { SET_ACTIONS } from '../../utils/actions';
+import { SET_ACTIONS } from '../../utils/contexts/actions';
 
 export default function TimerPage() {
 

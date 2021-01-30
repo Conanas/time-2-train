@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
 import UpdateModal from '../../components/Modals/UpdateModal';
-import { useEditContext } from '../../utils/EditContext';
-import { useUserContext } from '../../utils/UserContext';
-import { EDIT, START } from '../../utils/actions';
+import { useEditContext } from '../../utils/contexts/EditContext';
+import { useUserContext } from '../../utils/contexts/UserContext';
+import { EDIT, START } from '../../utils/contexts/actions';
 import './style.css';
 
 export default function EditPage() {

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import M from "materialize-css";
-import { MESSAGES, BUTTONS } from '../../../utils/actions';
+import { MESSAGES, BUTTONS } from '../../../utils/contexts/actions';
 
 export default function DeleteModal({ getWorkouts, deleteWorkout, workoutId }) {
   const modalRef = useRef();

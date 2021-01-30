@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useUserContext } from '../../utils/UserContext';
+import { useUserContext } from '../../utils/contexts/UserContext';
 import GoogleLogin from '../GoogleButtons/GoogleLogin';
 import GoogleLogout from '../GoogleButtons/GoogleLogout';
 import './style.css';

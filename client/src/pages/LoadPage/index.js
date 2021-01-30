@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { useLoadContext } from '../../utils/LoadContext';
-import { useWorkoutContext } from '../../utils/WorkoutContext';
-import { useUserContext } from '../../utils/UserContext';
-import { MESSAGES, SET_ACTIONS } from '../../utils/actions';
+import { useLoadContext } from '../../utils/contexts/LoadContext';
+import { useWorkoutContext } from '../../utils/contexts/WorkoutContext';
+import { useUserContext } from '../../utils/contexts/UserContext';
+import { MESSAGES, SET_ACTIONS } from '../../utils/contexts/actions';
 import API from '../../utils/API';
 import LoadModal from '../../components/Modals/LoadModal/';
 import DeleteModal from '../../components/Modals/DeleteModal/';

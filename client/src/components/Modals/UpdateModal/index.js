@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { MESSAGES, BUTTONS } from '../../../utils/actions';
-import { useWorkoutContext } from '../../../utils/WorkoutContext';
-import { useEditContext } from '../../../utils/EditContext';
-import { START } from '../../../utils/actions';
+import { MESSAGES, BUTTONS, START } from '../../../utils/contexts/actions';
+import { useWorkoutContext } from '../../../utils/contexts/WorkoutContext';
+import { useEditContext } from '../../../utils/contexts/EditContext';
 import API from '../../../utils/API';
 
 export default function UpdateModal() {

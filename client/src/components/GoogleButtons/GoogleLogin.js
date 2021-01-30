@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from '../../utils/refreshToken';
-import { useUserContext } from '../../utils/UserContext';
-import { SET_ACTIONS } from '../../utils/actions';
+import { useUserContext } from '../../utils/contexts/UserContext';
+import { SET_ACTIONS } from '../../utils/contexts/actions';
 import API from '../../utils/API';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;

@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import M from "materialize-css";
-import { BUTTONS } from '../../../utils/actions';
-import { useWorkoutContext } from '../../../utils/WorkoutContext';
-import { SET_ACTIONS } from '../../../utils/actions';
+import { useWorkoutContext } from '../../../utils/contexts/WorkoutContext';
+import { SET_ACTIONS, BUTTONS } from '../../../utils/contexts/actions';
 import './style.css';
 
 export default function LoadModal({ workout }) {

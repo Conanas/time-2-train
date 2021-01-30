@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { BUTTONS } from '../../../utils/actions';
+import { BUTTONS } from '../../../utils/contexts/actions';
 
 export default function MessageModal({ message }) {
 

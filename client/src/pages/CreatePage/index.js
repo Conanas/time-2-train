@@ -4,10 +4,10 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
 import MessageModal from '../../components/Modals/MessageModal/';
 import API from '../../utils/API';
-import { useWorkoutContext } from "../../utils/WorkoutContext";
-import { useEditContext } from '../../utils/EditContext';
-import { useUserContext } from '../../utils/UserContext';
-import { EDIT, MESSAGES, SET_ACTIONS } from '../../utils/actions';
+import { useWorkoutContext } from "../../utils/contexts/WorkoutContext";
+import { useEditContext } from '../../utils/contexts/EditContext';
+import { useUserContext } from '../../utils/contexts/UserContext';
+import { EDIT, MESSAGES, SET_ACTIONS } from '../../utils/contexts/actions';
 import './style.css';
 
 export default function CreatePage() {

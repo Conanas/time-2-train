@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUserContext } from '../../utils/UserContext';
+import { useUserContext } from '../../utils/contexts/UserContext';
 import './style.css';
 
 export default function HelloUser() {

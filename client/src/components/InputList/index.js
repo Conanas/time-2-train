@@ -1,7 +1,7 @@
 import React from 'react';
-import { useWorkoutContext } from '../../utils/WorkoutContext';
-import { useEditContext } from '../../utils/EditContext';
-import { SET_ACTIONS, START } from '../../utils/actions';
+import { useWorkoutContext } from '../../utils/contexts/WorkoutContext';
+import { useEditContext } from '../../utils/contexts/EditContext';
+import { SET_ACTIONS, START } from '../../utils/contexts/actions';
 import './style.css';
 
 export default function InputList() {
