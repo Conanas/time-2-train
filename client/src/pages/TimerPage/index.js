@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Countdown, { zeroPad } from 'react-countdown';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { useWorkoutContext } from '../../utils/WorkoutContext';
+import { useUserContext } from '../../utils/UserContext';
 import { startTimerContinuous, onCompleteContinuous } from '../../utils/timer/continuous';
 import { startTimerNonContinuous, onCompleteNonContinuous } from '../../utils/timer/nonContinuous';
 import './style.css';
@@ -11,6 +12,8 @@ import beep321Import from '../../assets/beep321.wav';
 import beepGoImport from '../../assets/beepGo.mp3';
 import beepBreakImport from '../../assets/beepBreak.wav';
 import beepCompletedImport from '../../assets/beepCompleted.wav';
+import API from '../../utils/API';
+import { SET_ACTIONS } from '../../utils/actions';
 
 export default function TimerPage() {
 
@@ -53,7 +56,8 @@ export default function TimerPage() {
 
   const timerRef = useRef();
 
-  const [workoutState] = useWorkoutContext();
+  const [workoutState, dispatchWorkout] = useWorkoutContext();
+  const [userState] = useUserContext();
 
   const initialTimerState = {
     mode: MODES.PREPARE,
@@ -70,8 +74,13 @@ export default function TimerPage() {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
     document.body.style.backgroundColor = backgroundState;
+    if (!workoutState._id && userState.email) {
+      API.getWorkout(localStorage.getItem('workoutId'))
+        .then(res => dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data }))
+        .catch(err => console.log(err))
+    }
     return () => document.body.style.backgroundColor = BACKGROUND_COLORS.INITIAL;
-  }, [timerState, backgroundState])
+  }, [timerState, backgroundState, workoutState, userState])
 
   function startTimer() {
     if ([1, 2, 3].includes(timerRef.current.state.timeDelta.seconds)) {

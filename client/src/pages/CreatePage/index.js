@@ -7,19 +7,20 @@ import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/WorkoutContext";
 import { useEditContext } from '../../utils/EditContext';
 import { useUserContext } from '../../utils/UserContext';
-import { EDIT, MESSAGES } from '../../utils/actions';
+import { EDIT, MESSAGES, SET_ACTIONS } from '../../utils/actions';
 import './style.css';
 
 export default function CreatePage() {
   const [saveState, setSaveState] = useState();
   const [, dispatchEditState] = useEditContext();
-  const [workoutState] = useWorkoutContext();
+  const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [userState] = useUserContext();
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
     dispatchEditState({ type: EDIT })
+    dispatchWorkout({ type: SET_ACTIONS.reset })
   }, [])
 
   async function saveWorkout() {
@@ -34,6 +35,7 @@ export default function CreatePage() {
           let createdWorkout = await API.postWorkout(userState._id, workoutState);
           await API.putUser(userState._id, createdWorkout);
           setSaveState(MESSAGES.WORKOUT_SAVED);
+          localStorage.setItem("workoutId", createdWorkout.data._id)
         }
       }
     } catch (error) {
