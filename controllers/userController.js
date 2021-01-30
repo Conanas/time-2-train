@@ -20,7 +20,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   deleteWorkout: function (req, res) {
-    console.log(req.params)
     db.User
       .updateOne({ _id: req.params.userId }, { $pull: { workouts: req.params.workoutId } })
       .then(dbModel => res.json(dbModel))
