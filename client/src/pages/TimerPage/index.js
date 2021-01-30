@@ -58,8 +58,8 @@ export default function TimerPage() {
   const initialTimerState = {
     mode: MODES.PREPARE,
     countdown: workoutState.prepare,
-    rep: 0,
-    set: 0
+    rep: 1,
+    set: 1
   }
 
   const [timerState, setTimerState] = useState(initialTimerState);

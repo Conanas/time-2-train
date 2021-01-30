@@ -40,7 +40,7 @@ module.exports = {
       beepGo.play();
       setBackground(BACKGROUND_COLORS.WORK)
       document.body.style.backgroundColor = BACKGROUND_COLORS.WORK;
-      setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set + 1 })
+      setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
     }
     else if (timerState.mode === MODES.BREAK) {
       // go to work mode after break
