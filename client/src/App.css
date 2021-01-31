@@ -1,13 +1,11 @@
 :root {
   --primary: #2d5986;
-  /* --primary: #ee6e73; */
   --primary-light: #ff9fa2;
   --primary-dark: #b73d48;
   --on-primary: white;
   --on-primary-light: white;
   --on-primary-dark: white;
   --background: #efeff5;
-  /* --background: white; */
   --on-background: black;
   --grey: #9e9e9e;
 }

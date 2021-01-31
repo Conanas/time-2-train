@@ -53,8 +53,3 @@
 .timer-buttons:hover {
   cursor: pointer;
 }
-
-.cancel-button {
-  position: absolute;
-  right: 1em;
-}
