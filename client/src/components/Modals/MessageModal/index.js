@@ -28,7 +28,7 @@ export default function MessageModal({ message }) {
         <h4 className="flow-text">{message}</h4>
       </div>
       <div className="modal-footer">
-        <button className="modal-close waves-effect waves-green btn-flat">{BUTTONS.CONFIRM}</button>
+        <button className="modal-close btn-flat">{BUTTONS.CONFIRM}</button>
       </div>
     </div>
   )

@@ -52,13 +52,13 @@ export default function LoadModal({ workout }) {
         </ul>
       </div>
       <div className="modal-footer">
-        <button className="modal-close waves-effect waves-green btn-flat">{BUTTONS.CANCEL}</button>
+        <button className="modal-close btn-flat">{BUTTONS.CANCEL}</button>
         <Link to="/timer" onClick={() => {
           dispatchWorkout({ type: SET_ACTIONS.workout, payload: workout })
           localStorage.setItem("workoutId", workout._id)
         }
         }>
-          <button className="modal-close waves-effect waves-green btn-flat">
+          <button className="modal-close btn-flat">
             {BUTTONS.LOAD}
           </button>
         </Link>

@@ -41,8 +41,8 @@ export default function UpdateModal() {
         <label>{MESSAGES.OVERWRITE}</label>
       </div>
       <div className="modal-footer">
-        <button className="modal-close waves-effect waves-green btn-flat">{BUTTONS.CANCEL}</button>
-        <button className="modal-close waves-effect waves-green btn-flat" onClick={() => updateWorkout()}>{BUTTONS.CONFIRM}</button>
+        <button className="modal-close btn-flat">{BUTTONS.CANCEL}</button>
+        <button className="modal-close btn-flat" onClick={() => updateWorkout()}>{BUTTONS.CONFIRM}</button>
       </div>
     </div >
   )
