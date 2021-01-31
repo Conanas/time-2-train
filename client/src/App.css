@@ -7,7 +7,7 @@
   --on-primary-dark: white;
   --background: #efeff5;
   --on-background: black;
-  --grey: #9e9e9e;
+  --grey: #595959;
 }
 
 .wrapper {
@@ -23,4 +23,8 @@ main {
   min-height: 100%;
   flex: 1;
   padding-top: 1em;
+}
+
+label {
+  color: black
 }
