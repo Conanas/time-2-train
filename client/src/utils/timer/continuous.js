@@ -1,6 +1,6 @@
 const { BACKGROUND_COLORS } = require('./backgroundColors');
 const { MODES } = require('./modes');
-const { BEEP_321,
+const {
   BEEP_GO,
   BEEP_BREAK,
   BEEP_COMPLETED } = require('./sounds/');
