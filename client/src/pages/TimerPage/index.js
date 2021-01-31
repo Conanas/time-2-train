@@ -38,12 +38,12 @@ export default function TimerPage() {
   let beepCompleted = new sound(beepCompletedImport);
 
   const BACKGROUND_COLORS = {
-    INITIAL: "white",
-    PREPARE: "white",
-    WORK: "white",
+    INITIAL: "#efeff5",
+    PREPARE: "#efeff5",
+    WORK: "#efeff5",
     REST: "red",
     BREAK: "blue",
-    COMPLETED: "white"
+    COMPLETED: "#efeff5"
   }
 
   const MODES = {
@@ -73,13 +73,13 @@ export default function TimerPage() {
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
-    document.body.style.backgroundColor = backgroundState;
+    document.getElementsByClassName("wrapper")[0].style.backgroundColor = backgroundState;
     if (!workoutState._id && userState.email) {
       API.getWorkout(localStorage.getItem('workoutId'))
         .then(res => dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data }))
         .catch(err => console.log(err))
     }
-    return () => document.body.style.backgroundColor = BACKGROUND_COLORS.INITIAL;
+    return () => document.getElementsByClassName("wrapper")[0].style.backgroundColor = BACKGROUND_COLORS.INITIAL;
   }, [timerState, backgroundState, workoutState, userState])
 
   function startTimer() {
@@ -179,11 +179,11 @@ export default function TimerPage() {
               <button className="timer-buttons flow-text" onClick={() => playState ? pauseTimer() : startTimer()}>
                 <i className={`fas ${playState ? "fa-pause" : "fa-play"}`}></i>
               </button>
-              <Link to="/" className="cancel-button">
+              {/* <Link to="/" className="cancel-button">
                 <button className="timer-buttons flow-text" id="cancel">
                   <i className="fas fa-times"></i>
                 </button>
-              </Link >
+              </Link > */}
             </>
         }
       </div >

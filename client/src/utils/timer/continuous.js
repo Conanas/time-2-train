@@ -1,15 +1,10 @@
 module.exports = {
   startTimerContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo, beepBreak, beepCompleted) => {
-    if (timerState.mode === MODES.PREPARE) {
-      // set background color for prepare mode
-      setBackground(BACKGROUND_COLORS.PREPARE)
-    }
-    else if (timerState.mode === MODES.WORK && playState) {
+    if (timerState.mode === MODES.WORK && playState) {
       // in work mode
       if (timerState.rep === workoutState.reps && timerState.set === workoutState.sets) {
         // if on last rep of last set then finish
         beepCompleted.play();
-        setBackground(BACKGROUND_COLORS.COMPLETED)
         setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep, set: timerState.set })
         timerRef.current.api.stop();
       }
@@ -22,7 +17,6 @@ module.exports = {
       else {
         // go to rest mode
         beepGo.play();
-        setBackground(BACKGROUND_COLORS.REST)
         setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
       }
     }
@@ -38,8 +32,6 @@ module.exports = {
     if (timerState.mode === MODES.PREPARE) {
       // go to work mode after prepare - first rep
       beepGo.play();
-      setBackground(BACKGROUND_COLORS.WORK)
-      document.body.style.backgroundColor = BACKGROUND_COLORS.WORK;
       setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep, set: timerState.set })
     }
     else if (timerState.mode === MODES.BREAK) {
