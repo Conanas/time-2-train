@@ -1,0 +1,12 @@
+nav {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+.brand-logo {
+  font-weight: 200 !important;
+}
+
+.material-icons {
+  color: var(--background)
+}

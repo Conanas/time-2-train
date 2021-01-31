@@ -12,7 +12,6 @@ export default function HomePage() {
 
   return (
     <>
-      <h4>Welcome to Time-2-Train</h4>
       <div className='welcome-buttons-div'>
         <Link to="/create">
           <button className='welcome-button flow-text'>

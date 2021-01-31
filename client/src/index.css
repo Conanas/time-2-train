@@ -1,5 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  /* font-family: 'Abel', sans-serif; */
+  font-family: 'Assistant', sans-serif;
 }
+
+/* label {
+  font-family: 'Abel', sans-serif !important;
+} */

@@ -1,3 +1,10 @@
+.timer-page-div {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .timer-labels-div {
   display: flex;
   flex-direction: column;
@@ -6,14 +13,19 @@
 
 .title-label {
   font-size: 2em;
+  font-weight: bold;
 }
 
 .reps-sets-labels {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 #stage {
   font-size: 3em;
+}
+
+.countdown-render {
+  /* margin-bottom: 3em; */
 }
 
 #countdown {
@@ -28,7 +40,7 @@
 .timer-buttons {
   background-color: var(--primary);
   color: var(--on-primary);
-  padding: 0.5em 1em;
+  padding: 1em 2em;
   border: none;
   border-radius: 0.5em;
 }
