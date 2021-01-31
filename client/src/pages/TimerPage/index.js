@@ -6,53 +6,15 @@ import { useWorkoutContext } from '../../utils/contexts/WorkoutContext';
 import { useUserContext } from '../../utils/contexts/UserContext';
 import { startTimerContinuous, onCompleteContinuous } from '../../utils/timer/continuous';
 import { startTimerNonContinuous, onCompleteNonContinuous } from '../../utils/timer/nonContinuous';
+import { BEEP_321 } from '../../utils/timer/sounds/';
+import { BACKGROUND_COLORS } from '../../utils/timer/backgroundColors';
+import { MODES } from '../../utils/timer/modes';
 import './style.css';
 
-import beep321Import from '../../assets/beep321.wav';
-import beepGoImport from '../../assets/beepGo.mp3';
-import beepBreakImport from '../../assets/beepBreak.wav';
-import beepCompletedImport from '../../assets/beepCompleted.wav';
 import API from '../../utils/API';
 import { SET_ACTIONS } from '../../utils/contexts/actions';
 
 export default function TimerPage() {
-
-  function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function () {
-      this.sound.play();
-    }
-    this.stop = function () {
-      this.sound.pause();
-    }
-  }
-
-  let beep321 = new sound(beep321Import);
-  let beepGo = new sound(beepGoImport);
-  let beepBreak = new sound(beepBreakImport);
-  let beepCompleted = new sound(beepCompletedImport);
-
-  const BACKGROUND_COLORS = {
-    INITIAL: "#efeff5",
-    PREPARE: "#efeff5",
-    WORK: "#efeff5",
-    REST: "red",
-    BREAK: "blue",
-    COMPLETED: "#efeff5"
-  }
-
-  const MODES = {
-    PREPARE: "Prepare",
-    WORK: "Work",
-    REST: "Rest",
-    BREAK: "Break",
-    COMPLETED: "Completed"
-  }
 
   const timerRef = useRef();
 
@@ -84,12 +46,12 @@ export default function TimerPage() {
 
   function startTimer() {
     if ([1, 2, 3].includes(timerRef.current.state.timeDelta.seconds)) {
-      beep321.play();
+      BEEP_321.play();
     }
     if (!workoutState.continuous) {
-      startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, beepBreak);
+      startTimerNonContinuous(timerState, setTimerState, workoutState, setBackground);
     } else {
-      startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo, beepBreak, beepCompleted);
+      startTimerContinuous(timerState, setTimerState, workoutState, setBackground, timerRef, playState);
     }
     timerRef.current.api.start();
     setPlayState(true)
@@ -103,9 +65,9 @@ export default function TimerPage() {
   function onComplete() {
     setPlayState(false)
     if (!workoutState.continuous) {
-      onCompleteNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, beepGo, beepCompleted);
+      onCompleteNonContinuous(timerState, setTimerState, workoutState, setBackground);
     } else {
-      onCompleteContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, beepGo);
+      onCompleteContinuous(timerState, setTimerState, workoutState, setBackground);
       startTimer();
     }
   }
@@ -122,7 +84,7 @@ export default function TimerPage() {
 
   function onTick() {
     if ([1, 2, 3].includes(timerRef.current.state.timeDelta.seconds)) {
-      beep321.play()
+      BEEP_321.play()
     }
   }
 
@@ -179,11 +141,6 @@ export default function TimerPage() {
               <button className="timer-buttons flow-text" onClick={() => playState ? pauseTimer() : startTimer()}>
                 <i className={`fas ${playState ? "fa-pause" : "fa-play"}`}></i>
               </button>
-              {/* <Link to="/" className="cancel-button">
-                <button className="timer-buttons flow-text" id="cancel">
-                  <i className="fas fa-times"></i>
-                </button>
-              </Link > */}
             </>
         }
       </div >
