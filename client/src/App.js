@@ -13,7 +13,6 @@ import { WorkoutProvider } from './utils/contexts/WorkoutContext';
 import { LoadProvider } from './utils/contexts/LoadContext';
 import { EditProvider } from './utils/contexts/EditContext';
 import { UserProvider } from './utils/contexts/UserContext';
-import { TimerProvider } from './utils/contexts/timer/TimerContext';
 import "./App.css";
 
 export default function App() {
@@ -22,30 +21,28 @@ export default function App() {
       <LoadProvider>
         <WorkoutProvider>
           <EditProvider>
-            <TimerProvider>
-              <Router>
-                <div className="wrapper">
-                  <header>
-                    <Navbar />
-                  </header>
-                  <main className="container">
-                    <div className="row">
-                      <HelloUser />
-                    </div>
-                    <div className="row">
-                      <Switch>
-                        <Route exact path="/edit" component={EditPage} />
-                        <Route exact path="/timer" component={TimerPage} />
-                        <Route exact path="/create" component={CreatePage} />
-                        <Route exact path="/load" component={LoadPage} />
-                        <Route exact path="*" component={HomePage} />
-                      </Switch>
-                    </div>
-                  </main>
-                  <Footer />
-                </div>
-              </Router>
-            </TimerProvider>
+            <Router>
+              <div className="wrapper">
+                <header>
+                  <Navbar />
+                </header>
+                <main className="container">
+                  <div className="row">
+                    <HelloUser />
+                  </div>
+                  <div className="row">
+                    <Switch>
+                      <Route exact path="/edit" component={EditPage} />
+                      <Route exact path="/timer" component={TimerPage} />
+                      <Route exact path="/create" component={CreatePage} />
+                      <Route exact path="/load" component={LoadPage} />
+                      <Route exact path="*" component={HomePage} />
+                    </Switch>
+                  </div>
+                </main>
+                <Footer />
+              </div>
+            </Router>
           </EditProvider>
         </WorkoutProvider>
       </LoadProvider>
