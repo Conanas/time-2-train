@@ -28,6 +28,7 @@ export default function CreatePage() {
       if (workoutState.title === "") {
         setSaveState(MESSAGES.MUST_BE_A_TITLE);
       } else {
+        setSaveState(MESSAGES.SAVING);
         let existingWorkout = await API.getWorkoutByTitle(workoutState.title, userState._id);
         if (existingWorkout.data != null) {
           setSaveState(MESSAGES.WORKOUT_EXISTS);
