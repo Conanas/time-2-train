@@ -87,7 +87,7 @@ export default function TimerPage() {
       beep321.play();
     }
     if (!workoutState.continuous) {
-      startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground);
+      startTimerNonContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, beepBreak);
     } else {
       startTimerContinuous(timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, timerRef, playState, beepGo, beepBreak, beepCompleted);
     }

@@ -1,13 +1,15 @@
 module.exports = {
-  startTimerNonContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground) => {
+  startTimerNonContinuous: (timerState, setTimerState, workoutState, MODES, BACKGROUND_COLORS, setBackground, beepBreak) => {
     if (timerState.mode === MODES.WORK) {
       // after work
       if (timerState.rep === workoutState.reps) {
         // last rep of set go to break
+        beepBreak.play();
         setBackground(BACKGROUND_COLORS.BREAK)
         setTimerState({ mode: MODES.BREAK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
       } else {
         // next rest
+        setBackground(BACKGROUND_COLORS.REST)
         setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
       }
     }
@@ -37,6 +39,7 @@ module.exports = {
       } else {
         // next rep - work mode
         beepGo.play();
+        setBackground(BACKGROUND_COLORS.WORK)
         setTimerState({ mode: MODES.WORK, countdown: workoutState.rest, rep: timerState.rep + 1, set: timerState.set })
       }
     }

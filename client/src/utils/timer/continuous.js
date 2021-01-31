@@ -5,6 +5,7 @@ module.exports = {
       if (timerState.rep === workoutState.reps && timerState.set === workoutState.sets) {
         // if on last rep of last set then finish
         beepCompleted.play();
+        setBackground(BACKGROUND_COLORS.COMPLETED)
         setTimerState({ mode: MODES.COMPLETED, countdown: 0, rep: timerState.rep, set: timerState.set })
         timerRef.current.api.stop();
       }
@@ -17,6 +18,7 @@ module.exports = {
       else {
         // go to rest mode
         beepGo.play();
+        setBackground(BACKGROUND_COLORS.REST)
         setTimerState({ mode: MODES.REST, countdown: workoutState.rest, rep: timerState.rep, set: timerState.set })
       }
     }
