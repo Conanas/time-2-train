@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { BUTTONS } from '../../../utils/contexts/actions';
 
 export default function MessageModal({ message }) {
 
@@ -28,7 +27,7 @@ export default function MessageModal({ message }) {
         <h4 className="flow-text">{message}</h4>
       </div>
       <div className="modal-footer">
-        <button className="modal-close btn-flat">{BUTTONS.CONFIRM}</button>
+        <button className="modal-close btn-flat">Confirm</button>
       </div>
     </div>
   )

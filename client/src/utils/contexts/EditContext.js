@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
-import { START, EDIT, CREATE } from "./actions";
+import { START, EDIT, CREATE } from "../../utils/contexts/edit-state-strings";
 
 const EditContext = createContext();
 

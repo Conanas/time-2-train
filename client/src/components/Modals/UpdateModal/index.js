@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { MESSAGES, BUTTONS, START } from '../../../utils/contexts/actions';
+import { START } from '../../../utils/contexts/edit-state-strings';
+import { MESSAGES } from '../modal-messages';
 import { useWorkoutContext } from '../../../utils/contexts/WorkoutContext';
 import { useEditContext } from '../../../utils/contexts/EditContext';
 import API from '../../../utils/API';
@@ -41,8 +42,8 @@ export default function UpdateModal() {
         <label>{MESSAGES.OVERWRITE}</label>
       </div>
       <div className="modal-footer">
-        <button className="modal-close btn-flat">{BUTTONS.CANCEL}</button>
-        <button className="modal-close btn-flat" onClick={() => updateWorkout()}>{BUTTONS.CONFIRM}</button>
+        <button className="modal-close btn-flat">Cancel</button>
+        <button className="modal-close btn-flat" onClick={() => updateWorkout()}>Confirm</button>
       </div>
     </div >
   )

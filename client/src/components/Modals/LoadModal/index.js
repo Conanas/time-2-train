@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import M from "materialize-css";
 import { useWorkoutContext } from '../../../utils/contexts/WorkoutContext';
-import { SET_ACTIONS, BUTTONS } from '../../../utils/contexts/actions';
+import { SET_ACTIONS } from '../../../utils/contexts/actions';
 import './style.css';
 
 export default function LoadModal({ workout }) {
@@ -52,14 +52,14 @@ export default function LoadModal({ workout }) {
         </ul>
       </div>
       <div className="modal-footer">
-        <button className="modal-close btn-flat">{BUTTONS.CANCEL}</button>
+        <button className="modal-close btn-flat">Cancel</button>
         <Link to="/timer" onClick={() => {
           dispatchWorkout({ type: SET_ACTIONS.workout, payload: workout })
           localStorage.setItem("workoutId", workout._id)
         }
         }>
           <button className="modal-close btn-flat">
-            {BUTTONS.LOAD}
+            Load
           </button>
         </Link>
       </div>

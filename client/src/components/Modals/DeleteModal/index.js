@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import M from "materialize-css";
-import { MESSAGES, BUTTONS } from '../../../utils/contexts/actions';
+import { MESSAGES } from '../modal-messages';
 
 export default function DeleteModal({ getWorkouts, deleteWorkout, workoutId }) {
   const modalRef = useRef();
@@ -28,7 +28,7 @@ export default function DeleteModal({ getWorkouts, deleteWorkout, workoutId }) {
           <h4 className="flow-text">{MESSAGES.ARE_YOU_SURE}</h4>
         </div>
         <div className="modal-footer">
-          <button className="modal-close btn-flat">{BUTTONS.CANCEL}</button>
+          <button className="modal-close btn-flat">Cancel</button>
           <button className="modal-close btn-flat"
             onClick={() => {
               deleteWorkout(workoutId)
@@ -36,7 +36,7 @@ export default function DeleteModal({ getWorkouts, deleteWorkout, workoutId }) {
               getWorkouts();
             }}
           >
-            {BUTTONS.CONFIRM}
+            Confirm
           </button>
         </div>
       </div>

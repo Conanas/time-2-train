@@ -7,7 +7,9 @@ import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/contexts/WorkoutContext";
 import { useEditContext } from '../../utils/contexts/EditContext';
 import { useUserContext } from '../../utils/contexts/UserContext';
-import { EDIT, MESSAGES, SET_ACTIONS } from '../../utils/contexts/actions';
+import { SET_ACTIONS } from '../../utils/contexts/actions';
+import { MESSAGES } from '../../components/Modals/modal-messages';
+import { EDIT } from '../../utils/contexts/edit-state-strings';
 import './style.css';
 
 export default function CreatePage() {
