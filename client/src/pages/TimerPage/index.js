@@ -41,7 +41,7 @@ export default function TimerPage() {
         .then(res => dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data }))
         .catch(err => console.log(err))
     }
-    return () => document.getElementsByClassName("wrapper")[0].style.backgroundColor = BACKGROUND_COLORS.INITIAL;
+    return () => document.getElementsByClassName("wrapper")[0].style.backgroundColor = BACKGROUND_COLORS.DEFAULT;
   }, [timerState, backgroundState, workoutState, userState])
 
   function startTimer() {
