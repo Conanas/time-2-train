@@ -10,7 +10,6 @@ import { useUserContext } from '../../utils/contexts/UserContext';
 import { SET_ACTIONS } from '../../utils/contexts/actions';
 import { MESSAGES } from '../../components/Modals/modal-messages';
 import { EDIT } from '../../utils/contexts/edit-state-strings';
-import './style.css';
 
 export default function CreatePage() {
   const [saveState, setSaveState] = useState();

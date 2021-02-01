@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import M from "materialize-css";
 import { useWorkoutContext } from '../../../utils/contexts/WorkoutContext';
 import { SET_ACTIONS } from '../../../utils/contexts/actions';
-import './style.css';
 
 export default function LoadModal({ workout }) {
   const [, dispatchWorkout] = useWorkoutContext();

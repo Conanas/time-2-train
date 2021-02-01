@@ -1,6 +1,5 @@
 import React from 'react';
 import { useUserContext } from '../../utils/contexts/UserContext';
-import './style.css';
 
 export default function HelloUser() {
   const [userState] = useUserContext();

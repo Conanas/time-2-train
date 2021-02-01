@@ -6,7 +6,6 @@ import UpdateModal from '../../components/Modals/UpdateModal';
 import { useEditContext } from '../../utils/contexts/EditContext';
 import { useUserContext } from '../../utils/contexts/UserContext';
 import { EDIT, START } from '../../utils/contexts/edit-state-strings';
-import './style.css';
 
 export default function EditPage() {
   const [editState, dispatchEditState] = useEditContext();
