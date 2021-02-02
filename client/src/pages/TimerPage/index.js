@@ -36,7 +36,7 @@ export default function TimerPage() {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
     document.getElementsByClassName("wrapper")[0].style.backgroundColor = backgroundState;
-    if (!workoutState._id && userState.email) {
+    if (workoutState._id === null && userState.email) {
       API.getWorkout(localStorage.getItem('workoutId'))
         .then(res => dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data }))
         .catch(err => console.log(err))
