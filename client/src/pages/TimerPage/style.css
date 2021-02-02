@@ -39,7 +39,7 @@
 
 .timer-buttons {
   background-color: var(--primary);
-  color: var(--on-primary);
+  color: var(--background);
   padding: 1em 2em;
   border: none;
   border-radius: 0.5em;
@@ -47,7 +47,7 @@
 
 .timer-buttons:focus {
   background-color: var(--primary);
-  color: var(--on-primary);
+  color: var(--background);
 }
 
 .timer-buttons:hover {

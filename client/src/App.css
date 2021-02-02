@@ -8,6 +8,7 @@
   --background: #efeff5;
   --on-background: black;
   --grey: #595959;
+  --secondary: black;
 }
 
 .wrapper {
@@ -26,5 +27,5 @@ main {
 }
 
 label {
-  color: black
+  color: var(--secondary);
 }
