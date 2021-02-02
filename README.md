@@ -1,29 +1,35 @@
-# Create React Express App
+# Time-2-Train
 
-## About This Boilerplate
+[![GitHub issues](https://img.shields.io/github/issues/Conanas/time-2-train)](https://github.com/Conanas/time-2-train/issues) [![GitHub forks](https://img.shields.io/github/forks/Conanas/time-2-train)](https://github.com/Conanas/time-2-train/network) [![GitHub stars](https://img.shields.io/github/stars/Conanas/time-2-train)](https://github.com/Conanas/time-2-train/stargazers) [![GitHub license](https://img.shields.io/github/license/Conanas/time-2-train)](https://github.com/Conanas/time-2-train/blob/main/LICENSE)
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Description
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+A full-stack, React.js, PWA web product for fitness fanatics. Time-2-Train is a countdown timer for lovers of exercise who need to keep track of their reps, sets, breaks and rest periods of their workout. The timer can either be set to continuous mode for non-stop workouts or to non-continuous mode for exercises that may take an unknown time to complete eg. 10 pull-ups. User can log in with their Google accounts and they can create, save, load, edit and delete different configurations of the timer.
 
-## Starting the app locally
+## Technologies
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+1) React.js
+1) JavaScript
+1) HTML
+1) CSS
+1) Materialize
+1) PWA
+1) API
+1) MongoDB
+1) Mongoose
 
-```
-npm install
-```
+## Deployed Link
 
-This should install node modules within the server and the client folder.
+https://time-2-train.herokuapp.com/
 
-After both installations complete, run the following command in your terminal:
+# Screenshots
 
-```
-npm start
-```
+![timer-screen](./assets/screenshots/timer-screen.png "timer-screen")
+![create-screen](./assets/screenshots/create-screen.png "create-screen")
+![load-screen](./assets/screenshots/load-screen.png "load-screen")
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+## Contact
 
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+Got any questions? Please contact me at tmhaigh@gmail.com<br>
+View my online portfolio https://conanas.github.io/<br>
+View my LinkedIn https://www.linkedin.com/in/thomas-m-haigh/
