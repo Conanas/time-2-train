@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import useStayAwake from "use-stay-awake";
 import 'materialize-css/dist/css/materialize.min.css';
 import HomePage from './pages/HomePage/';
 import CreatePage from './pages/CreatePage/';
@@ -16,6 +17,10 @@ import { UserProvider } from './utils/contexts/UserContext';
 import "./App.css";
 
 export default function App() {
+  const device = useStayAwake();
+  useEffect(() => {
+    device.preventSleeping();
+  }, [])
   return (
     <UserProvider>
       <LoadProvider>
