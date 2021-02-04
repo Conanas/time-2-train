@@ -16,7 +16,7 @@ export default function InputList() {
   function getSeconds(seconds) {
     let remainingSeconds = seconds % 60;
     if (remainingSeconds < 10) {
-      return '0' + remainingSeconds
+      return '0' + remainingSeconds;
     }
     return remainingSeconds;
   }
@@ -28,18 +28,20 @@ export default function InputList() {
       return (
         <>
           <div className="time-units">
+            {/* Minutes */}
             <input className="form-input time-unit flow-text" value={minutes}
               type="number"
               disabled={disable === true ? true : false}
-              onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: e.target.value })}
+              onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: parseInt(e.target.value) })}
             />
             :
+            {/* Seconds */}
             <input
               className="form-input time-unit flow-text"
               type="number"
               value={seconds}
               disabled={disable === true ? true : false}
-              onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })}
+              onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(e.target.value) })}
             />
           </div>
         </>
@@ -52,7 +54,7 @@ export default function InputList() {
             type="number"
             value={workoutState[key]}
             disabled={disable === true ? true : false}
-            onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })}
+            onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(e.target.value) })}
           />
         </div>
       )
@@ -82,7 +84,7 @@ export default function InputList() {
             onClick={
               disable === false ?
                 () => {
-                  dispatchWorkout({ type: SET_ACTIONS[key], payload: workoutState[key] - 1 })
+                  dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(workoutState[key]) - 1 })
                 }
                 : null
             }
@@ -95,7 +97,7 @@ export default function InputList() {
             onClick={
               disable === false ?
                 () => {
-                  dispatchWorkout({ type: SET_ACTIONS[key], payload: workoutState[key] + 1 })
+                  dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(workoutState[key]) + 1 })
                 }
                 : null
             }>
