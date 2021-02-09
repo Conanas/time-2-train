@@ -78,3 +78,9 @@
   cursor: pointer;
   background-color: var(--primary-dark);
 }
+
+.form-input::-webkit-outer-spin-button,
+.form-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
