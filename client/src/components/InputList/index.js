@@ -32,7 +32,14 @@ export default function InputList() {
             <input className="form-input time-unit flow-text" value={minutes}
               type="number"
               disabled={disable === true ? true : false}
-              onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: parseInt(e.target.value) })}
+              onChange={(e) => {
+                if (Number.isNaN(parseInt(e.target.value))) {
+                  console.log(true)
+                  e.target.value = 0;
+                }
+                dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: parseInt(e.target.value) })
+              }
+              }
             />
             :
             {/* Seconds */}

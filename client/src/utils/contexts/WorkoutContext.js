@@ -66,6 +66,7 @@ const reducer = (state, action) => {
         prepare: action.payload
       }
     case SET_ACTIONS.prepareMinutes:
+      if (action.payload === "") { seconds = 0 }
       seconds = action.payload * 60;
       return {
         ...state,
