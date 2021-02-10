@@ -63,6 +63,7 @@ export default function InputList() {
               placeholder={`${minutes}m`}
               options={createTimeOptions("minutes")}
               isDisabled={disable}
+              isSearchable={false}
               onChange={({ value }) => {
                 dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: parseInt(value) })
               }}
@@ -74,6 +75,7 @@ export default function InputList() {
               placeholder={`${seconds}s`}
               options={createTimeOptions("seconds")}
               isDisabled={disable}
+              isSearchable={false}
               onChange={({ value }) => {
                 dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(value) })
               }}
@@ -89,7 +91,8 @@ export default function InputList() {
             className="form-input flow-text"
             placeholder={workoutState[key]}
             options={createWorkoutOptions()}
-            disabled={disable === true ? true : false}
+            isDisabled={disable}
+            isSearchable={false}
             onChange={({ value }) => {
               dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(value) })
             }}
@@ -153,6 +156,7 @@ export default function InputList() {
                 label: "Non-Continuous"
               }
             ]}
+            isSearchable={false}
             onChange={({ value }) => dispatchWorkout({ type: SET_ACTIONS.continuous, payload: value })}
           />
         </div>
