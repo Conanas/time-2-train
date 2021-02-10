@@ -94,7 +94,7 @@ export default function InputList() {
     let disable = false;
 
     // When we reach the Work object in the state and continuous is set to false then disable the work elements
-    if ((key === "work" && workoutState.continuous === false) || editState === START) {
+    if (((key === "work" || key === "prepare") && workoutState.continuous === false) || editState === START) {
       disable = true
     }
 

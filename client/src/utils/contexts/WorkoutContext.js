@@ -6,7 +6,7 @@ const WorkoutContext = createContext();
 const DEFAULT_STATE = {
   title: "Quick Start",
   continuous: false,
-  prepare: 5,
+  prepare: 0,
   reps: 2,
   work: 0,
   rest: 5,
@@ -48,7 +48,8 @@ const reducer = (state, action) => {
         return {
           ...state,
           continuous: action.payload,
-          work: 0
+          work: 0,
+          prepare: 0
         }
       }
       return {

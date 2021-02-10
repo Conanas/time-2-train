@@ -21,11 +21,22 @@ export default function TimerPage() {
   const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [userState] = useUserContext();
 
-  const initialTimerState = {
-    mode: MODES.PREPARE,
-    countdown: workoutState.prepare,
-    rep: 1,
-    set: 1
+  let initialTimerState = {}
+
+  if (workoutState.continuous) {
+    initialTimerState = {
+      mode: MODES.PREPARE,
+      countdown: workoutState.prepare,
+      rep: 1,
+      set: 1
+    }
+  } else {
+    initialTimerState = {
+      mode: MODES.WORK,
+      countdown: workoutState.rest,
+      rep: 1,
+      set: 1
+    }
   }
 
   const [timerState, setTimerState] = useState(initialTimerState);
@@ -54,7 +65,7 @@ export default function TimerPage() {
       startTimerContinuous(timerState, setTimerState, workoutState, setBackground, timerRef, playState);
     }
     timerRef.current.api.start();
-    setPlayState(true)
+    setPlayState(true);
   }
 
   function pauseTimer() {
@@ -63,7 +74,7 @@ export default function TimerPage() {
   }
 
   function onComplete() {
-    setPlayState(false)
+    setPlayState(false);
     if (!workoutState.continuous) {
       onCompleteNonContinuous(timerState, setTimerState, workoutState, setBackground);
     } else {
