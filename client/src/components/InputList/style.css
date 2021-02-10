@@ -30,31 +30,9 @@
   width: 70%;
 }
 
-.fa-icon:hover {
-  cursor: pointer;
-}
-
-.font-awesome-buttons {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-}
-
-.font-awesome-buttons:active {
-  color: var(--primary);;
-}
-
-.font-awesome-buttons:focus {
-  background-color: transparent;
-}
-
 .form-input:disabled {
   border-bottom: none !important;
   color: var(--on-background) !important;
-}
-
-.continuous-icon-div {
-  width: 45%;
 }
 
 .button-div {
@@ -77,10 +55,4 @@
 .form-button:hover {
   cursor: pointer;
   background-color: var(--primary-dark);
-}
-
-.form-input::-webkit-outer-spin-button,
-.form-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
