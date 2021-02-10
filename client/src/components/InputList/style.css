@@ -6,7 +6,7 @@
 }
 
 .edit-timer-list-item label {
-  width: 50%;
+  width: 30%;
 }
 
 .workout-units {
@@ -27,7 +27,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  width: 70%;
 }
 
 .fa-icon:hover {

@@ -1,4 +1,5 @@
 import React from 'react';
+import Select from 'react-select'
 import { useWorkoutContext } from '../../utils/contexts/WorkoutContext';
 import { useEditContext } from '../../utils/contexts/EditContext';
 import { SET_ACTIONS } from '../../utils/contexts/actions';
@@ -21,6 +22,17 @@ export default function InputList() {
     return remainingSeconds;
   }
 
+  function createTimeDataList() {
+    let timeList = []
+    for (let i = 0; i < 60; i++) {
+      timeList.push({
+        value: i,
+        label: i < 10 ? `0${i}` : i
+      })
+    }
+    return timeList;
+  }
+
   function renderWorkoutUnits(key, disable) {
     if (key === "prepare" || key === 'work' || key === 'rest' || key === 'break') {
       let minutes = getMinutes(workoutState[key])
@@ -29,26 +41,23 @@ export default function InputList() {
         <>
           <div className="time-units">
             {/* Minutes */}
-            <input className="form-input time-unit flow-text" value={minutes}
-              type="number"
-              disabled={disable === true ? true : false}
-              onChange={(e) => {
-                if (Number.isNaN(parseInt(e.target.value))) {
-                  console.log(true)
-                  e.target.value = 0;
-                }
-                dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: parseInt(e.target.value) })
-              }
-              }
+            <Select
+              className="form-input time-unit flow-text"
+              defaultValue={{ label: `${minutes}`, value: minutes }}
+              options={createTimeDataList()}
+              onChange={({ value }) => {
+                dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: parseInt(value) })
+              }}
             />
             :
             {/* Seconds */}
-            <input
+            <Select
               className="form-input time-unit flow-text"
-              type="number"
-              value={seconds}
-              disabled={disable === true ? true : false}
-              onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(e.target.value) })}
+              defaultValue={{ label: `${seconds}`, value: seconds }}
+              options={createTimeDataList()}
+              onChange={({ value }) => {
+                dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(value) })
+              }}
             />
           </div>
         </>
@@ -61,7 +70,9 @@ export default function InputList() {
             type="number"
             value={workoutState[key]}
             disabled={disable === true ? true : false}
-            onChange={(e) => dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(e.target.value) })}
+            onChange={(e) => {
+              dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(e.target.value) })
+            }}
           />
         </div>
       )
@@ -85,31 +96,7 @@ export default function InputList() {
     // The input elements JSX for each item in the state object
     let inputs = (
       <>
-        <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
-          <i
-            className="fa-icon far fa-minus-square flow-text"
-            onClick={
-              disable === false ?
-                () => {
-                  dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(workoutState[key]) - 1 })
-                }
-                : null
-            }
-          >
-          </i>
-        </button>
         {renderWorkoutUnits(key, disable)}
-        <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
-          <i className="fa-icon far fa-plus-square flow-text"
-            onClick={
-              disable === false ?
-                () => {
-                  dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(workoutState[key]) + 1 })
-                }
-                : null
-            }>
-          </i>
-        </button>
       </>
     )
 

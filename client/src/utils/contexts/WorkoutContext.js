@@ -16,6 +16,7 @@ const DEFAULT_STATE = {
 
 const reducer = (state, action) => {
   let seconds = 0;
+  let minutes = 0;
   switch (action.type) {
     case SET_ACTIONS.workout:
       return {
@@ -55,18 +56,13 @@ const reducer = (state, action) => {
         continuous: action.payload
       }
     case SET_ACTIONS.prepare:
-      if (state.prepare + action.payload < 0 || action.payload === "") {
-        return {
-          ...state,
-          prepare: 0
-        }
-      }
+      minutes = Math.floor(state.prepare / 60);
+      console.log(minutes)
       return {
         ...state,
-        prepare: action.payload
+        prepare: minutes * 60 + action.payload
       }
     case SET_ACTIONS.prepareMinutes:
-      if (action.payload === "") { seconds = 0 }
       seconds = action.payload * 60;
       return {
         ...state,
