@@ -11,15 +11,13 @@ export default function InputList() {
   const [editState] = useEditContext();
 
   function getMinutes(seconds) {
-    return Math.floor(seconds / 60);
+    let minutes = Math.floor(seconds / 60);
+    return `${minutes < 10 ? '0' : ''}${minutes}`
   }
 
   function getSeconds(seconds) {
     let remainingSeconds = seconds % 60;
-    if (remainingSeconds < 10) {
-      return '0' + remainingSeconds;
-    }
-    return remainingSeconds;
+    return `${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`
   }
 
   function createTimeOptions(units) {
@@ -27,7 +25,7 @@ export default function InputList() {
     for (let i = 0; i < 60; i++) {
       timeOptions.push({
         value: i,
-        label: i < 10 ? `0${i} ${units === 'minutes' ? `mins` : `secs`}` : `${i} ${units === 'minutes' ? `mins` : `secs`}`
+        label: i < 10 ? `0${i}${units === 'minutes' ? `mins` : `secs`}` : `${i}${units === 'minutes' ? `mins` : `secs`}`
       })
     }
     return timeOptions;
@@ -54,7 +52,7 @@ export default function InputList() {
             {/* Minutes */}
             <Select
               className="form-input time-unit flow-text"
-              placeholder={`${minutes} mins`}
+              placeholder={`${minutes}mins`}
               options={createTimeOptions("minutes")}
               isDisabled={disable}
               onChange={({ value }) => {
@@ -64,7 +62,7 @@ export default function InputList() {
             {/* Seconds */}
             <Select
               className="form-input time-unit flow-text"
-              placeholder={`${seconds} secs`}
+              placeholder={`${seconds}secs`}
               options={createTimeOptions("seconds")}
               isDisabled={disable}
               onChange={({ value }) => {
