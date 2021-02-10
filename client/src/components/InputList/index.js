@@ -43,8 +43,9 @@ export default function InputList() {
             {/* Minutes */}
             <Select
               className="form-input time-unit flow-text"
-              defaultValue={{ label: `${minutes}`, value: minutes }}
+              placeholder={minutes}
               options={createTimeDataList()}
+              isDisabled={disable}
               onChange={({ value }) => {
                 dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: parseInt(value) })
               }}
@@ -53,8 +54,9 @@ export default function InputList() {
             {/* Seconds */}
             <Select
               className="form-input time-unit flow-text"
-              defaultValue={{ label: `${seconds}`, value: seconds }}
+              placeholder={seconds}
               options={createTimeDataList()}
+              isDisabled={disable}
               onChange={({ value }) => {
                 dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(value) })
               }}

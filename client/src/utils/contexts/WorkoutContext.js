@@ -64,9 +64,10 @@ const reducer = (state, action) => {
       }
     case SET_ACTIONS.prepareMinutes:
       seconds = action.payload * 60;
+      minutes = Math.floor(state.prepare / 60);
       return {
         ...state,
-        prepare: state.prepare + seconds
+        prepare: state.prepare - minutes * 60 + seconds
       }
     case SET_ACTIONS.reps:
       if (state.reps + action.payload <= 1 || action.payload === "") {
