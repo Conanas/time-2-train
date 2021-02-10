@@ -29,3 +29,29 @@ main {
 label {
   color: var(--secondary);
 }
+
+.button-div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button-div label {
+  width: 50%;
+}
+
+.form-button {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 1em 2em;
+}
+
+.form-button:focus {
+  background-color: var(--primary);
+}
+
+.form-button:hover {
+  cursor: pointer;
+  background-color: var(--primary-dark);
+}

@@ -34,25 +34,3 @@
   border-bottom: none !important;
   color: var(--on-background) !important;
 }
-
-.button-div {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.form-button {
-  background-color: var(--primary);
-  color: var(--on-primary);
-  border: none;
-  border-radius: 8px;
-  padding: 1em 2em;
-}
-
-.form-button:focus {
-  background-color: var(--primary);
-}
-
-.form-button:hover {
-  cursor: pointer;
-  background-color: var(--primary-dark);
-}
