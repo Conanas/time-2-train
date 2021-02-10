@@ -10,6 +10,13 @@ export default function InputList() {
   const [workoutState, dispatchWorkout] = useWorkoutContext();
   const [editState] = useEditContext();
 
+  const selectStyle = {
+    container: (provided, state) => ({
+      ...provided,
+      backgroundColor: 'black',
+    })
+  }
+
   function getMinutes(seconds) {
     let minutes = Math.floor(seconds / 60);
     return `${minutes < 10 ? '0' : ''}${minutes}`
@@ -51,6 +58,7 @@ export default function InputList() {
           <div className="time-units">
             {/* Minutes */}
             <Select
+              style={selectStyle}
               className="form-input time-unit flow-text"
               placeholder={`${minutes}m`}
               options={createTimeOptions("minutes")}
@@ -61,6 +69,7 @@ export default function InputList() {
             />
             {/* Seconds */}
             <Select
+              style={selectStyle}
               className="form-input time-unit flow-text"
               placeholder={`${seconds}s`}
               options={createTimeOptions("seconds")}
@@ -76,6 +85,7 @@ export default function InputList() {
       return (
         <div className="workout-units">
           <Select
+            style={selectStyle}
             className="form-input flow-text"
             placeholder={workoutState[key]}
             options={createWorkoutOptions()}
@@ -130,6 +140,7 @@ export default function InputList() {
       inputs =
         <div className="workout-units">
           <Select
+            style={selectStyle}
             className="flow-text"
             placeholder={workoutState[key] === true ? 'Continuous' : "Non-Continuous"}
             options={[
