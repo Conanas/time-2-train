@@ -22,15 +22,26 @@ export default function InputList() {
     return remainingSeconds;
   }
 
-  function createTimeDataList() {
-    let timeList = []
+  function createTimeOptions(units) {
+    let timeOptions = []
     for (let i = 0; i < 60; i++) {
-      timeList.push({
+      timeOptions.push({
         value: i,
-        label: i < 10 ? `0${i}` : i
+        label: i < 10 ? `0${i} ${units === 'minutes' ? `mins` : `secs`}` : `${i} ${units === 'minutes' ? `mins` : `secs`}`
       })
     }
-    return timeList;
+    return timeOptions;
+  }
+
+  function createWorkoutOptions() {
+    let workoutOptions = []
+    for (let i = 1; i < 100; i++) {
+      workoutOptions.push({
+        value: i,
+        label: i
+      })
+    }
+    return workoutOptions
   }
 
   function renderWorkoutUnits(key, disable) {
@@ -43,19 +54,18 @@ export default function InputList() {
             {/* Minutes */}
             <Select
               className="form-input time-unit flow-text"
-              placeholder={minutes}
-              options={createTimeDataList()}
+              placeholder={`${minutes} mins`}
+              options={createTimeOptions("minutes")}
               isDisabled={disable}
               onChange={({ value }) => {
                 dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: parseInt(value) })
               }}
             />
-            :
             {/* Seconds */}
             <Select
               className="form-input time-unit flow-text"
-              placeholder={seconds}
-              options={createTimeDataList()}
+              placeholder={`${seconds} secs`}
+              options={createTimeOptions("seconds")}
               isDisabled={disable}
               onChange={({ value }) => {
                 dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(value) })
@@ -67,13 +77,13 @@ export default function InputList() {
     } else {
       return (
         <div className="workout-units">
-          <input
+          <Select
             className="form-input flow-text"
-            type="number"
-            value={workoutState[key]}
+            placeholder={workoutState[key]}
+            options={createWorkoutOptions()}
             disabled={disable === true ? true : false}
-            onChange={(e) => {
-              dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(e.target.value) })
+            onChange={({ value }) => {
+              dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(value) })
             }}
           />
         </div>
