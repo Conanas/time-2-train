@@ -25,7 +25,7 @@ export default function InputList() {
     for (let i = 0; i < 60; i++) {
       timeOptions.push({
         value: i,
-        label: i < 10 ? `0${i}${units === 'minutes' ? `mins` : `secs`}` : `${i}${units === 'minutes' ? `mins` : `secs`}`
+        label: i < 10 ? `0${i}${units === 'minutes' ? `s` : `s`}` : `${i}${units === 'minutes' ? `s` : `s`}`
       })
     }
     return timeOptions;
@@ -52,7 +52,7 @@ export default function InputList() {
             {/* Minutes */}
             <Select
               className="form-input time-unit flow-text"
-              placeholder={`${minutes}mins`}
+              placeholder={`${minutes}m`}
               options={createTimeOptions("minutes")}
               isDisabled={disable}
               onChange={({ value }) => {
@@ -62,7 +62,7 @@ export default function InputList() {
             {/* Seconds */}
             <Select
               className="form-input time-unit flow-text"
-              placeholder={`${seconds}secs`}
+              placeholder={`${seconds}s`}
               options={createTimeOptions("seconds")}
               isDisabled={disable}
               onChange={({ value }) => {
@@ -126,42 +126,32 @@ export default function InputList() {
     // When we reach the continuous object in the state then render the continuous toggle button
     // If continuous then render 'on' toggle switch
     // Else render the 'off' toggle switch
-    if (key === "continuous" && workoutState.continuous === true) {
+    if (key === "continuous") {
       inputs =
-        <div className="continuous-icon-div">
-          <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
-            <i
-              className="fa-icon fas fa-toggle-on flow-text"
-              onClick={disable === false ?
-                () => {
-                  dispatchWorkout({ type: SET_ACTIONS.continuous, payload: false })
-                }
-                : null}>
-            </i>
-          </button>
-        </div >
-    }
-    if (key === "continuous" && workoutState.continuous === false) {
-      inputs =
-        <div className="continuous-icon-div">
-          <button className="font-awesome-buttons" disabled={disable === true ? true : false}>
-            <i
-              className="fa-icon fas fa-toggle-off flow-text"
-              onClick={
-                disable === false ?
-                  () => {
-                    dispatchWorkout({ type: SET_ACTIONS.continuous, payload: true })
-                  }
-                  : null}>
-            </i>
-          </button>
-        </div>
+        <Select
+          className="workout-units flow-text"
+          placeholder={workoutState[key] === true ? 'Continuous' : "Non-Continuous"}
+          options={[
+            {
+              value: true,
+              label: "Continuous"
+            },
+            {
+              value: false,
+              label: "Non-Continuous"
+            }
+          ]}
+          onChange={({ value }) => dispatchWorkout({ type: SET_ACTIONS.continuous, payload: value })}
+        />
     }
 
     // Return each item with the title of each object in the state and with the inputs variable
     return (
       <li className="edit-timer-list-item" key={index}>
-        <label className="flow-text">{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+        {key === 'continuous' ?
+          <label className="flow-text">Type</label>
+          : <label className="flow-text">{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+        }
         {inputs}
       </li>
     )
