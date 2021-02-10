@@ -25,7 +25,7 @@ export default function InputList() {
     for (let i = 0; i < 60; i++) {
       timeOptions.push({
         value: i,
-        label: i < 10 ? `0${i}${units === 'minutes' ? `s` : `s`}` : `${i}${units === 'minutes' ? `s` : `s`}`
+        label: i < 10 ? `0${i}${units === 'minutes' ? `m` : `s`}` : `${i}${units === 'minutes' ? `m` : `s`}`
       })
     }
     return timeOptions;
@@ -128,21 +128,23 @@ export default function InputList() {
     // Else render the 'off' toggle switch
     if (key === "continuous") {
       inputs =
-        <Select
-          className="workout-units flow-text"
-          placeholder={workoutState[key] === true ? 'Continuous' : "Non-Continuous"}
-          options={[
-            {
-              value: true,
-              label: "Continuous"
-            },
-            {
-              value: false,
-              label: "Non-Continuous"
-            }
-          ]}
-          onChange={({ value }) => dispatchWorkout({ type: SET_ACTIONS.continuous, payload: value })}
-        />
+        <div className="workout-units">
+          <Select
+            className="flow-text"
+            placeholder={workoutState[key] === true ? 'Continuous' : "Non-Continuous"}
+            options={[
+              {
+                value: true,
+                label: "Continuous"
+              },
+              {
+                value: false,
+                label: "Non-Continuous"
+              }
+            ]}
+            onChange={({ value }) => dispatchWorkout({ type: SET_ACTIONS.continuous, payload: value })}
+          />
+        </div>
     }
 
     // Return each item with the title of each object in the state and with the inputs variable
