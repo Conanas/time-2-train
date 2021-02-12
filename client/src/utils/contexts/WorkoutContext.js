@@ -58,7 +58,6 @@ const reducer = (state, action) => {
       }
     case SET_ACTIONS.prepare:
       minutes = Math.floor(state.prepare / 60);
-      console.log(minutes)
       return {
         ...state,
         prepare: minutes * 60 + action.payload
@@ -71,77 +70,53 @@ const reducer = (state, action) => {
         prepare: state.prepare - minutes * 60 + seconds
       }
     case SET_ACTIONS.reps:
-      if (state.reps + action.payload <= 1 || action.payload === "") {
-        return {
-          ...state,
-          reps: 1
-        }
-      }
       return {
         ...state,
         reps: action.payload
       }
     case SET_ACTIONS.work:
-      if (state.work + action.payload < 0 || action.payload === "") {
-        return {
-          ...state,
-          work: 0
-        }
-      }
+      minutes = Math.floor(state.work / 60);
       return {
         ...state,
-        work: action.payload
+        work: minutes * 60 + action.payload
       }
     case SET_ACTIONS.workMinutes:
       seconds = action.payload * 60;
+      minutes = Math.floor(state.work / 60);
       return {
         ...state,
-        work: state.work + seconds
+        work: state.work - minutes * 60 + seconds
       }
     case SET_ACTIONS.rest:
-      if (state.rest + action.payload < 0 || action.payload === "") {
-        return {
-          ...state,
-          rest: 0
-        }
-      }
+      minutes = Math.floor(state.rest / 60);
       return {
         ...state,
-        rest: action.payload
+        rest: minutes * 60 + action.payload
       }
     case SET_ACTIONS.restMinutes:
       seconds = action.payload * 60;
+      minutes = Math.floor(state.rest / 60);
       return {
         ...state,
-        rest: state.rest + seconds
+        rest: state.rest - minutes * 60 + seconds
       }
     case SET_ACTIONS.sets:
-      if (state.sets + action.payload <= 1 || action.payload === "") {
-        return {
-          ...state,
-          sets: 1
-        }
-      }
       return {
         ...state,
         sets: action.payload
       }
     case SET_ACTIONS.break:
-      if (state.break + action.payload < 0 || action.payload === "") {
-        return {
-          ...state,
-          break: 0
-        }
-      }
+      minutes = Math.floor(state.break / 60);
       return {
         ...state,
-        break: action.payload
+        break: minutes * 60 + action.payload
       }
     case SET_ACTIONS.breakMinutes:
       seconds = action.payload * 60;
+      minutes = Math.floor(state.break / 60);
       return {
         ...state,
-        break: state.break + seconds
+        break: state.break - minutes * 60 + seconds
       }
     case SET_ACTIONS.reset:
       return DEFAULT_STATE
