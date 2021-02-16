@@ -7,11 +7,11 @@ const DEFAULT_STATE = {
   title: "Quick Start",
   continuous: false,
   prepare: 0,
-  reps: 2,
+  reps: 1,
   work: 0,
-  rest: 5,
-  sets: 2,
-  break: 10
+  rest: 0,
+  sets: 1,
+  break: 0
 }
 
 const reducer = (state, action) => {
