@@ -1,4 +1,4 @@
-import beep321Import from '../../../assets/beep321.wav';
+import beep321Import from '../../../assets/beep321.flac';
 import beepGoImport from '../../../assets/beepGo.mp3';
 import beepBreakImport from '../../../assets/beepBreak.wav';
 import beepCompletedImport from '../../../assets/beepCompleted.wav';
@@ -18,7 +18,9 @@ function sound(src) {
   }
 }
 
-export let BEEP_321 = new sound(beep321Import);
-export let BEEP_GO = new sound(beepGoImport);
-export let BEEP_BREAK = new sound(beepBreakImport);
-export let BEEP_COMPLETED = new sound(beepCompletedImport);
+const BEEP_321 = new sound(beep321Import);
+const BEEP_GO = new sound(beepGoImport);
+const BEEP_BREAK = new sound(beepBreakImport);
+const BEEP_COMPLETED = new sound(beepCompletedImport);
+
+export { BEEP_321, BEEP_GO, BEEP_BREAK, BEEP_COMPLETED }
