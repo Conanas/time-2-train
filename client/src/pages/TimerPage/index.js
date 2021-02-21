@@ -151,9 +151,13 @@ export default function TimerPage() {
             </>
             :
             <>
-              <button className="timer-buttons flow-text" onClick={() => playState ? pauseTimer() : startTimer()}>
+              <button className="timer-buttons flow-text"><i class="fas fa-fast-backward"></i></button>
+              <button className="timer-buttons flow-text"><i class="fas fa-step-backward"></i></button>
+              <button className="timer-buttons flow-text play-pause-button" onClick={() => playState ? pauseTimer() : startTimer()}>
                 <i className={`fas ${playState ? "fa-pause" : "fa-play"}`}></i>
               </button>
+              <button className="timer-buttons flow-text"><i class="fas fa-step-forward"></i></button>
+              <button className="timer-buttons flow-text"><i class="fas fa-fast-forward"></i></button>
             </>
         }
       </div >
