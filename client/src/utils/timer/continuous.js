@@ -3,7 +3,8 @@ const { MODES } = require('./modes');
 const {
   BEEP_GO,
   BEEP_BREAK,
-  BEEP_COMPLETED } = require('./sounds/');
+  BEEP_COMPLETED
+} = require('./sounds/');
 
 module.exports = {
   startTimerContinuous: (timerState, setTimerState, workoutState, setBackground, timerRef, playState) => {

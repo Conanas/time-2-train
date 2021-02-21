@@ -57,14 +57,14 @@ export default function TimerPage() {
   }, [timerState, backgroundState, workoutState, userState])
 
   function startTimer() {
-    if ([1, 2, 3].includes(timerRef.current.state.timeDelta.seconds) && timerRef.current.state.timeDelta.minutes === 0) {
-      BEEP_321.play();
-    }
     if (!workoutState.continuous) {
       startTimerNonContinuous(timerState, setTimerState, workoutState, setBackground);
     } else {
       startTimerContinuous(timerState, setTimerState, workoutState, setBackground, timerRef, playState);
     }
+    // if ([1, 2, 3].includes(timerRef.current.state.timeDelta.seconds) && timerRef.current.state.timeDelta.minutes === 0) {
+    //   BEEP_321.play();
+    // }
     timerRef.current.api.start();
     setPlayState(true);
   }
