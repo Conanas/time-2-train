@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Countdown, { zeroPad } from 'react-countdown';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import TobyModal from '../../components/Modals/TobyModal';
 import { useWorkoutContext } from '../../utils/contexts/WorkoutContext';
 import { useUserContext } from '../../utils/contexts/UserContext';
 import { startTimerContinuous, onCompleteContinuous } from '../../utils/timer/continuous';
@@ -87,6 +88,7 @@ export default function TimerPage() {
     if (timerState.mode === MODES.WORK && !workoutState.continuous) {
       return <span id="countdown">Go!</span>
     } else if (timerState.mode === MODES.COMPLETED) {
+
       return <span id="countdown">Nice!</span>
     } else {
       return <span id="countdown">{zeroPad(minutes)}:{zeroPad(seconds)}</span>
@@ -155,6 +157,7 @@ export default function TimerPage() {
             </>
         }
       </div >
+      <TobyModal timerState={timerState} />
     </>
   )
 }
