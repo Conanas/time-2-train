@@ -14,13 +14,16 @@ import toby10 from '../../../assets/images/toby_10.jpg';
 import toby11 from '../../../assets/images/toby_11.jpg';
 import toby12 from '../../../assets/images/toby_12.jpg';
 import toby13 from '../../../assets/images/toby_13.png';
+import toby13 from '../../../assets/images/toby_14.png';
+import toby13 from '../../../assets/images/toby_15.png';
+import toby13 from '../../../assets/images/toby_16.png';
 import './style.css';
 
 export default function TobyModal({ timerState }) {
 
   const modalRef = useRef();
 
-  const tobyImages = [toby1, toby2, toby3, toby4, toby5, toby6, toby7, toby8, toby9, toby10, toby11, toby12, toby13]
+  const tobyImages = [toby1, toby2, toby3, toby4, toby5, toby6, toby7, toby8, toby9, toby10, toby11, toby12, toby13, toby14, toby15, toby16]
 
   if (timerState.mode === MODES.COMPLETED) {
     M.Modal.getInstance(modalRef.current).open()
