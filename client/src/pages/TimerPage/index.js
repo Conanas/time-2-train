@@ -57,6 +57,7 @@ export default function TimerPage() {
   }, [timerState, backgroundState, workoutState, userState])
 
   function startTimer() {
+    console.log('starting timer', timerState)
     if (!workoutState.continuous) {
       startTimerNonContinuous(timerState, setTimerState, workoutState, setBackground);
     } else {
@@ -67,6 +68,7 @@ export default function TimerPage() {
     // }
     timerRef.current.api.start();
     setPlayState(true);
+    console.log('timer started', timerState)
   }
 
   function pauseTimer() {
@@ -75,6 +77,7 @@ export default function TimerPage() {
   }
 
   function onComplete() {
+    console.log('finishing timer', timerState)
     setPlayState(false);
     if (!workoutState.continuous) {
       onCompleteNonContinuous(timerState, setTimerState, workoutState, setBackground);
@@ -82,13 +85,13 @@ export default function TimerPage() {
       onCompleteContinuous(timerState, setTimerState, workoutState, setBackground);
       startTimer();
     }
+    console.log('timer completed', timerState)
   }
 
   function renderer({ minutes, seconds }) {
     if (timerState.mode === MODES.WORK && !workoutState.continuous) {
       return <span id="countdown">Go!</span>
     } else if (timerState.mode === MODES.COMPLETED) {
-
       return <span id="countdown">Nice!</span>
     } else {
       return <span id="countdown">{zeroPad(minutes)}:{zeroPad(seconds)}</span>
@@ -104,6 +107,55 @@ export default function TimerPage() {
   function resetTimer() {
     setTimerState(initialTimerState);
     setPlayState(false)
+  }
+
+  function changeRep(x) {
+    // If timer playing then pause timer
+    if (playState === true) {
+      pauseTimer();
+    }
+
+    console.log(timerState)
+    console.log(workoutState)
+    // If Non-Continuous
+    if (!workoutState.continuous) {
+      // If moving forwards
+      if (x === 1) {
+        // Reps can't go more then rep limit
+        // If on last rep of last set then go to finish
+        if (timerState.rep === workoutState.reps && timerState.set === workoutState.sets) {
+
+          // If on last rep then go to break mode
+        } else if (timerState.rep === workoutState.reps) {
+          setBackground(BACKGROUND_COLORS.BREAK)
+          setTimerState({ mode: MODES.WORK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
+
+          // If in work mode then go to next work mode
+        } else if (timerState.mode === MODES.WORK) {
+          setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
+
+          // If in rest mode then go to next work mode
+        } else if (timerState.mode === MODES.REST) {
+
+          // If in break mode then go to next work mode and set
+        } else if (timerState.mode === MODES.BREAK) {
+
+        }
+      } else {
+        // If moving backwards
+
+        // Reps can't go less then 1
+
+        // If in work mode then go to previous work mode
+
+        // If in rest mode then go to previous work mode
+
+        // If in break mode then go to next work mode and set
+
+      }
+    } else {
+
+    }
   }
 
   return (
@@ -151,13 +203,13 @@ export default function TimerPage() {
             </>
             :
             <>
-              <button className="timer-buttons flow-text"><i class="fas fa-fast-backward"></i></button>
-              <button className="timer-buttons flow-text"><i class="fas fa-step-backward"></i></button>
+              {/* <button className="timer-buttons flow-text"><i className="fas fa-fast-backward"></i></button>
+              <button className="timer-buttons flow-text" onClick={() => changeRep(-1)}><i className="fas fa-step-backward"></i></button> */}
               <button className="timer-buttons flow-text play-pause-button" onClick={() => playState ? pauseTimer() : startTimer()}>
                 <i className={`fas ${playState ? "fa-pause" : "fa-play"}`}></i>
               </button>
-              <button className="timer-buttons flow-text"><i class="fas fa-step-forward"></i></button>
-              <button className="timer-buttons flow-text"><i class="fas fa-fast-forward"></i></button>
+              {/* <button className="timer-buttons flow-text" onClick={() => changeRep(1)}><i className="fas fa-step-forward"></i></button>
+              <button className="timer-buttons flow-text"><i className="fas fa-fast-forward"></i></button> */}
             </>
         }
       </div >
