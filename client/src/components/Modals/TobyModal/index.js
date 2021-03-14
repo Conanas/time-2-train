@@ -13,13 +13,14 @@ import toby9 from '../../../assets/images/toby_9.jpg';
 import toby10 from '../../../assets/images/toby_10.jpg';
 import toby11 from '../../../assets/images/toby_11.jpg';
 import toby12 from '../../../assets/images/toby_12.jpg';
+import toby13 from '../../../assets/images/toby_13.png';
 import './style.css';
 
 export default function TobyModal({ timerState }) {
 
   const modalRef = useRef();
 
-  const tobyImages = [toby1, toby2, toby3, toby4, toby5, toby6, toby7, toby8, toby9, toby10, toby11, toby12]
+  const tobyImages = [toby1, toby2, toby3, toby4, toby5, toby6, toby7, toby8, toby9, toby10, toby11, toby12, toby13]
 
   if (timerState.mode === MODES.COMPLETED) {
     M.Modal.getInstance(modalRef.current).open()
@@ -44,7 +45,7 @@ export default function TobyModal({ timerState }) {
   return (
     <div id="toby-modal" className="modal" ref={modalRef}>
       <div className="modal-content">
-        <img className='toby-image' src={tobyImages[Math.ceil(Math.random() * tobyImages.length)]} alt='toby-image'></img>
+        <img className='toby-image' src={tobyImages[Math.ceil(Math.random() * tobyImages.length)]} alt='toby'></img>
       </div>
       <div className="modal-footer">
         <button className="modal-close btn-flat">Confirm</button>
