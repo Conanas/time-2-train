@@ -11,7 +11,7 @@ export default function Navbar() {
     <>
       <nav>
         <div className="nav-wrapper container">
-          <Link to="/" className="brand-logo right">Time-2-Train</Link>
+          <Link to="/" className="brand-logo right">Toby Time</Link>
           <a data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="left hide-on-med-and-down">
             <li><Link className="nav-item" to="/">Home</Link></li>
