@@ -7,35 +7,16 @@ footer {
 }
 
 .footer-row {
-  display: flex;
-  flex-direction: row-reverse;
   margin-bottom: 0;
 }
 
-.links-div {
+.toby-col {
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
-  align-items: center;
+  width: 100%;
 }
 
-.contact-div {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-div label {
-  color: var(--on-primary);
-}
-
-footer .links-div-anchor {
-  margin-left: 16px;
-  color: var(--on-primary);
-}
-
-.social-icon {
-  color: var(--background);
-}
-
-.font-awesome {
-  font-size: 2em;
+.toby-footer {
+  height: 50px;
 }
