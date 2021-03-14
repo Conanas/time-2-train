@@ -14,9 +14,9 @@ import toby10 from '../../../assets/images/toby_10.jpg';
 import toby11 from '../../../assets/images/toby_11.jpg';
 import toby12 from '../../../assets/images/toby_12.jpg';
 import toby13 from '../../../assets/images/toby_13.png';
-import toby13 from '../../../assets/images/toby_14.png';
-import toby13 from '../../../assets/images/toby_15.png';
-import toby13 from '../../../assets/images/toby_16.png';
+import toby14 from '../../../assets/images/toby_14.png';
+import toby15 from '../../../assets/images/toby_15.png';
+import toby16 from '../../../assets/images/toby_16.png';
 import './style.css';
 
 export default function TobyModal({ timerState }) {
