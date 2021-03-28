@@ -8,7 +8,6 @@ export default function Footer() {
       <div className="container">
         <div className="footer-row row">
           <div className="toby-col col">
-            <img className="toby-footer" src={tobyFace} alt='toby' />
           </div>
         </div>
       </div>
