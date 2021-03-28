@@ -1,14 +1,14 @@
 import React from 'react';
 import Select from 'react-select'
 import { useWorkoutContext } from '../../utils/contexts/WorkoutContext';
-import { useEditContext } from '../../utils/contexts/EditContext';
+// import { useEditContext } from '../../utils/contexts/EditContext';
 import { SET_ACTIONS } from '../../utils/contexts/actions';
-import { START } from '../../utils/contexts/edit-state-strings';
+// import { START } from '../../utils/contexts/edit-state-strings';
 import './style.css';
 
 export default function InputList() {
   const [workoutState, dispatchWorkout] = useWorkoutContext();
-  const [editState] = useEditContext();
+  // const [editState] = useEditContext();
 
   const selectStyle = {
     container: (provided, state) => ({
