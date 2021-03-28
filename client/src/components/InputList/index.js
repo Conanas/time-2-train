@@ -49,7 +49,7 @@ export default function InputList() {
     return workoutOptions
   }
 
-  function renderWorkoutUnits(key, disable) {
+  function renderWorkoutUnits(key/*, disable*/) {
     if (key === "prepare" || key === 'work' || key === 'rest' || key === 'break') {
       let minutes = getMinutes(workoutState[key])
       let seconds = getSeconds(workoutState[key])
@@ -62,7 +62,7 @@ export default function InputList() {
               className="form-input time-unit flow-text"
               placeholder={`${minutes}m`}
               options={createTimeOptions("minutes")}
-              isDisabled={disable}
+              // isDisabled={disable}
               isSearchable={false}
               onChange={({ value }) => {
                 dispatchWorkout({ type: SET_ACTIONS[`${key}Minutes`], payload: parseInt(value) })
@@ -74,7 +74,7 @@ export default function InputList() {
               className="form-input time-unit flow-text"
               placeholder={`${seconds}s`}
               options={createTimeOptions("seconds")}
-              isDisabled={disable}
+              // isDisabled={disable}
               isSearchable={false}
               onChange={({ value }) => {
                 dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(value) })
@@ -91,7 +91,7 @@ export default function InputList() {
             className="form-input flow-text"
             placeholder={workoutState[key]}
             options={createWorkoutOptions()}
-            isDisabled={disable}
+            // isDisabled={disable}
             isSearchable={false}
             onChange={({ value }) => {
               dispatchWorkout({ type: SET_ACTIONS[key], payload: parseInt(value) })
@@ -104,12 +104,12 @@ export default function InputList() {
 
   return Object.keys(workoutState).map((key, index) => {
 
-    let disable = false;
+    // let disable = false;
 
     // When we reach the Work object in the state and continuous is set to false then disable the work elements
-    if (((key === "work" || key === "prepare") && workoutState.continuous === false) || editState === START) {
-      disable = true
-    }
+    // if (((key === "work" || key === "prepare") && workoutState.continuous === false) || editState === START) {
+    //   disable = true
+    // }
 
     // Don't render an item for the workout ID
     if (key === "_id") {
@@ -119,7 +119,7 @@ export default function InputList() {
     // The input elements JSX for each item in the state object
     let inputs = (
       <>
-        {renderWorkoutUnits(key, disable)}
+        {renderWorkoutUnits(key/*, disable*/)}
       </>
     )
 
@@ -128,7 +128,7 @@ export default function InputList() {
       inputs =
         <input
           className="form-input flow-text"
-          disabled={disable === true ? true : false}
+          // disabled={disable === true ? true : false}
           onChange={(e) => {
             dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })
           }}
@@ -139,28 +139,28 @@ export default function InputList() {
     // When we reach the continuous object in the state then render the continuous toggle button
     // If continuous then render 'on' toggle switch
     // Else render the 'off' toggle switch
-    if (key === "continuous") {
-      inputs =
-        <div className="workout-units">
-          <Select
-            style={selectStyle}
-            className="flow-text"
-            placeholder={workoutState[key] === true ? 'Continuous' : "Non-Continuous"}
-            options={[
-              {
-                value: true,
-                label: "Continuous"
-              },
-              {
-                value: false,
-                label: "Non-Continuous"
-              }
-            ]}
-            isSearchable={false}
-            onChange={({ value }) => dispatchWorkout({ type: SET_ACTIONS.continuous, payload: value })}
-          />
-        </div>
-    }
+    // if (key === "continuous") {
+    //   inputs =
+    //     <div className="workout-units">
+    //       <Select
+    //         style={selectStyle}
+    //         className="flow-text"
+    //         placeholder={workoutState[key] === true ? 'Continuous' : "Non-Continuous"}
+    //         options={[
+    //           {
+    //             value: true,
+    //             label: "Continuous"
+    //           },
+    //           {
+    //             value: false,
+    //             label: "Non-Continuous"
+    //           }
+    //         ]}
+    //         isSearchable={false}
+    //         onChange={({ value }) => dispatchWorkout({ type: SET_ACTIONS.continuous, payload: value })}
+    //       />
+    //     </div>
+    // }
 
     // Return each item with the title of each object in the state and with the inputs variable
     return (
