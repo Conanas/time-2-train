@@ -1,14 +1,14 @@
 :root {
-  --primary: #2d5986;
+  --primary: #284e76;
   --primary-light: #ff9fa2;
   --primary-dark: #b73d48;
-  --on-primary: white;
+  --on-primary: #e9ebf1;
   --on-primary-light: white;
   --on-primary-dark: white;
-  --background: #efeff5;
-  --on-background: black;
+  --background: #b3eeec;
+  --on-background: #284e76;
   --grey: #595959;
-  --secondary: black;
+  --secondary: #284e76;
 }
 
 .wrapper {

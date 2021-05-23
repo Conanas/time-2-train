@@ -5,10 +5,10 @@ const WorkoutContext = createContext();
 
 const DEFAULT_STATE = {
   title: "Quick Start",
-  reps: 1,
-  rest: 0,
-  sets: 1,
-  break: 0
+  reps: 3,
+  rest: 3,
+  sets: 2,
+  break: 5
 }
 
 const reducer = (state, action) => {

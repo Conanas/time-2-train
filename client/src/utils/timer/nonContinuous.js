@@ -40,6 +40,9 @@ module.exports = {
     else if (timerState.mode === MODES.REST) {
       // after rest
       if (timerState.rep === workoutState.reps - 1 && timerState.set === workoutState.sets) {
+
+        // TODO: turn on last rep so when user clicks next button it goes to toby image
+
         // last rep and set
         BEEP_COMPLETED.play()
         setBackground(BACKGROUND_COLORS.COMPLETED)

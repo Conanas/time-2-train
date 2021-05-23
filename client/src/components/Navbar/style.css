@@ -1,6 +1,6 @@
 nav {
-    background-color: var(--primary);
-    color: var(--on-primary);
+  background-color: var(--primary);
+  color: #c8cad1;
 }
 
 .brand-logo {
@@ -8,5 +8,5 @@ nav {
 }
 
 .material-icons {
-  color: var(--background)
+  color: var(--background);
 }
