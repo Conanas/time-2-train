@@ -1,13 +1,13 @@
 nav {
   background-color: var(--primary);
-  color: var(--background);
+  color: #e9ebf1 !important;
 }
 
 .brand-logo {
   font-weight: 200 !important;
-  color: var(--background) !important;
+  color: #e9ebf1 !important;
 }
 
 .material-icons {
-  color: var(--background);
+  color: #e9ebf1;
 }
