@@ -1,10 +1,11 @@
 nav {
   background-color: var(--primary);
-  color: #c8cad1;
+  color: var(--background);
 }
 
 .brand-logo {
   font-weight: 200 !important;
+  color: var(--background) !important;
 }
 
 .material-icons {
