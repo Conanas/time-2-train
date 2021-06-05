@@ -3,19 +3,15 @@ import { Link } from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
 import MessageModal from '../../components/Modals/MessageModal/';
-import API from '../../utils/API';
 import { useWorkoutContext } from "../../utils/contexts/WorkoutContext";
 import { useEditContext } from '../../utils/contexts/EditContext';
-import { useUserContext } from '../../utils/contexts/UserContext';
 import { SET_ACTIONS } from '../../utils/contexts/actions';
-import { MESSAGES } from '../../components/Modals/modal-messages';
 import { EDIT } from '../../utils/contexts/edit-state-strings';
 
 export default function CreatePage() {
-  const [saveState, setSaveState] = useState();
+  const [saveState,] = useState();
   const [, dispatchEditState] = useEditContext();
-  const [workoutState, dispatchWorkout] = useWorkoutContext();
-  const [userState] = useUserContext();
+  const [, dispatchWorkout] = useWorkoutContext();
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
@@ -23,27 +19,6 @@ export default function CreatePage() {
     dispatchEditState({ type: EDIT })
     dispatchWorkout({ type: SET_ACTIONS.reset })
   }, [])
-
-  async function saveWorkout() {
-    try {
-      if (workoutState.title === "") {
-        setSaveState(MESSAGES.MUST_BE_A_TITLE);
-      } else {
-        setSaveState(MESSAGES.SAVING);
-        let existingWorkout = await API.getWorkoutByTitle(workoutState.title, userState._id);
-        if (existingWorkout.data != null) {
-          setSaveState(MESSAGES.WORKOUT_EXISTS);
-        } else {
-          let createdWorkout = await API.postWorkout(userState._id, workoutState);
-          await API.putUser(userState._id, createdWorkout);
-          setSaveState(MESSAGES.WORKOUT_SAVED);
-          localStorage.setItem("workoutId", createdWorkout.data._id)
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   return (
     <>
@@ -59,17 +34,6 @@ export default function CreatePage() {
             <i className="fas fa-play flow-text"></i>
           </button>
         </Link>
-        {userState.email === null ?
-          <label className="flow-text">{MESSAGES.MUST_BE_SIGNED_IN_TO_SAVE}</label>
-          :
-          <button
-            className="form-button modal-trigger"
-            data-target="message-modal"
-            onClick={() => saveWorkout()}
-          >
-            <i className="fas fa-save flow-text"></i>
-          </button>
-        }
       </div>
       <MessageModal message={saveState} />
     </>

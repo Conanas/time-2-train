@@ -18,11 +18,6 @@ export default function HomePage() {
             Create Workout
           </button>
         </Link>
-        <Link to="/load">
-          <button className='welcome-button flow-text'>
-            Load Workout
-        </button>
-        </Link>
       </div>
     </>
   )

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const logger = require("morgan");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const routes = require("./routes/");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -19,12 +19,12 @@ app.use(logger("dev"));
 // Add routes
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-});
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false
+// });
 
 // Send every request to the React app
 // Define any API routes before this runs

@@ -4,7 +4,6 @@ import Countdown, { zeroPad } from 'react-countdown';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import TobyModal from '../../components/Modals/TobyModal';
 import { useWorkoutContext } from '../../utils/contexts/WorkoutContext';
-import { useUserContext } from '../../utils/contexts/UserContext';
 import { startTimerContinuous, onCompleteContinuous } from '../../utils/timer/continuous';
 import { startTimerNonContinuous, onCompleteNonContinuous } from '../../utils/timer/nonContinuous';
 import { BEEP_321 } from '../../utils/timer/sounds/';
@@ -12,15 +11,11 @@ import { BACKGROUND_COLORS } from '../../utils/timer/backgroundColors';
 import { MODES } from '../../utils/timer/modes';
 import './style.css';
 
-import API from '../../utils/API';
-import { SET_ACTIONS } from '../../utils/contexts/actions';
-
 export default function TimerPage() {
 
   const timerRef = useRef();
 
-  const [workoutState, dispatchWorkout] = useWorkoutContext();
-  const [userState] = useUserContext();
+  const [workoutState,] = useWorkoutContext();
 
   let initialTimerState = {}
 
@@ -48,13 +43,8 @@ export default function TimerPage() {
     let sidenav = document.querySelector('#mobile-demo');
     M.Sidenav.init(sidenav, {});
     document.getElementsByClassName("wrapper")[0].style.backgroundColor = backgroundState;
-    if (workoutState._id === null && userState.email) {
-      API.getWorkout(localStorage.getItem('workoutId'))
-        .then(res => dispatchWorkout({ type: SET_ACTIONS.workout, payload: res.data }))
-        .catch(err => console.log(err))
-    }
     return () => document.getElementsByClassName("wrapper")[0].style.backgroundColor = BACKGROUND_COLORS.DEFAULT;
-  }, [timerState, backgroundState, workoutState, userState])
+  }, [timerState, backgroundState, workoutState])
 
   function startTimer() {
     console.log('starting timer', timerState)

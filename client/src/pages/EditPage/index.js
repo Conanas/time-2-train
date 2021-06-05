@@ -4,12 +4,10 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import InputList from '../../components/InputList/';
 import UpdateModal from '../../components/Modals/UpdateModal';
 import { useEditContext } from '../../utils/contexts/EditContext';
-import { useUserContext } from '../../utils/contexts/UserContext';
 import { EDIT, START } from '../../utils/contexts/edit-state-strings';
 
 export default function EditPage() {
   const [editState, dispatchEditState] = useEditContext();
-  const [userState] = useUserContext();
 
   useEffect(() => {
     let sidenav = document.querySelector('#mobile-demo');
@@ -40,17 +38,6 @@ export default function EditPage() {
             </>
             :
             <>
-              {
-                userState.email === null ?
-                  null
-                  :
-                  <button
-                    className="form-button modal-trigger"
-                    data-target="save-message-modal"
-                  >
-                    <i className="fas fa-save flow-text"></i>
-                  </button>
-              }
               <button className="form-button" onClick={() => dispatchEditState({ type: START })}>
                 <i className="fas fa-check-square flow-text"></i>
               </button>
