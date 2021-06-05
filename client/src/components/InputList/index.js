@@ -123,19 +123,6 @@ export default function InputList() {
       </>
     )
 
-    // When we reach the title element then do not render anything
-    if (key === "title") {
-      inputs =
-        <input
-          className="form-input flow-text"
-          // disabled={disable === true ? true : false}
-          onChange={(e) => {
-            dispatchWorkout({ type: SET_ACTIONS[key], payload: e.target.value })
-          }}
-          value={workoutState[key]}
-        />
-    }
-
     // When we reach the continuous object in the state then render the continuous toggle button
     // If continuous then render 'on' toggle switch
     // Else render the 'off' toggle switch

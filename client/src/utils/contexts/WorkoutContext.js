@@ -4,7 +4,6 @@ import { SET_ACTIONS } from './actions';
 const WorkoutContext = createContext();
 
 const DEFAULT_STATE = {
-  title: "Quick Start",
   reps: 5,
   rest: 120,
   sets: 1,

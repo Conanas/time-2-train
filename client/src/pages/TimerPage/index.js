@@ -99,54 +99,55 @@ export default function TimerPage() {
     setPlayState(false)
   }
 
-  function changeRep(x) {
-    // If timer playing then pause timer
-    if (playState === true) {
-      pauseTimer();
-    }
+  // TODO: implement change rep buttons
+  // function changeRep(x) {
+  //   // If timer playing then pause timer
+  //   if (playState === true) {
+  //     pauseTimer();
+  //   }
 
-    console.log(timerState)
-    console.log(workoutState)
-    // If Non-Continuous
-    if (!workoutState.continuous) {
-      // If moving forwards
-      if (x === 1) {
-        // Reps can't go more then rep limit
-        // If on last rep of last set then go to finish
-        if (timerState.rep === workoutState.reps && timerState.set === workoutState.sets) {
+  //   console.log(timerState)
+  //   console.log(workoutState)
+  //   // If Non-Continuous
+  //   if (!workoutState.continuous) {
+  //     // If moving forwards
+  //     if (x === 1) {
+  //       // Reps can't go more then rep limit
+  //       // If on last rep of last set then go to finish
+  //       if (timerState.rep === workoutState.reps && timerState.set === workoutState.sets) {
 
-          // If on last rep then go to break mode
-        } else if (timerState.rep === workoutState.reps) {
-          setBackground(BACKGROUND_COLORS.BREAK)
-          setTimerState({ mode: MODES.WORK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
+  //         // If on last rep then go to break mode
+  //       } else if (timerState.rep === workoutState.reps) {
+  //         setBackground(BACKGROUND_COLORS.BREAK)
+  //         setTimerState({ mode: MODES.WORK, countdown: workoutState.break, rep: timerState.rep, set: timerState.set })
 
-          // If in work mode then go to next work mode
-        } else if (timerState.mode === MODES.WORK) {
-          setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
+  //         // If in work mode then go to next work mode
+  //       } else if (timerState.mode === MODES.WORK) {
+  //         setTimerState({ mode: MODES.WORK, countdown: workoutState.work, rep: timerState.rep + 1, set: timerState.set })
 
-          // If in rest mode then go to next work mode
-        } else if (timerState.mode === MODES.REST) {
+  //         // If in rest mode then go to next work mode
+  //       } else if (timerState.mode === MODES.REST) {
 
-          // If in break mode then go to next work mode and set
-        } else if (timerState.mode === MODES.BREAK) {
+  //         // If in break mode then go to next work mode and set
+  //       } else if (timerState.mode === MODES.BREAK) {
 
-        }
-      } else {
-        // If moving backwards
+  //       }
+  //     } else {
+  //       // If moving backwards
 
-        // Reps can't go less then 1
+  //       // Reps can't go less then 1
 
-        // If in work mode then go to previous work mode
+  //       // If in work mode then go to previous work mode
 
-        // If in rest mode then go to previous work mode
+  //       // If in rest mode then go to previous work mode
 
-        // If in break mode then go to next work mode and set
+  //       // If in break mode then go to next work mode and set
 
-      }
-    } else {
+  //     }
+  //   } else {
 
-    }
-  }
+  //   }
+  // }
 
   return (
     <>

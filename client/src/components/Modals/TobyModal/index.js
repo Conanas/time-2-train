@@ -51,7 +51,7 @@ export default function TobyModal({ timerState }) {
         <img className='toby-image' src={tobyImages[Math.ceil(Math.random() * tobyImages.length)]} alt='toby'></img>
       </div>
       <div className="modal-footer">
-        <button className="modal-close btn-flat">Confirm</button>
+        <button className="modal-close btn btn-primary">Last Rep Mama!</button>
       </div>
     </div>
   )
