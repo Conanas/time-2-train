@@ -3,5 +3,5 @@ export const BACKGROUND_COLORS = {
   WORK: "#71f0ed",
   REST: "#0da29e",
   BREAK: "#53d4f6",
-  COMPLETED: "#efeff5"
+  COMPLETED: "#b3edec"
 }
