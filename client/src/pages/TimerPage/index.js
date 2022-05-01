@@ -9,6 +9,7 @@ import { startTimerNonContinuous, onCompleteNonContinuous } from '../../utils/ti
 import { BEEP_321 } from '../../utils/timer/sounds/';
 import { BACKGROUND_COLORS } from '../../utils/timer/backgroundColors';
 import { MODES } from '../../utils/timer/modes';
+import toby17 from '../../assets/images/toby_17.jpg';
 import './style.css';
 
 export default function TimerPage() {
@@ -204,6 +205,12 @@ export default function TimerPage() {
             </>
         }
       </div >
+      {
+        timerState.mode === MODES.BREAK ?
+          <img className='toby-break-image' src={toby17}/>
+          :
+          <></>
+      }
       <TobyModal timerState={timerState} />
     </>
   )
